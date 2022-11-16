@@ -4,7 +4,7 @@ export interface User {
   trn?:number;
   firstName?: string;
   lastName?: string;
-  dateOfBirth:Date;
+  dateOfBirth?:Date;
   username?: string;
   email?: string;
   password?: string;

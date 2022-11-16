@@ -1,1 +1,204 @@
-<p>sign-up works!</p>
+<div class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <img
+      class="w-auto h-12 mx-auto"
+      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+      alt="Your Company"
+    />
+    <h2
+      class="mt-6 text-3xl font-bold tracking-tight text-center text-gray-900"
+    >
+      Create your free Account
+    </h2>
+    <p class="mt-2 text-sm text-center text-gray-600">
+      Or
+      <a
+        routerLink="/login"
+        class="font-medium text-indigo-600 hover:text-indigo-500"
+        >login if you already have an account</a
+      >
+    </p>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+      <form class="space-y-6" [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="trn" class="block text-sm font-medium text-gray-700"
+            >Tax Registration Number (TRN)</label
+          >
+          <div class="mt-1">
+            <input
+              id="trn"
+              name="trn"
+              type="number"
+              formControlName="trn"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700"
+            >First Name</label
+          >
+          <div class="mt-1">
+            <input
+              id="firstName"
+              name="firstName"
+              formControlName="firstName"
+              type="text"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="lastName" class="block text-sm font-medium text-gray-700"
+            >Last Name</label
+          >
+          <div class="mt-1">
+            <input
+              id="lastName"
+              name="lastName"
+              type="tel"
+              required
+              formControlName="lastName"
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="dob" class="block text-sm font-medium text-gray-700"
+            >Date of Birth (dob)</label
+          >
+          <div class="mt-1">
+            <input
+              id="dob"
+              name="dob"
+              type="date"
+              required
+              formControlName="dob"
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email
+          </label>
+          <div class="mt-1">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              formControlName="email"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Password</label
+          >
+          <div class="mt-1">
+            <input
+              id="password"
+              name="password"
+              type="password"
+              formControlName="password"
+              autocomplete="current-password"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="phoneNumber"
+            class="block text-sm font-medium text-gray-700"
+            >PhoneNumber</label
+          >
+          <div class="mt-1">
+            <input
+              id="phoneNumber"
+              name="phoneNumber"
+              type="number"
+              formControlName="phoneNumber"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="address1" class="block text-sm font-medium text-gray-700"
+            >Address
+          </label>
+          <div class="mt-1">
+            <input
+              id="address1"
+              name="address1"
+              type="text"
+              formControlName="address1"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="address2" class="block text-sm font-medium text-gray-700"
+            >Address 2</label
+          >
+          <div class="mt-1">
+            <input
+              id="address2"
+              name="address2"
+              type="text"
+              formControlName="address2"
+              required
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label
+            for="pick up branch"
+            class="block text-sm font-medium text-gray-700"
+            >Pick up Branch</label
+          >
+          <div class="mt-1">
+            <select
+              id="location"
+              name="location"
+              formControlName="pickUpBranch"
+              class="block w-full py-2 pl-3 pr-10 mt-1 text-base border-gray-300 rounded-md focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+            >
+              <option selected value="Kingston">Kingston</option>
+              <option value="Mandeville">Mandeville</option>
+              <option value="St. Elizabeth">St. Elizabeth</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            Sign-up
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
