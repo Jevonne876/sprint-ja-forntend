@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -23,6 +23,11 @@ export class AuthenticationService {
   public register(user: User): Observable<User | HttpErrorResponse> {
     return this.http.post<User | HttpErrorResponse>
       (`${this.apiUrl}register-new-user`, user)
+  }
+
+  public login(user: User): Observable<HttpResponse<User>> {
+    return this.http.post<User>
+      (`${this.apiUrl}user-login`, user, { observe: 'response' });
   }
 
   public logout(): void {

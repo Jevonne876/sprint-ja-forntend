@@ -21,69 +21,20 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public getUsers(): Observable<User[] | HttpErrorResponse> {
-    return this.http.get<User[] | HttpErrorResponse>
-      (`${this.apiUrl}get-users`);
-  }
 
   public getUser(username: string): Observable<User | HttpErrorResponse> {
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}find-user/${username}`);
 
   }
 
-  public addUser(formData: FormData): Observable<User | HttpErrorResponse> {
-    return this.http.post<User | HttpErrorResponse>
-      (`${this.apiUrl}add-new-user`, formData)
+  public getUserFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('user') || '');
   }
 
   public updateUser(loggedInUsername: string, formData: FormData): Observable<User | HttpErrorResponse> {
     return this.http.put<User | HttpErrorResponse>
       (`${this.apiUrl}update-user/${loggedInUsername}`, formData)
   }
-
-  // public resetPassword(email: string): Observable<CustomHttpResponse | HttpErrorResponse> {
-  //   return this.http.get<CustomHttpResponse | HttpErrorResponse>
-  //     (`${this.apiUrl}reset-password/,${email}`)
-  // }
-
-  public updateProfileImage(formData: FormData, loggedInUsername: string): Observable<HttpEvent<any> | HttpErrorResponse> {
-    return this.http.put<HttpEvent<any> | HttpErrorResponse>
-      (`${this.apiUrl}update-profile-image/${loggedInUsername}`, formData, { reportProgress: true, observe: 'events' })
-  }
-
-  // public deleterUser(id: number): Observable<CustomHttpResponse | HttpErrorResponse> {
-  //   return this.http.delete<CustomHttpResponse | HttpErrorResponse>(`${this.apiUrl}/delete-user/${id}`)
-  // }
-
-  public addUsersToLocalStorage(users: User[]): void {
-    localStorage.setItem('users', JSON.stringify(users));
-  }
-
-  public addUsersFromLocalCache() {
-    if (localStorage.getItem('users')) {
-      return JSON.parse(localStorage.getItem('users') || '');
-    }
-    return null;
-  }
-
-  // public getUserEmailFromCache(): void {
-  //   const data: User = this.getUserFromLocalStorage();
-  //   //return this.userEmail = data.email;
-  // }
-
-  // public createUserData(loggedUsername: string, user?: User, profileImageUrl?: File): FormData {
-  //   const formData = new FormData();
-  //   formData.append('currentUser', this.loggedInUsername);
-  //   formData.append('firstName', user?.firstName || '');
-  //   formData.append('lastName', user?.lastName || '');
-  //   formData.append('username', user?.username || '');
-  //   formData.append('email', user?.email || '');
-  //   formData.append('role', user?.role || '');
-  //   formData.append('profileImageUrl', user?.profileImageUrl || '');
-  //   formData.append('isActive', JSON.stringify(user?.active || ''));
-  //   formData.append('isNonLocked', JSON.stringify(user?.notLocked || ''));
-  //   return formData;
-  // }
 
   public loadToken(): void {
     this.token = localStorage.getItem('token') || '';
@@ -113,7 +64,19 @@ export class UserService {
     localStorage.removeItem('users');
   }
 
-  public getUserFromLocalStorage() {
-    return JSON.parse(localStorage.getItem('user') || '');
-  }
+
+
+    // public createUserData(loggedUsername: string, user?: User, profileImageUrl?: File): FormData {
+  //   const formData = new FormData();
+  //   formData.append('currentUser', this.loggedInUsername);
+  //   formData.append('firstName', user?.firstName || '');
+  //   formData.append('lastName', user?.lastName || '');
+  //   formData.append('username', user?.username || '');
+  //   formData.append('email', user?.email || '');
+  //   formData.append('role', user?.role || '');
+  //   formData.append('profileImageUrl', user?.profileImageUrl || '');
+  //   formData.append('isActive', JSON.stringify(user?.active || ''));
+  //   formData.append('isNonLocked', JSON.stringify(user?.notLocked || ''));
+  //   return formData;
+  // }
 }

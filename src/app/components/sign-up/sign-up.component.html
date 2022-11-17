@@ -37,6 +37,18 @@
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
           </div>
+          <div
+            class="mb-1"
+            *ngIf="
+              (!newUserForm.get('trn')?.valid &&
+                newUserForm.get('trn')?.touched) ||
+              newUserForm.get('trn')?.hasError('minlength')
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter a valid trn
+            </span>
+          </div>
         </div>
 
         <div>
@@ -52,6 +64,17 @@
               required
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
+          </div>
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('firstName')?.valid &&
+              newUserForm.get('firstName')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your first name
+            </span>
           </div>
         </div>
 
@@ -69,6 +92,18 @@
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
           </div>
+
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('lastName')?.valid &&
+              newUserForm.get('lastName')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your last name
+            </span>
+          </div>
         </div>
 
         <div>
@@ -84,6 +119,17 @@
               formControlName="dob"
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
+          </div>
+
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('dob')?.valid && newUserForm.get('dob')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your date of birth
+            </span>
           </div>
         </div>
 
@@ -101,6 +147,18 @@
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
           </div>
+
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('email')?.valid &&
+              newUserForm.get('email')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your valid email
+            </span>
+          </div>
         </div>
 
         <div>
@@ -117,6 +175,18 @@
               required
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
+          </div>
+
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('password')?.valid &&
+              newUserForm.get('password')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your password
+            </span>
           </div>
         </div>
 
@@ -136,6 +206,18 @@
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
           </div>
+
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('phoneNumber')?.valid &&
+              newUserForm.get('phoneNumber')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your phone number
+            </span>
+          </div>
         </div>
 
         <div>
@@ -151,6 +233,17 @@
               required
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             />
+          </div>
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('address1')?.valid &&
+              newUserForm.get('address1')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your address
+            </span>
           </div>
         </div>
 
@@ -188,14 +281,27 @@
               <option value="St. Elizabeth">St. Elizabeth</option>
             </select>
           </div>
+          <div
+            class="mb-1"
+            *ngIf="
+              !newUserForm.get('pickUpBranch')?.valid &&
+              newUserForm.get('pickUpBranch')?.touched
+            "
+          >
+            <span class="help-block" style="color: red">
+              Please enter your prefer branch for pick up
+            </span>
+          </div>
         </div>
 
         <div>
           <button
+            [disabled]="newUserForm.invalid"
             type="submit"
             class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
-            Sign-up
+          <span *ngIf="showLoading">Creating Account</span>
+          <span *ngIf="!showLoading"> Sign up</span>
           </button>
         </div>
       </form>
