@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Notify } from 'notiflix';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -31,15 +32,17 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.user.email = this.userForm.value.email!;
     this.user.password = this.userForm.value.password!;
-    this.authenticatiionService.login(this.user).subscribe((response: any) => {
-      const token = response.headers.get("Jwt-Token");
-      this.authenticatiionService.saveToken(token);
-      this.authenticatiionService.addUserToLocalStorage(response.body);
-      this.router.navigateByUrl('dashboard');
-      Notify.success(`Welcome ${response.body.firstName} ${response.body.lastName}`);
-      this.isLoading = false;
-    },
-      (httpErrorResponse: HttpErrorResponse) => {
+    this.authenticatiionService.login(this.user).subscribe({
+      next: (response: any) => {
+        const token = response.headers.get("Jwt-Token");
+        this.authenticatiionService.saveToken(token);
+        this.authenticatiionService.saveToken(token);
+        this.authenticatiionService.addUserToLocalStorage(response.body);
+        this.router.navigateByUrl('dashboard');
+        Notify.success(`Welcome ${response.body.firstName} ${response.body.lastName}`);
+        this.isLoading = false;
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
 
         if (httpErrorResponse.error.message) {
           Notify.failure(httpErrorResponse.error.message);
@@ -50,8 +53,6 @@ export class LoginComponent implements OnInit {
         }
       }
 
-    )
-
+    })
   }
-
 }
