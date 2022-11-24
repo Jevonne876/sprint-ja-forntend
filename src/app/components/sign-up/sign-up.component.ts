@@ -46,8 +46,8 @@ export class SignUpComponent implements OnInit {
     this.user.email = this.newUserForm.value.email!;
     this.user.password = this.newUserForm.value.password!;
     this.user.phoneNumber = this.newUserForm.value.phoneNumber!;
-    this.user.address1 = this.newUserForm.value.streetAddress!;
-    this.user.address2 = this.newUserForm.value.parish!;
+    this.user.streetAddress = this.newUserForm.value.streetAddress!;
+    this.user.parish = this.newUserForm.value.parish!;
     this.user.pickUpBranch = this.newUserForm.value.pickUpBranch!;
       this.authenticationService.register(this.user).subscribe({
         next: (response: any) => {
