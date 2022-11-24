@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,9 +10,14 @@ export class NavbarComponent implements OnInit {
 
   toggle: boolean = true;
 
-  constructor() { }
+
+  constructor(private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
   }
 
+  onClickScroll(elementId: string) {
+    this.viewportScroller.scrollToAnchor(elementId);
+
+  }
 }
