@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -32,6 +33,7 @@ export class SignUpComponent implements OnInit {
 
   user: User = {};
   showLoading: boolean = false;
+  private subscriptions: Subscription[] = [];
 
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class SignUpComponent implements OnInit {
     this.user.streetAddress = this.newUserForm.value.streetAddress!;
     this.user.parish = this.newUserForm.value.parish!;
     this.user.pickUpBranch = this.newUserForm.value.pickUpBranch!;
+    this.subscriptions.push(
       this.authenticationService.register(this.user).subscribe({
         next: (response: any) => {
           Notify.success(`${this.user.firstName} your account was created successfully`);
@@ -66,6 +69,11 @@ export class SignUpComponent implements OnInit {
           }
         }
       })
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }
