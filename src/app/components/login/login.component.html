@@ -1,20 +1,21 @@
-<div class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
+<app-navbar></app-navbar>
+<div class="flex flex-col justify-center min-h-full py-12 bg-gray-50 sm:px-6 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <img
       class="w-auto h-12 mx-auto"
-      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+      src="https://tailwindui.com/img/logos/mark.svg?color=red&shade=600"
       alt="Your Company"
     />
     <h2
-      class="mt-6 text-3xl font-bold tracking-tight text-center text-gray-900"
+      class="mt-6 text-3xl font-medium tracking-normal text-center text-gray-700 font-poppins"
     >
       Sign in to your account
     </h2>
-    <p class="mt-2 text-sm text-center text-gray-600">
+    <p class="mt-2 text-sm text-center text-gray-700">
       Or
       <a
         routerLink="/sign-up"
-        class="font-medium text-indigo-600 hover:text-indigo-500"
+        class="font-medium text-red-700 font-poppins hover:text-red-900"
         >create your free account</a
       >
     </p>
@@ -24,7 +25,9 @@
     <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
       <form class="space-y-6" [formGroup]="userForm" (ngSubmit)="onLogin()">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700"
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 font-poppins"
             >Email address</label
           >
           <div class="mt-1">
@@ -33,7 +36,7 @@
               name="email"
               type="email"
               formControlName="email"
-              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
             />
           </div>
           <div
@@ -49,7 +52,9 @@
         </div>
 
         <div>
-          <label for="password" class="block text-sm font-medium text-gray-700"
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-700 font-poppins"
             >Password</label
           >
           <div class="mt-1">
@@ -58,7 +63,7 @@
               name="password"
               type="password"
               formControlName="password"
-              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
             />
           </div>
 
@@ -79,7 +84,7 @@
           <div class="text-sm">
             <a
               href="#"
-              class="font-medium text-indigo-600 hover:text-indigo-500"
+              class="font-medium text-red-600 hover:text-red-900"
               >Forgot your password?</a
             >
           </div>
@@ -89,7 +94,7 @@
           <button
             [disabled]="userForm.invalid"
             type="submit"
-            class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
           >
             <span *ngIf="isLoading">Logging</span>
             <span *ngIf="!isLoading">Login</span>
