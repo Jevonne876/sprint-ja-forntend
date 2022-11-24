@@ -41,7 +41,7 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                   />
                 </div>
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     (!newUserForm.get('trn')?.valid &&
@@ -52,7 +52,7 @@
                   <span class="help-block" style="color: red">
                     Please enter a valid trn
                   </span>
-                </div>
+                </div> -->
               </div>
 
               <div class="sm:col-span-3">
@@ -68,7 +68,7 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                   />
                 </div>
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     !newUserForm.get('dob')?.valid &&
@@ -78,7 +78,7 @@
                   <span class="help-block" style="color: red">
                     Please enter your date of birth
                   </span>
-                </div>
+                </div> -->
               </div>
               <div class="sm:col-span-3">
                 <label
@@ -95,7 +95,7 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                   />
                 </div>
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     (!newUserForm.get('firstName')?.valid &&
@@ -106,7 +106,7 @@
                   <span class="help-block" style="color: red">
                     Please enter your first name
                   </span>
-                </div>
+                </div> -->
               </div>
 
               <div class="sm:col-span-3">
@@ -124,7 +124,7 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                   />
                 </div>
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     (!newUserForm.get('lastName')?.valid &&
@@ -135,7 +135,7 @@
                   <span class="help-block" style="color: red">
                     Please enter your last name
                   </span>
-                </div>
+                </div> -->
               </div>
 
               <div class="sm:col-span-3">
@@ -154,7 +154,7 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                   />
                 </div>
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     !newUserForm.get('email')?.valid &&
@@ -164,7 +164,7 @@
                   <span class="help-block" style="color: red">
                     Please enter your email
                   </span>
-                </div>
+                </div> -->
               </div>
               <div class="sm:col-span-3">
                 <label
@@ -181,8 +181,7 @@
                     class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
                   />
                 </div>
-
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     !newUserForm.get('phoneNumber')?.valid &&
@@ -192,7 +191,7 @@
                   <span class="help-block" style="color: red">
                     Please enter your phone number
                   </span>
-                </div>
+                </div> -->
               </div>
 
               <div class="sm:col-span-6">
@@ -213,8 +212,7 @@
                     <option>Mexico</option>
                   </select>
                 </div>
-
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     !newUserForm.get('parish')?.valid &&
@@ -224,7 +222,7 @@
                   <span class="help-block" style="color: red">
                     Please enter the parish you currently live in
                   </span>
-                </div>
+                </div> -->
               </div>
 
               <div class="sm:col-span-6">
@@ -243,7 +241,7 @@
                   />
                 </div>
 
-                <div
+                <!-- <div
                   class="mt-1 mb-1"
                   *ngIf="
                     !newUserForm.get('streetAddress')?.valid &&
@@ -253,7 +251,7 @@
                   <span class="help-block" style="color: red">
                     Please enter your address
                   </span>
-                </div>
+                </div> -->
               </div>
 
               <div class="sm:col-span-6">
@@ -274,7 +272,7 @@
                     <option>Mexico</option>
                   </select>
                 </div>
-
+                <!--
                 <div
                   class="mb-1"
                   *ngIf="
@@ -285,7 +283,7 @@
                   <span class="help-block" style="color: red">
                     Please select your pickup location
                   </span>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
@@ -294,7 +292,6 @@
         <div class="pt-2">
           <div class="flex justify-center">
             <button
-              [disabled]="newUserForm.invalid"
               type="submit"
               class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
             >
