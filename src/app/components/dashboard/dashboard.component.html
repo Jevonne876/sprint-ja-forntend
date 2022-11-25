@@ -37,9 +37,9 @@
 
         <div class="flex items-center flex-shrink-0 px-4">
           <img
-            class="w-auto h-8"
-            src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-            alt="Easywire logo"
+            class="w-auto h-16"
+            src="../../../assets/SPRINT JA FINAL LOGO_White.png"
+            alt="Sprint Jamaica"
           />
         </div>
         <nav
@@ -274,9 +274,9 @@
     <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto bg-red-700">
       <div class="flex items-center flex-shrink-0 px-4">
         <img
-          class="w-auto h-8"
-          src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-          alt="Easywire logo"
+          class="w-auto h-16"
+          src="../../../assets/SPRINT JA FINAL LOGO_White.png"
+          alt="Sprint Jamaica"
         />
       </div>
       <nav
@@ -567,15 +567,23 @@
                 aria-haspopup="true"
                 (click)="toggle = !toggle"
               >
-                <img
-                  class="w-8 h-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                <span
+                  class="inline-block w-8 h-8 overflow-hidden bg-gray-100 rounded-full"
+                >
+                  <svg
+                    class="w-full h-full text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </span>
                 <span
                   class="hidden ml-3 text-sm font-medium text-gray-700 lg:block"
-                  ><span class="sr-only">Open user menu for </span>Emilia
-                  Birch</span
+                  ><span class="sr-only">Open user menu for </span
+                  >{{ userInfor.firstName }} {{ userInfor.lastName }}</span
                 >
                 <!-- Heroicon name: mini/chevron-down -->
                 <svg
@@ -620,8 +628,8 @@
                 >Settings</a
               >
               <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700 hover:text-red-700"
+                (click)="onLogout()"
+                class="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-red-700"
                 role="menuitem"
                 tabindex="-1"
                 id="user-menu-item-2"
@@ -642,11 +650,19 @@
             <div class="flex-1 min-w-0">
               <!-- Profile -->
               <div class="flex items-center">
-                <img
-                  class="hidden w-16 h-16 rounded-full sm:block"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
-                  alt=""
-                />
+                <span
+                  class="inline-block w-16 h-16 overflow-hidden bg-gray-100 rounded-full"
+                >
+                  <svg
+                    class="w-full h-full text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </span>
                 <div>
                   <div class="flex items-center">
                     <img
@@ -657,7 +673,7 @@
                     <h1
                       class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9"
                     >
-                      Hello, Should pull name dynamically
+                      Hello, {{ userInfor.firstName }}
                     </h1>
                   </div>
                   <dl
@@ -666,7 +682,7 @@
                     <dd
                       class="flex items-center text-sm font-medium text-gray-500 capitalize sm:mr-6"
                     >
-                      pull user id dynamically
+                      {{ userInfor.userId }}
                     </dd>
                     <dt class="sr-only">Account status</dt>
                     <dd
@@ -721,7 +737,7 @@
                     Sea Shippment
                   </h1>
                   <h2 class="mt-1 font-semibold text-gray-500 text-md">
-                    Name: Jevonne Laing
+                    Name: {{ userInfor.firstName }} {{ userInfor.lastName }}
                   </h2>
                   <h2 class="mt-1 font-semibold text-gray-500 text-md">
                     Address Line 1: 3748 W. Oakland Park Blvd
@@ -754,7 +770,7 @@
                     Air Shippment
                   </h1>
                   <h2 class="mt-1 font-semibold text-gray-500 text-md">
-                    Name: Jevonne Laing
+                    Name: {{ userInfor.lastName }}
                   </h2>
                   <h2 class="mt-1 font-semibold text-gray-500 text-md">
                     Address Line 1: 3748 W. Oakland Park Blvd

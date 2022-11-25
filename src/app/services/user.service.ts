@@ -64,19 +64,4 @@ export class UserService {
     localStorage.removeItem('users');
   }
 
-
-
-    // public createUserData(loggedUsername: string, user?: User, profileImageUrl?: File): FormData {
-  //   const formData = new FormData();
-  //   formData.append('currentUser', this.loggedInUsername);
-  //   formData.append('firstName', user?.firstName || '');
-  //   formData.append('lastName', user?.lastName || '');
-  //   formData.append('username', user?.username || '');
-  //   formData.append('email', user?.email || '');
-  //   formData.append('role', user?.role || '');
-  //   formData.append('profileImageUrl', user?.profileImageUrl || '');
-  //   formData.append('isActive', JSON.stringify(user?.active || ''));
-  //   formData.append('isNonLocked', JSON.stringify(user?.notLocked || ''));
-  //   return formData;
-  // }
 }
