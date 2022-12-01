@@ -16,6 +16,7 @@ import { HowItWorksComponent } from './components/how-it-works/how-it-works.comp
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LocationsComponent } from './components/locations/locations.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
 
 
 
@@ -32,7 +33,8 @@ import { LocationsComponent } from './components/locations/locations.component';
     HowItWorksComponent,
     FaqsComponent,
     ContactUsComponent,
-    LocationsComponent
+    LocationsComponent,
+    ShoppingComponent
   ],
   imports: [
     BrowserModule,
