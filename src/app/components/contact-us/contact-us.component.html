@@ -7,20 +7,18 @@
       class="px-4 py-16 bg-gray-50 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12"
     >
       <div class="max-w-lg mx-auto">
-        <h2
-          class="text-4xl font-medium tracking-normal text-gray-800 tr font-poppins sm:text-3xl"
+        <h1
+          class="text-4xl font-semibold tracking-normal text-black sm:text-5xl md:text-4xl lg:text-4xl xl:text-5xl font-Inter"
         >
-          Get in touch
-        </h2>
-        <p class="mt-3 text-lg font-bold leading-6 text-gray-700 font-lora">
-          Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat
-          massa dictumst amet. Sapien tortor lacus arcu.
+          Get in Touch
+        </h1>
+        <p class="mt-3 font-normal leading-6 text-black font-Inter">
+          Please feel free to contact us with any quries, comments or concerns
+          you may have.
         </p>
-        <dl class="mt-8 text-base font-bold text-gray-700 font-lora">
+        <dl class="mt-8 font-medium text-black font-Inter">
           <div>
-            <dt class="font-bold text-gray-700 sr-only font-lora">
-              Postal address
-            </dt>
+            <dt class="font-bold text-black sr-only">Postal address</dt>
             <dd>
               <p>742 Evergreen Terrace</p>
               <p>Springfield, OR 12345</p>
@@ -45,7 +43,7 @@
                   d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
                 />
               </svg>
-              <span class="ml-3">+1 (555) 123-4567</span>
+              <span class="ml-3 font-Inter">(876) 223-5933/ 876-212-9313</span>
             </dd>
           </div>
           <div class="mt-3">
@@ -99,8 +97,11 @@
                 contactForm.get('fullName')?.touched
               "
             >
-              <span class="help-block" style="color: red">
-                please enter your name
+              <span
+                class="mt-2 ml-1 text-sm font-semibold text-red-600 font-Inter help-block"
+                style="color: red"
+              >
+                Enter your Full Name
               </span>
             </div>
           </div>
@@ -123,8 +124,11 @@
                 contactForm.get('email')?.touched
               "
             >
-              <span class="help-block" style="color: red">
-                please enter a valid email address
+              <span
+                class="mt-2 ml-1 text-sm font-semibold text-red-600 font-Inter help-block"
+                style="color: red"
+              >
+                Enter a valid Email Address
               </span>
             </div>
           </div>
@@ -146,8 +150,11 @@
                 contactForm.get('phoneNumber')?.touched
               "
             >
-              <span class="help-block" style="color: red">
-                please enter your contact number
+              <span
+                class="mt-2 ml-1 text-sm font-semibold text-red-600 font-Inter help-block"
+                style="color: red"
+              >
+                Enter your Contact Number
               </span>
             </div>
           </div>
@@ -169,8 +176,11 @@
                 contactForm.get('message')?.touched
               "
             >
-              <span class="help-block" style="color: red">
-                please state your inquiry
+              <span
+                class="mt-2 ml-1 text-sm font-semibold text-red-600 font-Inter help-block"
+                style="color: red"
+              >
+                State your Inqury
               </span>
             </div>
           </div>

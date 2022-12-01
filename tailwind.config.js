@@ -8,8 +8,7 @@ module.exports = {
         cyan: colors.cyan,
       },
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-        lora: ["Lora", "serif"],
+        Inter: ["Inter", "sans-serif"],
       },
     },
   },

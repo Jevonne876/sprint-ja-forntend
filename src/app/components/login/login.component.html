@@ -4,7 +4,7 @@
 >
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <h2
-      class="mt-6 text-3xl font-bold tracking-normal text-center text-gray-900 font-poppins"
+      class="mt-6 text-3xl font-bold tracking-normal text-center text-gray-900"
     >
       Sign in to your account
     </h2>
@@ -12,7 +12,7 @@
       Or
       <a
         routerLink="/sign-up"
-        class="font-medium text-red-700 font-poppins hover:text-red-900"
+        class="font-medium text-red-700 hover:text-red-900"
         >create your free account</a
       >
     </p>
@@ -22,9 +22,7 @@
     <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
       <form class="space-y-6" [formGroup]="userForm" (ngSubmit)="onLogin()">
         <div>
-          <label
-            for="email"
-            class="block text-sm font-medium text-gray-700 font-poppins"
+          <label for="email" class="block text-sm font-medium text-gray-700"
             >Email address</label
           >
           <div class="mt-1">
@@ -49,9 +47,7 @@
         </div>
 
         <div>
-          <label
-            for="password"
-            class="block text-sm font-medium text-gray-700 font-poppins"
+          <label for="password" class="block text-sm font-medium text-gray-700"
             >Password</label
           >
           <div class="mt-1">
