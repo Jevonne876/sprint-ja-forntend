@@ -12,13 +12,14 @@ import { User } from '../model/user';
 export class AuthenticationService {
 
   /*gets backend api fron environemnt file.*/
-  public apiUrl = environment.backEndApi;
+  //public apiUrl = environment.backEndApi;
   private token: string = '';
   private loggedInUsername: string = ''
   private jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
 
+  /*
 
   public register(user: User): Observable<User | HttpErrorResponse> {
     return this.http.post<User | HttpErrorResponse>
@@ -74,4 +75,6 @@ export class AuthenticationService {
     }
     return false;
   }
+
+  */
 }
