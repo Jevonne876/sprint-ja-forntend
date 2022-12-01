@@ -52,23 +52,23 @@ export class SignUpComponent implements OnInit {
     this.user.parish = this.newUserForm.value.parish!;
     this.user.pickUpBranch = this.newUserForm.value.pickUpBranch!;
     this.subscriptions.push(
-      this.authenticationService.register(this.user).subscribe({
-        next: (response: any) => {
-          Notify.success(`${this.user.firstName} your account was created successfully`);
-          this.router.navigateByUrl('login');
-          this.showLoading = false;
-        },
-        error: (httpErrorResponse: HttpErrorResponse) => {
-          if (httpErrorResponse.error.message) {
-            Notify.failure(httpErrorResponse.error.message);
-            this.showLoading = false;
-          } else {
-            Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
-            this.showLoading = false;
+      /* this.authenticationService.register(this.user).subscribe({
+         next: (response: any) => {
+           Notify.success(`${this.user.firstName} your account was created successfully`);
+           this.router.navigateByUrl('login');
+           this.showLoading = false;
+         },
+         error: (httpErrorResponse: HttpErrorResponse) => {
+           if (httpErrorResponse.error.message) {
+             Notify.failure(httpErrorResponse.error.message);
+             this.showLoading = false;
+           } else {
+             Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+             this.showLoading = false;
 
-          }
-        }
-      })
+           }
+         }
+       }) */
     )
   }
 

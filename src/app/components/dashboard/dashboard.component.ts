@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userInfor = this.userService.getUserFromLocalStorage();
+    // this.userInfor = this.userService.getUserFromLocalStorage();
     console.log(this.userInfor);
   }
 
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onLogout() {
-    this.userService.logout();
+    // this.userService.logout();
     Notify.success("Logged out successfully");
     this.router.navigateByUrl('home');
 
