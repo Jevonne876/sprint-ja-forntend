@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContactUs } from 'src/app/model/contact-us';
 
 @Component({
   selector: 'app-home',

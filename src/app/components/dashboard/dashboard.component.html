@@ -1,15 +1,19 @@
 <div class="min-h-full">
   <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
+    <div
+      class="fixed inset-0 bg-gray-600 bg-opacity-75"
+      *ngIf="toggleSideBar"
+    ></div>
 
-    <div class="fixed inset-0 z-40 flex">
+    <div class="fixed inset-0 z-40 flex" *ngIf="toggleSideBar">
       <div
-        class="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-cyan-700"
+        class="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-red-700"
       >
         <div class="absolute top-0 right-0 pt-2 -mr-12">
           <button
             type="button"
             class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            (click)="openSideBar()"
           >
             <span class="sr-only">Close sidebar</span>
             <!-- Heroicon name: outline/x-mark -->
@@ -33,25 +37,25 @@
 
         <div class="flex items-center flex-shrink-0 px-4">
           <img
-            class="w-auto h-8"
-            src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-            alt="Easywire logo"
+            class="w-auto h-16"
+            src="../../../assets/SPRINT JA FINAL LOGO_White.png"
+            alt="Sprint Jamaica"
           />
         </div>
         <nav
-          class="flex-shrink-0 h-full mt-5 overflow-y-auto divide-y divide-cyan-800"
+          class="flex-shrink-0 h-full mt-5 overflow-y-auto divide-y divide-white"
           aria-label="Sidebar"
         >
           <div class="px-2 space-y-1">
             <!-- Current: "bg-cyan-800 text-white", Default: "text-cyan-100 hover:text-white hover:bg-cyan-600" -->
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-base font-medium text-white rounded-md bg-cyan-800 group"
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md hover:bg-yellow-500 group"
               aria-current="page"
             >
               <!-- Heroicon name: outline/home -->
               <svg
-                class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200"
+                class="flex-shrink-0 w-6 h-6 mr-4 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -70,11 +74,11 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group"
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
             >
               <!-- Heroicon name: outline/clock -->
               <svg
-                class="flex-shrink-0 w-6 h-6 mr-4 text-cyan-200"
+                class="flex-shrink-0 w-6 h-6 mr-4 text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -93,7 +97,7 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group"
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
             >
               <!-- Heroicon name: outline/scale -->
               <svg
@@ -116,7 +120,7 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group"
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
             >
               <!-- Heroicon name: outline/credit-card -->
               <svg
@@ -139,7 +143,7 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group"
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
             >
               <!-- Heroicon name: outline/user-group -->
               <svg
@@ -162,7 +166,7 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600 group"
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-100 rounded2md hover:text-white hover:bg-yellow-500 group"
             >
               <!-- Heroicon name: outline/document-chart-bar -->
               <svg
@@ -187,7 +191,7 @@
             <div class="px-2 space-y-1">
               <a
                 href="#"
-                class="flex items-center px-2 py-2 text-base font-medium rounded-md group text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
               >
                 <!-- Heroicon name: outline/cog -->
                 <svg
@@ -210,7 +214,7 @@
 
               <a
                 href="#"
-                class="flex items-center px-2 py-2 text-base font-medium rounded-md group text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
               >
                 <!-- Heroicon name: outline/question-mark-circle -->
                 <svg
@@ -233,7 +237,7 @@
 
               <a
                 href="#"
-                class="flex items-center px-2 py-2 text-base font-medium rounded-md group text-cyan-100 hover:bg-cyan-600 hover:text-white"
+                class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
               >
                 <!-- Heroicon name: outline/shield-check -->
                 <svg
@@ -267,28 +271,28 @@
   <!-- Static sidebar for desktop -->
   <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
     <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto bg-gray-400">
+    <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto bg-red-700">
       <div class="flex items-center flex-shrink-0 px-4">
         <img
-          class="w-auto h-8"
-          src="https://tailwindui.com/img/logos/mark.svg?color=cyan&shade=300"
-          alt="Easywire logo"
+          class="w-auto h-16"
+          src="../../../assets/SPRINT JA FINAL LOGO_White.png"
+          alt="Sprint Jamaica"
         />
       </div>
       <nav
-        class="flex flex-col flex-1 mt-5 overflow-y-auto divide-y divide-cyan-800"
+        class="flex flex-col flex-1 mt-5 overflow-y-auto divide-y divide-white"
         aria-label="Sidebar"
       >
         <div class="px-2 space-y-1">
           <!-- Current: "bg-cyan-800 text-white", Default: "text-cyan-100 hover:text-white hover:bg-cyan-600" -->
           <a
             href="#"
-            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md group"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
             aria-current="page"
           >
             <!-- Heroicon name: outline/home -->
             <svg
-              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-900"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -307,11 +311,11 @@
 
           <a
             href="#"
-            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md hover:text-white hover:bg-cyan-600 group"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md hover:text-white hover:bg-yellow-400 group"
           >
             <!-- Heroicon name: outline/clock -->
             <svg
-              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-900"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -330,11 +334,11 @@
 
           <a
             href="#"
-            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md hover:text-white hover:bg-cyan-600 group"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
           >
             <!-- Heroicon name: outline/scale -->
             <svg
-              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-900"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -353,11 +357,11 @@
 
           <a
             href="#"
-            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md hover:text-white hover:bg-cyan-600 group"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
           >
             <!-- Heroicon name: outline/credit-card -->
             <svg
-              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-900"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -376,11 +380,11 @@
 
           <a
             href="#"
-            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md hover:text-white hover:bg-cyan-600 group"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
           >
             <!-- Heroicon name: outline/user-group -->
             <svg
-              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-900"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -399,11 +403,11 @@
 
           <a
             href="#"
-            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md hover:text-white hover:bg-cyan-600 group"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md hover:text-white hover:bg-yellow-500 group"
           >
             <!-- Heroicon name: outline/document-chart-bar -->
             <svg
-              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-900"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -424,11 +428,11 @@
           <div class="px-2 space-y-1">
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md group hover:bg-cyan-600 hover:text-white"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
             >
               <!-- Heroicon name: outline/cog -->
               <svg
-                class="w-6 h-6 mr-4 text-gray-900"
+                class="w-6 h-6 mr-4 text-gray-200"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -447,11 +451,11 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md group hover:bg-cyan-600 hover:text-white"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
             >
               <!-- Heroicon name: outline/question-mark-circle -->
               <svg
-                class="w-6 h-6 mr-4 text-gray-900"
+                class="w-6 h-6 mr-4 text-gray-200"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -470,11 +474,11 @@
 
             <a
               href="#"
-              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-900 rounded-md group hover:bg-cyan-600 hover:text-white"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
             >
               <!-- Heroicon name: outline/shield-check -->
               <svg
-                class="w-6 h-6 mr-4 text-gray-900"
+                class="w-6 h-6 mr-4 text-gray-200"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -502,7 +506,8 @@
     >
       <button
         type="button"
-        class="px-4 text-gray-400 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
+        class="px-4 text-gray-400 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-700 lg:hidden"
+        (click)="toggleSideBar = !toggleSideBar"
       >
         <span class="sr-only">Open sidebar</span>
         <!-- Heroicon name: outline/bars-3-center-left -->
@@ -556,20 +561,29 @@
             <div>
               <button
                 type="button"
-                class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50"
+                class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50"
                 id="user-menu-button"
                 aria-expanded="false"
                 aria-haspopup="true"
+                (click)="toggle = !toggle"
               >
-                <img
-                  class="w-8 h-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                <span
+                  class="inline-block w-8 h-8 overflow-hidden bg-gray-100 rounded-full"
+                >
+                  <svg
+                    class="w-full h-full text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </span>
                 <span
                   class="hidden ml-3 text-sm font-medium text-gray-700 lg:block"
-                  ><span class="sr-only">Open user menu for </span>Emilia
-                  Birch</span
+                  ><span class="sr-only">Open user menu for </span
+                  >{{ userInfor.firstName }} {{ userInfor.lastName }}</span
                 >
                 <!-- Heroicon name: mini/chevron-down -->
                 <svg
@@ -588,16 +602,6 @@
               </button>
             </div>
 
-            <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
             <div
               *ngIf="toggle"
               class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
@@ -609,7 +613,7 @@
               <!-- Active: "bg-gray-100", Not Active: "" -->
               <a
                 href="#"
-                class="block px-4 py-2 text-sm text-gray-700"
+                class="block px-4 py-2 text-sm text-gray-700 hover:text-red-700"
                 role="menuitem"
                 tabindex="-1"
                 id="user-menu-item-0"
@@ -617,15 +621,15 @@
               >
               <a
                 href="#"
-                class="block px-4 py-2 text-sm text-gray-700"
+                class="block px-4 py-2 text-sm text-gray-700 hover:text-red-700"
                 role="menuitem"
                 tabindex="-1"
                 id="user-menu-item-1"
                 >Settings</a
               >
               <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700"
+                (click)="onLogout()"
+                class="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:text-red-700"
                 role="menuitem"
                 tabindex="-1"
                 id="user-menu-item-2"
@@ -646,11 +650,19 @@
             <div class="flex-1 min-w-0">
               <!-- Profile -->
               <div class="flex items-center">
-                <img
-                  class="hidden w-16 h-16 rounded-full sm:block"
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
-                  alt=""
-                />
+                <span
+                  class="inline-block w-16 h-16 overflow-hidden bg-gray-100 rounded-full"
+                >
+                  <svg
+                    class="w-full h-full text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </span>
                 <div>
                   <div class="flex items-center">
                     <img
@@ -661,7 +673,7 @@
                     <h1
                       class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9"
                     >
-                      Hello, Should pull name dynamically
+                      Hello, {{ userInfor.firstName }}
                     </h1>
                   </div>
                   <dl
@@ -670,7 +682,7 @@
                     <dd
                       class="flex items-center text-sm font-medium text-gray-500 capitalize sm:mr-6"
                     >
-                      pull user id dynamically
+                      {{ userInfor.userId }}
                     </dd>
                     <dt class="sr-only">Account status</dt>
                     <dd
@@ -699,15 +711,9 @@
             <div class="flex mt-6 space-x-3 md:mt-0 md:ml-4">
               <button
                 type="button"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-600 border-transparent rounded-md shadow-sm b5order hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
               >
-                Add money
-              </button>
-              <button
-                type="button"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white border border-transparent rounded-md shadow-sm bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-              >
-                Send money
+                New Pre-Alert
               </button>
             </div>
           </div>
@@ -716,6 +722,83 @@
 
       <div class="mt-8">
         <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+          <h2 class="text-lg font-medium leading-6 text-gray-900">
+            Shipping Address
+          </h2>
+          <div
+            class="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-2"
+          >
+            <div
+              class="w-full overflow-hidden bg-gray-100 border border-gray-700 rounded-lg shadow"
+            >
+              <div class="p-5">
+                <div class="flex flex-col items-center">
+                  <h1 class="text-xl font-bold text-gray-white">
+                    Sea Shippment
+                  </h1>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Name: {{ userInfor.firstName }} {{ userInfor.lastName }}
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Address Line 1: 3748 W. Oakland Park Blvd
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Address Line 2: MD34887
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    City: Lauderdale Lakes
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    State: Florida
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Zip Code: 33311
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Country: United States
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="overflow-hidden bg-gray-100 border border-gray-700 rounded-lg shadow"
+            >
+              <div class="p-5">
+                <div class="flex flex-col items-center">
+                  <h1 class="text-xl font-bold text-gray-white">
+                    Air Shippment
+                  </h1>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Name: {{ userInfor.lastName }}
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Address Line 1: 3748 W. Oakland Park Blvd
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Address Line 2: MD34887
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    City: Lauderdale Lakes
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    State: Florida
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Zip Code: 33311
+                  </h2>
+                  <h2 class="mt-1 font-semibold text-gray-500 text-md">
+                    Country: United States
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- More items... -->
+          </div>
+        </div>
+
+        <div class="max-w-6xl px-4 mx-auto mt-8 sm:px-6 lg:px-8">
           <h2 class="text-lg font-medium leading-6 text-gray-900">Overview</h2>
           <div
             class="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3"

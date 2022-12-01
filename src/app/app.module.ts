@@ -11,6 +11,12 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+import { FaqsComponent } from './components/faqs/faqs.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { LocationsComponent } from './components/locations/locations.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
 
 
 
@@ -22,7 +28,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     SignUpComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    AboutUsComponent,
+    HowItWorksComponent,
+    FaqsComponent,
+    ContactUsComponent,
+    LocationsComponent,
+    ShoppingComponent
   ],
   imports: [
     BrowserModule,

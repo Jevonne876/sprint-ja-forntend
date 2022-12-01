@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/model/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -25,13 +26,14 @@ export class SignUpComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     phoneNumber: new FormControl('', [Validators.required]),
-    address1: new FormControl('', [Validators.required]),
-    address2: new FormControl(''),
+    streetAddress: new FormControl('', [Validators.required]),
+    parish: new FormControl('', [Validators.required]),
     pickUpBranch: new FormControl('', [Validators.required])
   });
 
   user: User = {};
   showLoading: boolean = false;
+  private subscriptions: Subscription[] = [];
 
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
   ngOnInit(): void {
@@ -46,27 +48,32 @@ export class SignUpComponent implements OnInit {
     this.user.email = this.newUserForm.value.email!;
     this.user.password = this.newUserForm.value.password!;
     this.user.phoneNumber = this.newUserForm.value.phoneNumber!;
-    this.user.address1 = this.newUserForm.value.address1!;
-    this.user.address2 = this.newUserForm.value.address2!;
+    this.user.streetAddress = this.newUserForm.value.streetAddress!;
+    this.user.parish = this.newUserForm.value.parish!;
     this.user.pickUpBranch = this.newUserForm.value.pickUpBranch!;
-    this.authenticationService.register(this.user).
-      subscribe((response: any) => {
-        Notify.success(`${this.user.firstName} your account was created successfully`);
-        this.router.navigateByUrl('login');
-        this.showLoading = false;
-      },
-        (httpErrorResponse: HttpErrorResponse) => {
+    this.subscriptions.push(
+      this.authenticationService.register(this.user).subscribe({
+        next: (response: any) => {
+          Notify.success(`${this.user.firstName} your account was created successfully`);
+          this.router.navigateByUrl('login');
+          this.showLoading = false;
+        },
+        error: (httpErrorResponse: HttpErrorResponse) => {
           if (httpErrorResponse.error.message) {
             Notify.failure(httpErrorResponse.error.message);
             this.showLoading = false;
-
-
           } else {
             Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
             this.showLoading = false;
 
           }
-        });
+        }
+      })
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

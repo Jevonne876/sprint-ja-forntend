@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         cyan: colors.cyan,
       },
+      fontFamily: {
+        Inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
