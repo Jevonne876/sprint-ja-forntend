@@ -12,7 +12,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class UserService {
 
   /*gets backend api fron environemnt file.*/
-  //  public apiUrl = environment.backEndApi;
+    public apiUrl = environment.backEndApi;
   public userEmail: string = ''
   private loggedInUsername: string = ''
   private token: string = '';
@@ -21,7 +21,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  /*
+
     public getUser(username: string): Observable<User | HttpErrorResponse> {
       return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}find-user/${username}`);
 
@@ -63,5 +63,5 @@ export class UserService {
       localStorage.removeItem('token');
       localStorage.removeItem('users');
     }
-  */
+
 }

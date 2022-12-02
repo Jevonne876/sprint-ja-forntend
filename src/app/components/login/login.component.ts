@@ -33,28 +33,28 @@ export class LoginComponent implements OnInit {
     this.user.email = this.userForm.value.email!;
     this.user.password = this.userForm.value.password!;
     this.subscriptions.push(
-      /* this.authenticatiionService.login(this.user).subscribe({
-         next: (response: any) => {
-           const token = response.headers.get("Jwt-Token");
-           this.authenticatiionService.saveToken(token);
-           this.authenticatiionService.saveToken(token);
-           this.authenticatiionService.addUserToLocalStorage(response.body);
-           this.router.navigateByUrl('dashboard');
-           Notify.success(`Welcome ${response.body.firstName} ${response.body.lastName}`);
-           this.isLoading = false;
-         },
-         error: (httpErrorResponse: HttpErrorResponse) => {
+      this.authenticatiionService.login(this.user).subscribe({
+        next: (response: any) => {
+          const token = response.headers.get("Jwt-Token");
+          this.authenticatiionService.saveToken(token);
+          this.authenticatiionService.saveToken(token);
+          this.authenticatiionService.addUserToLocalStorage(response.body);
+          this.router.navigateByUrl('dashboard');
+          Notify.success(`Welcome ${response.body.firstName} ${response.body.lastName}`);
+          this.isLoading = false;
+        },
+        error: (httpErrorResponse: HttpErrorResponse) => {
 
-           if (httpErrorResponse.error.message) {
-             Notify.failure(httpErrorResponse.error.message);
-             this.isLoading = false;
-           } else {
-             Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
-             this.isLoading = false;
-           }
-         }
+          if (httpErrorResponse.error.message) {
+            Notify.failure(httpErrorResponse.error.message);
+            this.isLoading = false;
+          } else {
+            Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+            this.isLoading = false;
+          }
+        }
 
-       })*/
+      })
     )
   }
   ngOnDestroy(): void {
