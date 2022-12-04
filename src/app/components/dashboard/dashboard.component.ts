@@ -14,12 +14,16 @@ export class DashboardComponent implements OnInit {
   toggle: boolean = false;
   toggleSideBar: boolean = false
   @Input() userInfor: User = {};
+  deliveredPackages: [] = [];
+  totalPackagesNotShipped = 0;
+  totalPackagesShipped = 0;
+  totalPackagesReadyForPickUp = 0;
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-     this.userInfor = this.userService.getUserFromLocalStorage();
-    console.log(this.userInfor);
+    this.userInfor = this.userService.getUserFromLocalStorage();
+
   }
 
   openSideBar() {
@@ -27,7 +31,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onLogout() {
-     this.userService.logout();
+    this.userService.logout();
     Notify.success("Logged out successfully");
     this.router.navigateByUrl('home');
 

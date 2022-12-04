@@ -792,7 +792,10 @@
             class="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3"
           >
             <!-- Card -->
-            <div class="overflow-hidden bg-red-500 rounded-lg shadow">
+            <div
+              class="overflow-hidden bg-red-500 rounded-lg shadow"
+              *ngIf="totalPackagesNotShipped != 0"
+            >
               <div class="p-5">
                 <div class="flex items-center">
                   <div class="flex-shrink-0">
@@ -838,7 +841,10 @@
               </div>
             </div>
 
-            <div class="overflow-hidden bg-yellow-400 rounded-lg shadow">
+            <div
+              class="overflow-hidden bg-yellow-400 rounded-lg shadow"
+              *ngIf="totalPackagesShipped != 0"
+            >
               <div class="p-5">
                 <div class="flex items-center">
                   <div class="flex-shrink-0">
@@ -884,7 +890,10 @@
               </div>
             </div>
 
-            <div class="overflow-hidden bg-green-500 rounded-lg shadow">
+            <div
+              class="overflow-hidden bg-green-500 rounded-lg shadow"
+              *ngIf="totalPackagesReadyForPickUp != 0"
+            >
               <div class="p-5">
                 <div class="flex items-center">
                   <div class="flex-shrink-0">
@@ -936,12 +945,20 @@
 
         <h2
           class="max-w-6xl px-4 mx-auto mt-8 text-lg font-medium leading-6 text-gray-900 sm:px-6 lg:px-8"
+          *ngIf="deliveredPackages.length !== 0"
         >
           Recent activity
         </h2>
 
+        <h2
+          class="max-w-6xl px-4 mx-auto mt-8 text-lg font-medium leading-6 text-gray-900 sm:px-6 lg:px-8"
+          *ngIf="deliveredPackages.length === 0"
+        >
+          No Records Found
+        </h2>
+
         <!-- Activity list (smallest breakpoint only) -->
-        <div class="shadow sm:hidden">
+        <div class="shadow sm:hidden" *ngIf="deliveredPackages.length !== 0">
           <ul
             role="list"
             class="mt-2 overflow-hidden divide-y divide-gray-200 shadow sm:hidden"
@@ -1014,7 +1031,7 @@
         </div>
 
         <!-- Activity table (small breakpoint and up) -->
-        <div class="hidden sm:block">
+        <div class="hidden sm:block" *ngIf="deliveredPackages.length !== 0">
           <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
             <div class="flex flex-col mt-2">
               <div
