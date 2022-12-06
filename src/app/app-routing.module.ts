@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "sign-up", component: SignUpComponent },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: "new-pre-alert", component: PreAlertsComponent }
+  { path: "new-pre-alert", component: PreAlertsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
