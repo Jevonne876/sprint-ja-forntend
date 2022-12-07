@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -18,6 +18,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { LocationsComponent } from './components/locations/locations.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { PreAlertsComponent } from './components/pre-alerts/pre-alerts.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 
@@ -46,7 +47,7 @@ import { PreAlertsComponent } from './components/pre-alerts/pre-alerts.component
 
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
