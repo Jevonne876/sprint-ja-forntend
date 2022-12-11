@@ -19,6 +19,9 @@ import { LocationsComponent } from './components/locations/locations.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { PreAlertsComponent } from './components/pre-alerts/pre-alerts.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { MyShipmentsComponent } from './components/my-shipments/my-shipments.component';
+import { RatesComponent } from './components/rates/rates.component';
+import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
 
 
 
@@ -37,7 +40,10 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     ContactUsComponent,
     LocationsComponent,
     ShoppingComponent,
-    PreAlertsComponent
+    PreAlertsComponent,
+    MyShipmentsComponent,
+    RatesComponent,
+    WhatWeDoComponent
   ],
   imports: [
     BrowserModule,

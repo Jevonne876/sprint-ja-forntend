@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+
+<div class="px-4 mt-20 ml-20 sm:px-6 lg:px-8 max-w-7xl">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-semibold text-gray-900">Shipments</h1>
+      <p class="mt-2 text-sm text-gray-700">
+        A list of all packages that as not been shipped as yet.
+      </p>
+    </div>
+    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+      <button
+        type="button"
+        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 sm:w-auto"
+      >
+        New PreAlert
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-col mt-8">
+    <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle">
+        <div class="shadow-sm ring-1 ring-black ring-opacity-5">
+          <table class="min-w-full border-separate" style="border-spacing: 0">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+                >
+                  Tracking Number
+                </th>
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:table-cell"
+                >
+                  Description
+                </th>
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
+                >
+                  Courier
+                </th>
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                >
+                  Weight
+                </th>
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                >
+                  Cost
+                </th>
+
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                >
+                  Invoice
+                </th>
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8"
+                >
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white" *ngFor="let package; of">
+              <tr>
+                <td
+                  class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
+                >
+                  Lindsay Walton
+                </td>
+                <td
+                  class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap sm:table-cell"
+                >
+                  Front-end Developer
+                </td>
+                <td
+                  class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
+                >
+                  lindsay.walton@example.com
+                </td>
+                <td
+                  class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                >
+                  Member
+                </td>
+                <td
+                  class="relative py-4 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8"
+                >
+                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    >Edit<span class="sr-only">, Lindsay Walton</span></a
+                  >
+                </td>
+              </tr>
+
+              <!-- More people... -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

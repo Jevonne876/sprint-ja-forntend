@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
   }
 
   private isUserLoggedIn(): boolean {
-    if (this.authenticationSerivce.isUserLoggedIn() && !this.jwtHelper.isTokenExpired(this.token)) {
+    if (this.authenticationSerivce.isUserLoggedIn()) {
       return true;
     }
     this.router.navigate(['/login']);
