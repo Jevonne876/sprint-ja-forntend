@@ -10,7 +10,7 @@ import { PackageService } from 'src/app/services/package.service';
 })
 export class MyShipmentsComponent implements OnInit {
 
-  private userId: string = "";
+   userId: string = "";
 
   userPackages: PreAlerts = {};
 
