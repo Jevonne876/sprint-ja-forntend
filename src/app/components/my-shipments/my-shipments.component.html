@@ -12,7 +12,7 @@
         A list of all packages that as not been shipped as yet.
       </p>
     </div>
-    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none" hidden>
       <a
         [routerLink]="['/new-pre-alert']"
         class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 sm:w-auto"
@@ -21,7 +21,7 @@
       </a>
     </div>
   </div>
-  <div class="flex flex-col mt-8">
+  <div class="flex flex-col mt-8" *ngIf="userPackages !== null">
     <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 align-middle">
         <div class="shadow-sm ring-1 ring-black ring-opacity-5">
@@ -46,6 +46,13 @@
                 >
                   Courier
                 </th>
+
+                <th
+                  scope="col"
+                  class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
+                >
+                  Status
+                </th>
                 <th
                   scope="col"
                   class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
@@ -54,7 +61,7 @@
                 </th>
                 <th
                   scope="col"
-                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                  class="sticky hidden top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
                 >
                   Cost
                 </th>
@@ -67,44 +74,63 @@
                 </th>
                 <th
                   scope="col"
-                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8"
-                >
-                  <span class="sr-only">Edit</span>
-                </th>
+                  class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-center text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                ></th>
               </tr>
             </thead>
-            <tbody class="bg-white" *ngFor="let package; of">
+
+            <tbody class="bg-white" *ngFor="let package of userPackages">
               <tr>
                 <td
-                  class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
+                  class="py-4 pl-4 pr-3 text-sm font-medium text-center text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
                 >
-                  Lindsay Walton
+                  {{ package.trackingNumber }}
                 </td>
                 <td
-                  class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap sm:table-cell"
+                  class="hidden px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap sm:table-cell"
                 >
-                  Front-end Developer
+                  {{ package.description }}
                 </td>
                 <td
-                  class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
+                  class="hidden px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
                 >
-                  lindsay.walton@example.com
+                  {{ package.courier }}
                 </td>
                 <td
-                  class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  class="hidden px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
                 >
-                  Member
+                  {{ package.status | lowercase }}
                 </td>
                 <td
-                  class="relative py-4 pl-3 pr-4 text-sm font-medium text-right border-b border-gray-200 whitespace-nowrap sm:pr-6 lg:pr-8"
+                  class="px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap"
                 >
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                    >Edit<span class="sr-only">, Lindsay Walton</span></a
+                  {{ package.weight }}
+                </td>
+
+                <td
+                  class="hidden px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                >
+                  {{ package.cost }} USD
+                </td>
+
+                <td
+                  class="px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                >
+                  Invoice
+                </td>
+
+                <td
+                  class="px-3 py-4 text-sm text-center text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                >
+                  <a
+                    [routerLink]="[
+                      '/update-pre-alerts',
+                      package.trackingNumber
+                    ]"
+                    >Edit</a
                   >
                 </td>
               </tr>
-
-              <!-- More people... -->
             </tbody>
           </table>
         </div>

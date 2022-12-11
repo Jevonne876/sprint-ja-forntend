@@ -10,17 +10,18 @@ import { PackageService } from 'src/app/services/package.service';
 })
 export class MyShipmentsComponent implements OnInit {
 
-   userId: string = "";
+  userId: string = "";
 
-  userPackages: PreAlerts = {};
+  userPackages: PreAlerts[] = []
 
   constructor(private route: ActivatedRoute, private packageService: PackageService) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id')!;
 
-    this.packageService.getUserPreAlerts(this.userId).subscribe((resposne) => {
-      console.log(resposne)
+    this.packageService.getUserPreAlerts(this.userId).subscribe((resposne: any) => {
+      this.userPackages = resposne;
+
 
     })
 

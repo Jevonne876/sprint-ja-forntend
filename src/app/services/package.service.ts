@@ -20,9 +20,10 @@ export class PackageService {
   }
 
 
-  public getUserPreAlerts(userId: string): Observable<PreAlerts | HttpErrorResponse> {
+  public getUserPreAlerts(userId: string): Observable<PreAlerts[] | HttpErrorResponse> {
 
-    return this.http.get<PreAlerts | HttpErrorResponse>(`${this.apiUrl}get-all-packages/${userId}`);
+    return this.http.get<PreAlerts[] | HttpErrorResponse>(`${this.apiUrl}get-all-packages/${userId}`);
+
   }
 
 
