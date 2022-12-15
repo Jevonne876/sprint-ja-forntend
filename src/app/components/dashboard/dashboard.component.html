@@ -572,7 +572,7 @@
             <!-- Card -->
             <div
               class="overflow-hidden bg-red-500 rounded-lg shadow"
-              
+              *ngIf="totalPackagesNotShipped !== 0"
             >
               <div class="p-5">
                 <div class="flex items-center">
@@ -602,7 +602,7 @@
                       </dt>
                       <dd>
                         <div class="text-lg font-medium text-white">
-                         0
+                          {{ totalPackagesNotShipped }}
                         </div>
                       </dd>
                     </dl>
@@ -623,7 +623,7 @@
 
             <div
               class="overflow-hidden bg-yellow-400 rounded-lg shadow"
-
+              *ngIf="totalPackagesShipped !== 0"
             >
               <div class="p-5">
                 <div class="flex items-center">
@@ -652,14 +652,16 @@
                         Shipped
                       </dt>
                       <dd>
-                        <div class="text-lg font-medium text-white">10</div>
+                        <div class="text-lg font-medium text-white">
+                          {{ totalPackagesShipped }}
+                        </div>
                       </dd>
                     </dl>
                   </div>
                 </div>
               </div>
 
-              <div class="px-5 py-3 bg-gray-50">
+              <div class="px-5 py-3 bg-gray-50" hidden>
                 <div class="text-sm">
                   <a
                     href="#"

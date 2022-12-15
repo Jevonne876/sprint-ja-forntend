@@ -31,8 +31,8 @@ export class DashboardComponent implements OnInit {
 
       this.preAlertsCount = response;
       this.totalPackagesNotShipped = this.preAlertsCount.totalPackagesNotShipped!;
-      this.totalPackagesShipped = this.preAlertsCount.totalPackagesNotShipped!;
-      this.totalPackagesReadyForPickUp = this.preAlertsCount.totalPackagesNotShipped!;
+      this.totalPackagesShipped = this.preAlertsCount.totalPackagesShipped!;
+      this.totalPackagesReadyForPickUp = this.preAlertsCount.totalPackagesReadyForPickUp!;
 
     })
 
