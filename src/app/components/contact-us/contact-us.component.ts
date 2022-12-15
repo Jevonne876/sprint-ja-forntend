@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import * as Notiflix from 'notiflix';
 import { ContactUs } from 'src/app/model/contact-us';
+import { PublicService } from 'src/app/services/public.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -20,7 +22,7 @@ export class ContactUsComponent implements OnInit {
     message: new FormControl('', [Validators.required])
   })
 
-  constructor() { }
+  constructor(private publicService: PublicService) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +33,14 @@ export class ContactUsComponent implements OnInit {
     this.inquiry.phoneNumber = this.contactForm.value.phoneNumber!;
     this.inquiry.message = this.contactForm.value.message!;
 
-    console.log(this.inquiry);
+    this.publicService.sendPublicQuery(this.inquiry.fullName, this.inquiry.email,
+      this.inquiry.phoneNumber, this.inquiry.message).subscribe({
+        next: ((response: boolean) => {
+          if (response === true) {
+            Notiflix.Notify.success("Your Query was sent successfully, We will response as quickly as possablie.")
+          }
+        })
+      })
 
   }
 
