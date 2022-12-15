@@ -32,13 +32,16 @@ export class ForgotPasswordComponent implements OnInit {
 
   onPasswordReset() {
     this.userEmail = this.updatePassword.value.email!;
+    this.isLoading = true;
     this.userService.resetPassword(this.userEmail).subscribe({
       next: (resposne: any) => {
-        Notify.success(resposne.message);
+        Notify.success("Youre new password was sent to your email.");
         this.route.navigateByUrl('/login')
+
       },
       error: (errorResponse: HttpErrorResponse) => {
-        Notify.warning(errorResponse.error.message);
+        Notify.failure(errorResponse.error.message);
+        this.isLoading = false;
       }
     })
 

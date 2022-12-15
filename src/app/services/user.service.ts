@@ -40,7 +40,7 @@ export class UserService {
   }
 
   public resetPassword(email: string): Observable<CustomHttpResponse> {
-    return this.http.get<CustomHttpResponse>(`${this.apiUrl}${email}`)
+    return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
 
   }
 
