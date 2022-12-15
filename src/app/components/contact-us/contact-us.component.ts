@@ -12,6 +12,7 @@ import { PublicService } from 'src/app/services/public.service';
 export class ContactUsComponent implements OnInit {
 
   inquiry: ContactUs = {};
+  isLoading: boolean = false;
 
 
   contactForm = new FormGroup({
@@ -32,12 +33,14 @@ export class ContactUsComponent implements OnInit {
     this.inquiry.email = this.contactForm.value.email!;
     this.inquiry.phoneNumber = this.contactForm.value.phoneNumber!;
     this.inquiry.message = this.contactForm.value.message!;
+    this.isLoading = true;
 
     this.publicService.sendPublicQuery(this.inquiry.fullName, this.inquiry.email,
       this.inquiry.phoneNumber, this.inquiry.message).subscribe({
         next: ((response: boolean) => {
           if (response === true) {
             Notiflix.Notify.success("Your Query was sent successfully, We will response as quickly as possablie.")
+            this.isLoading = false;
           }
         })
       })
