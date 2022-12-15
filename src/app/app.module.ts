@@ -22,6 +22,7 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { MyShipmentsComponent } from './components/my-shipments/my-shipments.component';
 import { RatesComponent } from './components/rates/rates.component';
 import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -43,7 +44,8 @@ import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component'
     PreAlertsComponent,
     MyShipmentsComponent,
     RatesComponent,
-    WhatWeDoComponent
+    WhatWeDoComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -21,9 +21,13 @@ export class PackageService {
 
 
   public getUserPreAlerts(userId: string): Observable<PreAlerts[] | HttpErrorResponse> {
-
     return this.http.get<PreAlerts[] | HttpErrorResponse>(`${this.apiUrl}get-all-packages/${userId}`);
 
+  }
+
+  public getFinalCount(): Observable<PreAlerts | HttpErrorResponse>{
+
+    return this.http.get<PreAlerts | HttpErrorResponse>(`${this.apiUrl}total-package`)
   }
 
 

@@ -21,8 +21,6 @@ export class MyShipmentsComponent implements OnInit {
 
     this.packageService.getUserPreAlerts(this.userId).subscribe((resposne: any) => {
       this.userPackages = resposne;
-
-
     })
 
 

@@ -14,5 +14,12 @@ export interface PreAlerts {
 
   status?: string;
 
+  totalPackagesNotShipped?: number;
+
+  totalPackagesShipped?: number;
+
+  totalPackagesReadyForPickUp?: number;
+
+
   updatedAt?: Date
 }
