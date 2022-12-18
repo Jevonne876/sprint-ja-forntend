@@ -4,6 +4,8 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { FormGroup } from '@angular/forms';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 
 @Injectable({
@@ -18,13 +20,10 @@ export class UserService {
   private token: string = '';
   private jwtHelper = new JwtHelperService();
 
-
   constructor(private http: HttpClient) { }
-
 
   public getUser(username: string): Observable<User | HttpErrorResponse> {
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}find-user/${username}`);
-
   }
 
   public getUserFromLocalStorage() {
@@ -38,6 +37,11 @@ export class UserService {
 
   public loadToken(): void {
     this.token = localStorage.getItem('token') || '';
+  }
+
+  public resetPassword(email: string): Observable<CustomHttpResponse> {
+    return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
+
   }
 
   public isUserLoggedIn(): boolean {
@@ -63,5 +67,4 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('users');
   }
-
 }

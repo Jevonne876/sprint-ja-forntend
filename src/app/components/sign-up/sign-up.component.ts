@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
 
   newUserForm = new FormGroup({
     trn: new FormControl('', [Validators.required, Validators.minLength(9)]),
@@ -65,7 +65,6 @@ export class SignUpComponent implements OnInit {
           } else {
             Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
             this.showLoading = false;
-
           }
         }
       })
