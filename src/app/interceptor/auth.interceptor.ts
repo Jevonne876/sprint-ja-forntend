@@ -12,10 +12,10 @@ import { UserService } from '../services/user.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authenticationService:AuthenticationService, private userService:UserService) {}
+  constructor(private authenticationService: AuthenticationService, private userService: UserService) { }
 
   intercept(httpRequest: HttpRequest<any>, httpHandler: HttpHandler): Observable<HttpEvent<any>> {
-    if (httpRequest.url.includes(`${this.authenticationService.apiUrl}login`) || httpRequest.url.includes(`${this.authenticationService.apiUrl}register`) || httpRequest.url.includes(`${this.userService.apiUrl}reset-password/${this.userService.userEmail}`)) {
+    if (httpRequest.url.includes(`${this.authenticationService.apiUrl}user-login`) || httpRequest.url.includes(`${this.authenticationService.apiUrl}register-new-user`) || httpRequest.url.includes(`${this.userService.apiUrl}reset-password/${this.userService.userEmail}`)) {
       return httpHandler.handle(httpRequest);
     }
     this.authenticationService.loadToken();
@@ -25,5 +25,5 @@ export class AuthInterceptor implements HttpInterceptor {
 
   }
 
-  }
+}
 

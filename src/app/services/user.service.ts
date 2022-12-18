@@ -4,6 +4,8 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { FormGroup } from '@angular/forms';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 
 @Injectable({
@@ -12,56 +14,57 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class UserService {
 
   /*gets backend api fron environemnt file.*/
-    public apiUrl = environment.backEndApi;
+  public apiUrl = environment.backEndApi;
   public userEmail: string = ''
   private loggedInUsername: string = ''
   private token: string = '';
   private jwtHelper = new JwtHelperService();
 
-
   constructor(private http: HttpClient) { }
 
+  public getUser(username: string): Observable<User | HttpErrorResponse> {
+    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}find-user/${username}`);
+  }
 
-    public getUser(username: string): Observable<User | HttpErrorResponse> {
-      return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}find-user/${username}`);
+  public getUserFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('user') || '');
+  }
 
-    }
+  public updateUser(loggedInUsername: string, formData: FormData): Observable<User | HttpErrorResponse> {
+    return this.http.put<User | HttpErrorResponse>
+      (`${this.apiUrl}update-user/${loggedInUsername}`, formData)
+  }
 
-    public getUserFromLocalStorage() {
-      return JSON.parse(localStorage.getItem('user') || '');
-    }
+  public loadToken(): void {
+    this.token = localStorage.getItem('token') || '';
+  }
 
-    public updateUser(loggedInUsername: string, formData: FormData): Observable<User | HttpErrorResponse> {
-      return this.http.put<User | HttpErrorResponse>
-        (`${this.apiUrl}update-user/${loggedInUsername}`, formData)
-    }
+  public resetPassword(email: string): Observable<CustomHttpResponse> {
+    return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
 
-    public loadToken(): void {
-      this.token = localStorage.getItem('token') || '';
-    }
+  }
 
-    public isUserLoggedIn(): boolean {
-      this.loadToken();
-      if (this.token !== null && this.token !== '') {
-        if (this.jwtHelper.decodeToken(this.token).sub !== null || '') {
-          if (!this.jwtHelper.isTokenExpired(this.token)) {
-            this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
-            return true;
-          }
+  public isUserLoggedIn(): boolean {
+    this.loadToken();
+    if (this.token !== null && this.token !== '') {
+      if (this.jwtHelper.decodeToken(this.token).sub !== null || '') {
+        if (!this.jwtHelper.isTokenExpired(this.token)) {
+          this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
+          return true;
         }
-      } else {
-        this.logout();
-        return false;
       }
+    } else {
+      this.logout();
       return false;
     }
+    return false;
+  }
 
-    public logout(): void {
-      this.token = '';
-      this.loggedInUsername = '';
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      localStorage.removeItem('users');
-    }
-
+  public logout(): void {
+    this.token = '';
+    this.loggedInUsername = '';
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('users');
+  }
 }
