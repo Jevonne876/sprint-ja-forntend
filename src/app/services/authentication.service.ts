@@ -25,15 +25,34 @@ export class AuthenticationService {
       (`${this.apiUrl}register-new-user`, user)
   }
 
+  public adminRegister(user: User): Observable<User | HttpErrorResponse> {
+    return this.http.post<User | HttpErrorResponse>
+      (`${this.apiUrl}admin/register-new-admin`, user)
+  }
+
   public login(user: User): Observable<HttpResponse<User>> {
     return this.http.post<User>
       (`${this.apiUrl}user-login`, user, { observe: 'response' });
   }
 
+  public adminLogin(user: User): Observable<HttpResponse<User>> {
+    return this.http.post<User>
+      (`${this.apiUrl}admin/admin-login`, user, { observe: 'response' });
+  }
+
+
   public logout(): void {
     this.token = '';
     this.loggedInUsername = '';
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('users');
+  }
+
+  public adminLogout(): void {
+    this.token = '';
+    this.loggedInUsername = '';
+    localStorage.removeItem('admin');
     localStorage.removeItem('token');
     localStorage.removeItem('users');
   }
@@ -47,8 +66,16 @@ export class AuthenticationService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  public addAdminUserToLocalStorage(user: User): void {
+    localStorage.setItem('admin', JSON.stringify(user));
+  }
+
   public getUserFromLocalStorage() {
     return JSON.parse(localStorage.getItem('user') || '');
+  }
+
+  public getAdminUserFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('admin') || '');
   }
 
   public loadToken(): void {

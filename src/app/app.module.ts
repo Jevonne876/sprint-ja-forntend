@@ -23,6 +23,8 @@ import { MyShipmentsComponent } from './components/my-shipments/my-shipments.com
 import { RatesComponent } from './components/rates/rates.component';
 import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 
 
 
@@ -45,7 +47,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     MyShipmentsComponent,
     RatesComponent,
     WhatWeDoComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
