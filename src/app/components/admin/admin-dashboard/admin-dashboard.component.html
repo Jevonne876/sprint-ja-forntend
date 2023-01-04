@@ -1,1 +1,896 @@
-<p>admin-dashboard works!</p>
+<div class="min-h-full">
+  <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
+  <div class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
+
+    <div class="fixed inset-0 z-40 flex">
+      <div
+        class="relative flex flex-col flex-1 w-full max-w-xs pt-5 pb-4 bg-red-700"
+      >
+        <div class="absolute top-0 right-0 pt-2 -mr-12">
+          <button
+            type="button"
+            class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          >
+            <span class="sr-only">Close sidebar</span>
+            <!-- Heroicon name: outline/x-mark -->
+            <svg
+              class="w-6 h-6 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex items-center flex-shrink-0 px-4">
+          <img
+            class="w-auto h-16"
+            src="../../../assets/SPRINT JA FINAL LOGO_White.png"
+            alt="Sprint Jamaica"
+          />
+        </div>
+        <nav
+          class="flex-shrink-0 h-full mt-5 overflow-y-auto divide-y divide-cyan-800"
+          aria-label="Sidebar"
+        >
+          <div class="px-2 space-y-1">
+            <!-- Current: "bg-cyan-800 text-white", Default: "text-cyan-100 hover:text-white hover:bg-cyan-600" -->
+            <a
+              href="#"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+              aria-current="page"
+            >
+              <!-- Heroicon name: outline/home -->
+              <svg
+                class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+              Home
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+            >
+              <!-- Heroicon name: user -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+              New User
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+            >
+              <!-- Heroicon name: user -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                />
+              </svg>
+              New Admin
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+            >
+              <!-- Heroicon name: outline/bag -->
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                />
+              </svg>
+
+              New Package
+            </a>
+
+            <a
+              href="#"
+              class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+            >
+              <!-- Heroicon name: outline/user-group -->
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                />
+              </svg>
+
+              Send Email
+            </a>
+          </div>
+          <div class="pt-6 mt-6">
+            <div class="px-2 space-y-1">
+              <a
+                class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
+              >
+                <!-- Heroicon name: outline/shield-check -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 mr-4 text-gray-200"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
+                  />
+                </svg>
+
+                Logout
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="flex-shrink-0 w-14" aria-hidden="true">
+        <!-- Dummy element to force sidebar to shrink to fit close icon -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Static sidebar for desktop -->
+  <div class="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col">
+    <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto bg-red-700">
+      <div class="flex items-center flex-shrink-0 px-4">
+        <img
+          class="w-auto h-16"
+          src="../../../assets/SPRINT JA FINAL LOGO_White.png"
+          alt="Sprint Jamaica"
+        />
+      </div>
+      <nav
+        class="flex flex-col flex-1 mt-5 overflow-y-auto divide-y divide-cyan-800"
+        aria-label="Sidebar"
+      >
+        <div class="px-2 space-y-1">
+          <!-- Current: "bg-cyan-800 text-white", Default: "text-cyan-100 hover:text-white hover:bg-cyan-600" -->
+          <a
+            href="#"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+            aria-current="page"
+          >
+            <!-- Heroicon name: outline/home -->
+            <svg
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+              />
+            </svg>
+            Home
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+          >
+            <!-- Heroicon name: user -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+              />
+            </svg>
+            New User
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+          >
+            <!-- Heroicon name: user -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+              />
+            </svg>
+            New Admin
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+          >
+            <!-- Heroicon name: outline/bag -->
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+              />
+            </svg>
+
+            New Package
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center px-2 py-2 text-sm font-medium leading-6 text-gray-200 rounded-md group hover:bg-yellow-500"
+          >
+            <!-- Heroicon name: outline/user-group -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="flex-shrink-0 w-6 h-6 mr-4 text-gray-200"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              />
+            </svg>
+            Send Email
+          </a>
+        </div>
+        <div class="pt-6 mt-6">
+          <div class="px-2 space-y-1">
+            <a
+              class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
+            >
+              <!-- Heroicon name: outline/shield-check -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 mr-4 text-gray-200"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
+                />
+              </svg>
+
+              Logout
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="flex flex-col flex-1 lg:pl-64">
+    <div
+      class="flex flex-shrink-0 h-16 bg-white border-b border-gray-200 lg:border-none"
+    >
+      <button
+        type="button"
+        class="px-4 text-gray-400 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-red-500 lg:hidden"
+        (click)="toggle = !toggle"
+      >
+        <span class="sr-only">Open sidebar</span>
+        <!-- Heroicon name: outline/bars-3-center-left -->
+        <svg
+          class="w-6 h-6"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+          />
+        </svg>
+      </button>
+      <!-- Search bar -->
+      <div
+        class="flex justify-between flex-1 px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8"
+      >
+        <div class="flex flex-1"></div>
+        <div class="flex items-center ml-4 md:ml-6">
+          <!-- Profile dropdown -->
+          <div class="relative ml-3">
+            <div>
+              <button
+                type="button"
+                class="flex items-center max-w-xs text-sm bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 lg:rounded-md lg:p-2 lg:hover:bg-gray-50"
+                id="user-menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+                (click)="toggle = !toggle"
+              >
+                <img
+                  class="w-8 h-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+                <span
+                  class="hidden ml-3 text-sm font-medium text-gray-700 lg:block"
+                  ><span class="sr-only">Open user menu for </span
+                  >{{ admin.username }}</span
+                >
+                <!-- Heroicon name: mini/chevron-down -->
+                <svg
+                  class="flex-shrink-0 hidden w-5 h-5 ml-1 text-gray-400 lg:block"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              class="absolute right-0 z-10 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="user-menu-button"
+              tabindex="-1"
+              *ngIf="toggle"
+            >
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-0"
+                >Your Profile</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-1"
+                >Settings</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-2"
+                >Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="flex-1 pb-8">
+      <!-- Page header -->
+      <div class="bg-white shadow">
+        <div class="px-4 sm:px-6 lg:mx-auto lg:max-w-6xl lg:px-8">
+          <div
+            class="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200"
+          >
+            <div class="flex-1 min-w-0">
+              <!-- Profile -->
+              <div class="flex items-center">
+                <span
+                  class="inline-block w-16 h-16 overflow-hidden bg-gray-100 rounded-full"
+                >
+                  <svg
+                    class="w-full h-full text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                  </svg>
+                </span>
+                <div>
+                  <div class="flex items-center">
+                    <img
+                      class="w-16 h-16 rounded-full sm:hidden"
+                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                      alt=""
+                    />
+                    <h1
+                      class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9"
+                    >
+                      Admin, {{ admin.firstName }} - {{ admin.lastName }}
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex mt-6 space-x-3 md:mt-0 md:ml-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <div class="max-w-6xl px-4 mx-auto mb-10 sm:px-6 lg:px-4">
+          <h2 class="text-lg font-medium leading-6 text-gray-900">
+            Shipping Address
+          </h2>
+          <div
+            class="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-2"
+          >
+            <div
+              class="w-full overflow-hidden bg-gray-100 border border-gray-700 rounded-lg shadow"
+            >
+              <div class="items-start p-5">
+                <div class="flex flex-col items-center">
+                  <h1 class="text-xl font-bold text-gray-white">
+                    Sea Shippment
+                  </h1>
+
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    Address line 1: 7927 NW 67Th ST,
+                  </h2>
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    Address line 2: SPRINTJA
+                  </h2>
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    City / State : Miami, Florida
+                  </h2>
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    Zipcode : 33166
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="overflow-hidden bg-gray-100 border border-gray-700 rounded-lg shadow"
+            >
+              <div class="p-5">
+                <div class="flex flex-col items-center">
+                  <h1 class="text-xl font-bold text-gray-white">
+                    Air Shippment
+                  </h1>
+
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    Address line 1: 3750 W. Oakland Park Blvd,
+                  </h2>
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    Address line 2: SPRINTJA
+                  </h2>
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    City / State : Lauderdale Lakes, Florida
+                  </h2>
+                  <h2 class="mt-2 font-semibold text-gray-500 text-md">
+                    Zip Code: 33311
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            <!-- More items... -->
+          </div>
+        </div>
+        <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
+          <h2 class="text-lg font-medium leading-6 text-gray-900">Overview</h2>
+          <div
+            class="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <!-- Card -->
+            <div class="overflow-hidden bg-white rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6 text-gray-400"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt class="text-sm font-medium text-gray-500 truncate">
+                        Users
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900">
+                          {{ data.totalUsers }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+            <div class="overflow-hidden bg-white rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg
+                      class="w-6 h-6 text-gray-400"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt class="text-sm font-medium text-gray-500 truncate">
+                        Admins
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900">
+                          {{ data.totalAdmins }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-hidden bg-white rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg
+                      class="w-6 h-6 text-gray-400"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 2.01.317 3 .52m-3-.52l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.988 5.988 0 01-2.031.352 5.988 5.988 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L18.75 4.971zm-16.5.52c.99-.203 1.99-.377 3-.52m0 0l2.62 10.726c.122.499-.106 1.028-.589 1.202a5.989 5.989 0 01-2.031.352 5.989 5.989 0 01-2.031-.352c-.483-.174-.711-.703-.59-1.202L5.25 4.971z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt class="text-sm font-medium text-gray-500 truncate">
+                        Packages
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-gray-900">
+                          {{ data.totalPackages }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- More items... -->
+          </div>
+        </div>
+
+        <div class="max-w-6xl px-4 mx-auto mt-8 sm:px-6 lg:px-8">
+          <h2 class="text-lg font-medium leading-6 text-gray-900">
+            Package Information
+          </h2>
+          <div
+            class="grid grid-cols-1 gap-5 mt-2 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <div class="overflow-hidden bg-red-500 rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5 "
+                      stroke="currentColor"
+                      class="w-6 h-6 text-white"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-white uppercase truncate"
+                      >
+                        Not Shipped
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-white">
+                          {{ data.totalPackagesNotShipped }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-hidden bg-yellow-400 rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6 text-white"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-white uppercase truncate"
+                      >
+                        Shipped
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-white">
+                          {{ data.totalPackagesShipped }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-hidden bg-green-500 rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6 text-white"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-white uppercase truncate"
+                      >
+                        ready for pick up
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-white">
+                          {{ data.totalPackagesReadyForPickup }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="overflow-hidden bg-blue-500 rounded-lg shadow">
+              <div class="p-5">
+                <div class="flex items-center">
+                  <div class="flex-shrink-0">
+                    <!-- Heroicon name: outline/scale -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6 text-white"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                  </div>
+                  <div class="flex-1 w-0 ml-5">
+                    <dl>
+                      <dt
+                        class="text-sm font-medium text-white uppercase truncate"
+                      >
+                        DELIVERED
+                      </dt>
+                      <dd>
+                        <div class="text-lg font-medium text-white">
+                          {{ data.totalPackagesDelivered }}
+                        </div>
+                      </dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-5 py-3 bg-gray-50">
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-black">View all</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- More items... -->
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userInfor = this.userService.getUserFromLocalStorage();
     this.packageService.getFinalCount(this.userInfor.userId!).subscribe((response: any) => {
-
       this.preAlertsCount = response;
       this.totalPackagesNotShipped = this.preAlertsCount.totalPackagesNotShipped!;
       this.totalPackagesShipped = this.preAlertsCount.totalPackagesShipped!;
