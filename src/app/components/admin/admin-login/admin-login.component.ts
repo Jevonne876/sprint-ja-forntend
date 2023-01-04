@@ -67,4 +67,8 @@ export class AdminLoginComponent implements OnInit {
       })
     )
   }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
 }
