@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../model/api-response';
+import { PackagePage } from '../model/package-page';
 import { Page } from '../model/page';
 
 @Injectable({
@@ -22,6 +23,19 @@ export class AdminService {
   public getusers(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
     return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users?page=${page}`)
   }
+
+  public getAllPackages(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages?page=${page}`)
+  }
+
+  public getAllPackagesNotShipped(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-packages-not-shipped?page=${page}`)
+  }
+
+  public getAllPackagesShipped(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-packages-shipped?page=${page}`)
+  }
+
 
 
 }

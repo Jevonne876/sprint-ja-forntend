@@ -28,6 +28,7 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import { UsersComponent } from './components/admin/users/users.component';
 import { AdminsComponent } from './components/admin/admins/admins.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AllPackagesComponent } from './components/admin/all-packages/all-packages.component';
 
 
 
@@ -54,7 +55,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminLoginComponent,
     AdminDashboardComponent,
     UsersComponent,
-    AdminsComponent
+    AdminsComponent,
+    AllPackagesComponent
   ],
   imports: [
     BrowserModule,

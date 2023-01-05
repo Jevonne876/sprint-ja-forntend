@@ -1,0 +1,239 @@
+<div class="flex flex-col justify-center py-6 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-6 lg:px-8 mt-50">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-5xl font-semibold text-gray-900 font-Inter">
+          Packages
+        </h1>
+        <p class="mt-2 font-semibold text-gray-700">
+          A list of all the Packages within the system.
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col mt-8">
+      <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle">
+          <div class="shadow-sm ring-1 ring-black ring-opacity-5">
+            <table class="min-w-full border-separate" style="border-spacing: 0">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+                  >
+                    Tracking
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+                  >
+                    Description
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
+                  >
+                    Weight
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                  >
+                    Cost
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                  >
+                    Invoice
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
+                  >
+                    <span class="sr-only">Edit</span>
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
+                  >
+                    <span class="sr-only">New Package</span>
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
+                  >
+                    <span class="sr-only">New Package</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                <tr *ngFor="let package of apiResponse?.content">
+                  <td
+                    class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
+                  >
+                    {{ package.trackingNumber }}
+                  </td>
+                  <td
+                    class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap sm:table-cell"
+                  >
+                    {{ package.description }}
+                  </td>
+                  <td
+                    class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
+                  >
+                    {{ package.weight }} IBS
+                  </td>
+                  <td
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    {{ package.cost }}
+                  </td>
+                  <td
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    Invoice
+                  </td>
+
+                  <td
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <a
+                      href="#"
+                      class="px-3 py-2 text-center text-white bg-gray-500 rounded-full"
+                      >View</a
+                    >
+                  </td>
+
+                  <td
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <a
+                      href="#"
+                      class="px-3 py-2 text-center text-white bg-yellow-400 rounded-full"
+                      >Edit</a
+                    >
+                  </td>
+
+                  <td
+                    class="text-sm text-center text-gray-500 border-b border-gray-200"
+                  >
+                    <a
+                      href="#"
+                      class="px-3 py-2 mr-5 text-center text-white bg-red-600 rounded-full"
+                      >Delete</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6"
+  >
+    <div class="flex justify-between flex-1 sm:hidden">
+      <a
+        href="#"
+        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+        >Previous</a
+      >
+      <a
+        href="#"
+        class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+        >Next</a
+      >
+    </div>
+    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+      <div>
+        <p class="text-sm text-gray-700">
+          Page
+          <span class="font-medium">{{
+            apiResponse?.pageable?.pageNumber + 1
+          }}</span>
+          of
+          <span class="font-medium">{{ apiResponse?.totalPages }}</span>
+          of
+          <span class="font-medium">{{ apiResponse?.totalElements }}</span>
+          results
+        </p>
+      </div>
+      <div>
+        <nav
+          class="inline-flex -space-x-px rounded-md shadow-sm isolate"
+          aria-label="Pagination"
+        >
+          <button
+            [disabled]="apiResponse?.first"
+            type="submit"
+            (click)="gotoNextOrPerviousPage('backwards', '')"
+            class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 focus:z-20"
+          >
+            <span class="sr-only">Previous</span>
+            <!-- Heroicon name: mini/chevron-left -->
+            <svg
+              class="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <button
+            type="submit"
+            (click)="gotoPage('', i)"
+            *ngFor="
+              let numberOfPages of [].constructor(apiResponse?.totalPages);
+              let i = index
+            "
+            aria-current="page"
+            [ngClass]="
+              i == (currentPage$ | async)
+                ? 'text-red-600 border border-red-500 cursor-pointer bg-red-50 focus:z-20'
+                : ''
+            "
+            class="relative z-10 inline-flex items-center px-4 py-2 text-sm font-medium"
+          >
+            {{ i + 1 }}
+          </button>
+
+          <button
+            [disabled]="apiResponse?.last"
+            type="submit"
+            (click)="gotoNextOrPerviousPage('forward', '')"
+            class="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 focus:z-20"
+          >
+            <span class="sr-only">Next</span>
+            <!-- Heroicon name: mini/chevron-right -->
+            <svg
+              class="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
