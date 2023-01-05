@@ -25,6 +25,9 @@ import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component'
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { UsersComponent } from './components/admin/users/users.component';
+import { AdminsComponent } from './components/admin/admins/admins.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -49,13 +52,16 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
     WhatWeDoComponent,
     ForgotPasswordComponent,
     AdminLoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    UsersComponent,
+    AdminsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule
 
 
   ],
