@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../model/api-response';
 import { PackagePage } from '../model/package-page';
 import { Page } from '../model/page';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,10 @@ export class AdminService {
     return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages-delivered?page=${page}`)
   }
 
+  public register(user: User): Observable<User | HttpErrorResponse> {
+    return this.http.post<User | HttpErrorResponse>
+      (`${this.apiUrl}admin/register-new-user`, user)
+  }
 
 
 }

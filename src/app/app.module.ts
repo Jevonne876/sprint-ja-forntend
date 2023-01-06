@@ -32,6 +32,7 @@ import { AllPackagesComponent } from './components/admin/all-packages/all-packag
 import { NotShippedPackagesComponent } from './components/admin/not-shipped-packages/not-shipped-packages.component';
 import { ShippedPackagesComponent } from './components/admin/shipped-packages/shipped-packages.component';
 import { ReadyPackagesComponent } from './components/admin/ready-packages/ready-packages.component';
+import { CreateNewUserComponent } from './components/admin/create-new-user/create-new-user.component';
 
 
 
@@ -62,7 +63,8 @@ import { ReadyPackagesComponent } from './components/admin/ready-packages/ready-
     AllPackagesComponent,
     NotShippedPackagesComponent,
     ShippedPackagesComponent,
-    ReadyPackagesComponent
+    ReadyPackagesComponent,
+    CreateNewUserComponent
   ],
   imports: [
     BrowserModule,
