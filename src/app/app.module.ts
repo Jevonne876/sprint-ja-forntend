@@ -29,6 +29,9 @@ import { UsersComponent } from './components/admin/users/users.component';
 import { AdminsComponent } from './components/admin/admins/admins.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AllPackagesComponent } from './components/admin/all-packages/all-packages.component';
+import { NotShippedPackagesComponent } from './components/admin/not-shipped-packages/not-shipped-packages.component';
+import { ShippedPackagesComponent } from './components/admin/shipped-packages/shipped-packages.component';
+import { ReadyPackagesComponent } from './components/admin/ready-packages/ready-packages.component';
 
 
 
@@ -56,7 +59,10 @@ import { AllPackagesComponent } from './components/admin/all-packages/all-packag
     AdminDashboardComponent,
     UsersComponent,
     AdminsComponent,
-    AllPackagesComponent
+    AllPackagesComponent,
+    NotShippedPackagesComponent,
+    ShippedPackagesComponent,
+    ReadyPackagesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,18 +2,9 @@
   <div class="px-4 sm:px-6 lg:px-8 mt-50">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-5xl font-semibold text-gray-900 font-Inter">Users</h1>
-        <p class="mt-2 font-semibold text-gray-700">
-          A list of all the users within the system.
-        </p>
-      </div>
-      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button
-          type="button"
-          class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
-        >
-          Add user
-        </button>
+        <h1 class="text-5xl font-semibold text-gray-900 font-Inter">
+          Not Shipped Packages
+        </h1>
       </div>
     </div>
     <div class="flex flex-col mt-8">
@@ -27,32 +18,32 @@
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
                   >
-                    TRN
+                    Tracking
                   </th>
                   <th
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
                   >
-                    Name
+                    Description
                   </th>
 
                   <th
                     scope="col"
                     class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
                   >
-                    Email
+                    Weight
                   </th>
                   <th
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
                   >
-                    Phone
+                    Cost
                   </th>
                   <th
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
                   >
-                    Pick Up Branch
+                    Invoice
                   </th>
 
                   <th
@@ -60,12 +51,6 @@
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
                     <span class="sr-only">Edit</span>
-                  </th>
-                  <th
-                    scope="col"
-                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
-                  >
-                    <span class="sr-only">New Package</span>
                   </th>
 
                   <th
@@ -84,41 +69,31 @@
                 </tr>
               </thead>
               <tbody class="bg-white">
-                <tr *ngFor="let user of apiResponse?.content">
+                <tr *ngFor="let package of apiResponse?.content">
                   <td
                     class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
                   >
-                    {{ user.trn }}
+                    {{ package.trackingNumber }}
                   </td>
                   <td
                     class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap sm:table-cell"
                   >
-                    {{ user.firstName }} {{ user.lastName }}
+                    {{ package.description }}
                   </td>
                   <td
                     class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
                   >
-                    {{ user.email }}
+                    {{ package.weight }} IBS
                   </td>
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
-                    {{ user.phoneNumber }}
+                    {{ package.cost }}
                   </td>
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
-                    {{ user.pickUpBranch }}
-                  </td>
-
-                  <td
-                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                  >
-                    <a
-                      href="#"
-                      class="px-3 py-2 text-center text-white bg-blue-400 rounded-full"
-                      >New Package</a
-                    >
+                    Invoice
                   </td>
 
                   <td

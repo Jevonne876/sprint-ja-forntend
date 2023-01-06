@@ -1,43 +1,26 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ApplicationInfo } from 'src/app/model/application-info';
-import { User } from 'src/app/model/user';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { PackageService } from 'src/app/services/package.service';
 import { BehaviorSubject, catchError, map, Observable, of, startWith } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
 import { AdminService } from 'src/app/service/admin.service';
-import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
-  selector: 'app-admin-dashboard',
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  selector: 'app-not-shipped-packages',
+  templateUrl: './not-shipped-packages.component.html',
+  styleUrls: ['./not-shipped-packages.component.css']
 })
-export class AdminDashboardComponent implements OnInit {
-
-  toggle: boolean = false;
-  toggleSideBar: boolean = false
-  data: ApplicationInfo = {};
-  admin: User = {};
-
+export class NotShippedPackagesComponent implements OnInit {
   apiResponse: any;
   responseSubject = new BehaviorSubject<ApiResponse<PackagePage>>(null);
   private currentPageSubject = new BehaviorSubject<number>(0);
   currentPage$ = this.currentPageSubject.asObservable()
 
-
-  constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private adminService: AdminService) { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
-
-    this.admin = this.authenticationService.getAdminUserFromLocalStorage();
-    this.packageService.getApplicationData().subscribe({
-      next: ((response: any) => {
-        this.data = response;
-      }),
-    })
-    this.adminService.getAllPackagesDelivered().subscribe({
+    this.adminService.getAllPackagesNotShipped().subscribe({
       next: (response: ApiResponse<PackagePage> | HttpErrorResponse) => {
         this.apiResponse = response;
         this.currentPageSubject.next(this.apiResponse.number);
@@ -47,9 +30,8 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-
   gotoPage(name?: string, pageNumber?: number) {
-    this.adminService.getAllPackagesDelivered(pageNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {
+    this.adminService.getAllPackagesNotShipped(pageNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {
       this.apiResponse = response;
       this.currentPageSubject.next(pageNumber);
       this.responseSubject.next(this.apiResponse);
@@ -60,14 +42,6 @@ export class AdminDashboardComponent implements OnInit {
 
   gotoNextOrPerviousPage(directory?: string, name?: string,): void {
     this.gotoPage('', directory === 'forward' ? this.currentPageSubject.value + 1 : this.currentPageSubject.value - 1);
-
-  }
-
-  openSideBar() {
-    this.toggleSideBar = !this.toggleSideBar;
-  }
-
-  onLogout() {
 
   }
 

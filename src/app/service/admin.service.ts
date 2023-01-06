@@ -29,11 +29,19 @@ export class AdminService {
   }
 
   public getAllPackagesNotShipped(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
-    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-packages-not-shipped?page=${page}`)
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages-not-shipped?page=${page}`)
   }
 
   public getAllPackagesShipped(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
-    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-packages-shipped?page=${page}`)
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages-shipped?page=${page}`)
+  }
+
+  public getAllPackagesReady(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages-ready?page=${page}`)
+  }
+
+  public getAllPackagesDelivered(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages-delivered?page=${page}`)
   }
 
 

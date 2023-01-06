@@ -47,8 +47,6 @@ export class DashboardComponent implements OnInit {
     this.userService.logout();
     Notify.success("Logged out successfully");
     this.router.navigateByUrl('home');
-
-
   }
 
 }

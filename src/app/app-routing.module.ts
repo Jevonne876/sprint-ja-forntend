@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AllPackagesComponent } from './components/admin/all-packages/all-packages.component';
+import { NotShippedPackagesComponent } from './components/admin/not-shipped-packages/not-shipped-packages.component';
+import { ReadyPackagesComponent } from './components/admin/ready-packages/ready-packages.component';
+import { ShippedPackagesComponent } from './components/admin/shipped-packages/shipped-packages.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -31,7 +34,10 @@ const routes: Routes = [
   { path: "new-pre-alert", component: PreAlertsComponent, canActivate: [AuthGuard] },
   { path: "my-pre-alerts/:id", component: MyShipmentsComponent, canActivate: [AuthGuard], pathMatch: 'full' },
   { path: "users", component: UsersComponent },
-  { path: "all-packages", component: AllPackagesComponent }
+  { path: "all-packages", component: AllPackagesComponent },
+  { path: "all-packages-not-shipped", component: NotShippedPackagesComponent },
+  { path: "all-packages-shipped", component: ShippedPackagesComponent },
+  { path: "all-packages-ready", component: ReadyPackagesComponent }
 ];
 
 @NgModule({
