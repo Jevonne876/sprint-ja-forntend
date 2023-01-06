@@ -168,6 +168,7 @@
           <div class="pt-6 mt-6">
             <div class="px-2 space-y-1">
               <a
+                (click)="onLogout()"
                 class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
               >
                 <!-- Heroicon name: outline/shield-check -->
@@ -333,6 +334,7 @@
         <div class="pt-6 mt-6">
           <div class="px-2 space-y-1">
             <a
+              (click)="onLogout()"
               class="flex items-center px-2 py-2 text-base font-medium text-gray-200 rounded-md group hover:bg-yellow-500 hover:text-white"
             >
               <!-- Heroicon name: outline/shield-check -->
@@ -447,24 +449,9 @@
               *ngIf="toggle"
             >
               <!-- Active: "bg-gray-100", Not Active: "" -->
+             
               <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="user-menu-item-0"
-                >Your Profile</a
-              >
-              <a
-                href="#"
-                class="block px-4 py-2 text-sm text-gray-700"
-                role="menuitem"
-                tabindex="-1"
-                id="user-menu-item-1"
-                >Settings</a
-              >
-              <a
-                href="#"
+                (click)="onLogout()"
                 class="block px-4 py-2 text-sm text-gray-700"
                 role="menuitem"
                 tabindex="-1"
@@ -975,16 +962,11 @@
                         class="w-full px-6 py-4 text-sm text-gray-900 max-w-0 whitespace-nowrap"
                       >
                         <div class="flex">
-                          <a
-                            href="#"
-                            class="inline-flex space-x-2 text-sm truncate group"
+                          <p
+                            class="text-gray-900 truncate group-hover:text-gray-900"
                           >
-                            <p
-                              class="text-gray-500 truncate group-hover:text-gray-900"
-                            >
-                              {{ package.description }}
-                            </p>
-                          </a>
+                            {{ package.description }}
+                          </p>
                         </div>
                       </td>
                       <td

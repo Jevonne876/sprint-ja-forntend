@@ -8,6 +8,8 @@ import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
 import { AdminService } from 'src/app/service/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Notify } from 'notiflix';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -27,7 +29,7 @@ export class AdminDashboardComponent implements OnInit {
   currentPage$ = this.currentPageSubject.asObservable()
 
 
-  constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private adminService: AdminService) { }
+  constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -68,7 +70,9 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onLogout() {
-
+    this.authenticationService.adminLogout();
+    Notify.success("Logged out successfully");
+    this.router.navigateByUrl('admin-login');
   }
 
 }
