@@ -109,7 +109,10 @@
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      (click)="onDownloadFile(package.invoice)"
+                      [routerLink]="[
+                        '/edit-user-package',
+                        package.trackingNumber
+                      ]"
                       class="px-3 py-2 text-center text-white bg-yellow-400 rounded-full"
                       >Edit</a
                     >

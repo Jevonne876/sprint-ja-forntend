@@ -51,7 +51,7 @@ const routes: Routes = [
   { path: "new-user", component: CreateNewUserComponent, canActivate: [AdminGuard] },
   { path: "user-packages-shipped", component: ShippedComponent, canActivate: [AuthGuard] },
   { path: "user-packages-ready", component: ReadyComponent, canActivate: [AuthGuard] },
-  { path: "edit-user-package", component: EditPackageUserComponent }
+  { path: "edit-user-package/:id", component: EditPackageUserComponent }
 ];
 
 @NgModule({

@@ -32,7 +32,6 @@ export class MyShipmentsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private packageService: PackageService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.paramMap.get('id')!;
     this.packageService.getUserPreAlerts(this.userId).subscribe((resposne: any) => {
       this.userPackages = resposne;
     })

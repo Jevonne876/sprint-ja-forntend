@@ -23,6 +23,11 @@ export class PackageService {
       (`${this.apiUrl}add-new-package?trackingNumber=${preAlert.trackingNumber}&courier=${preAlert.courier}&description=${preAlert.description}&weight=${preAlert.weight}&cost=${preAlert.cost}&userId=${preAlert.userId}`, fromData);
   }
 
+  public updatePreAlert(preAlert: PreAlerts, trackingNum: string): Observable<PreAlerts | HttpErrorResponse> {
+
+    return this.http.put<PreAlerts | HttpErrorResponse>(`${this.apiUrl}update-package/${trackingNum}`, preAlert)
+  }
+
   upload(formData: FormData,): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}invoice-upload`, formData);
   }
@@ -41,6 +46,10 @@ export class PackageService {
   public getApplicationData(): Observable<ApplicationInfo | HttpErrorResponse> {
     return this.http.get<ApplicationInfo | HttpErrorResponse>(`${this.apiUrl}admin/get-application-data`)
 
+  }
+
+  public getPackageByTrackingNumber(trackingNumber: string): Observable<PreAlerts | HttpErrorResponse> {
+    return this.http.get<PreAlerts | HttpErrorResponse>(`${this.apiUrl}get-user-package-by-tracking-number/${trackingNumber}`)
   }
 
 

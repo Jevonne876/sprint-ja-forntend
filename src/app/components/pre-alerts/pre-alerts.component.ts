@@ -40,7 +40,6 @@ export class PreAlertsComponent implements OnInit {
     weight: new FormControl("", Validators.required),
     cost: new FormControl("", Validators.required),
 
-
   })
 
   constructor(private packageService: PackageService, private router: Router, private authentication: AuthenticationService) { }
@@ -51,7 +50,6 @@ export class PreAlertsComponent implements OnInit {
 
 
   onSubmitNewPreAlert() {
-
     this.newPreAlert.trackingNumber = this.newForm.value.trackingNumber!;
     this.newPreAlert.courier = this.newForm.value.courier!;
     this.newPreAlert.description = this.newForm.value.description!;
