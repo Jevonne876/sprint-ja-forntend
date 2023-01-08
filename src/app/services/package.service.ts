@@ -33,7 +33,7 @@ export class PackageService {
 
   public getFinalCount(userId: string): Observable<PreAlerts | HttpErrorResponse> {
 
-    return this.http.get<PreAlerts | HttpErrorResponse>(`${this.apiUrl}total-package/${userId}`)
+    return this.http.get<PreAlerts | HttpErrorResponse>(`${this.apiUrl}total-packages/${userId}`)
   }
 
   public getApplicationData(): Observable<ApplicationInfo | HttpErrorResponse> {
