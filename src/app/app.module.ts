@@ -38,6 +38,7 @@ import { ReadyComponent } from './components/user/ready/ready.component';
 import { EditPackageUserComponent } from './components/edit-package-user/edit-package-user.component';
 import { UserViewPreAlertsComponent } from './components/user-view-pre-alerts/user-view-pre-alerts.component';
 import { AdminViewPreAlertsComponent } from './components/admin-view-pre-alerts/admin-view-pre-alerts.component';
+import { AdminViewUserComponent } from './components/admin-view-user/admin-view-user.component';
 
 
 
@@ -76,6 +77,7 @@ import { AdminViewPreAlertsComponent } from './components/admin-view-pre-alerts/
     EditPackageUserComponent,
     UserViewPreAlertsComponent,
     AdminViewPreAlertsComponent,
+    AdminViewUserComponent,
 
   ],
   imports: [

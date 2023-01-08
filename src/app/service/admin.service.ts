@@ -50,5 +50,10 @@ export class AdminService {
       (`${this.apiUrl}admin/register-new-user`, user)
   }
 
+  public viewUserProfileDetails(userId: string): Observable<User | HttpErrorResponse> {
+
+    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}admin/view-user/${userId}`);
+  }
+
 
 }
