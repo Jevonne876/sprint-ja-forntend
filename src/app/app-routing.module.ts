@@ -26,6 +26,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ReadyComponent } from './components/user/ready/ready.component';
 import { ShippedComponent } from './components/user/shipped/shipped.component';
 import { EditPackageUserComponent } from './components/edit-package-user/edit-package-user.component';
+import { UserViewPreAlertsComponent } from './components/user-view-pre-alerts/user-view-pre-alerts.component';
 
 
 
@@ -51,7 +52,8 @@ const routes: Routes = [
   { path: "new-user", component: CreateNewUserComponent, canActivate: [AdminGuard] },
   { path: "user-packages-shipped", component: ShippedComponent, canActivate: [AuthGuard] },
   { path: "user-packages-ready", component: ReadyComponent, canActivate: [AuthGuard] },
-  { path: "edit-user-package/:id", component: EditPackageUserComponent }
+  { path: "edit-user-package/:id", component: EditPackageUserComponent, canActivate: [AuthGuard] },
+  { path: "user-view-pre-alerts/:id", component: UserViewPreAlertsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

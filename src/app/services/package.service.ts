@@ -32,6 +32,10 @@ export class PackageService {
     return this.http.post<string>(`${this.apiUrl}invoice-upload`, formData);
   }
 
+  public vewPreAlert(trackingNumber: string): Observable<PreAlerts | HttpErrorResponse> {
+    return this.http.get<PreAlerts | HttpErrorResponse>(`${this.apiUrl}view-package/${trackingNumber}`)
+  }
+
 
   public getUserPreAlerts(userId: string): Observable<PreAlerts[] | HttpErrorResponse> {
     return this.http.get<PreAlerts[] | HttpErrorResponse>(`${this.apiUrl}get-all-packages/${userId}`);

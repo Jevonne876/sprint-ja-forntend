@@ -61,8 +61,6 @@ export class EditPackageUserComponent implements OnInit {
             description: new FormControl(this.newPreAlert.description, Validators.required),
             weight: new FormControl(+this.newPreAlert.weight!, Validators.required),
             cost: new FormControl(+this.newPreAlert.cost, Validators.required),
-
-
           })
         }
       }
@@ -86,7 +84,6 @@ export class EditPackageUserComponent implements OnInit {
         next: (response: any) => {
           Notify.success("Pre-Alert updated successfully.");
           this.router.navigateByUrl('dashboard');
-
         },
         error: (httpErrorResponse: HttpErrorResponse) => {
           if (httpErrorResponse.error.message) {
@@ -94,13 +91,12 @@ export class EditPackageUserComponent implements OnInit {
 
           } else {
             Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
-
           }
         }
       })
     )
   }
-
+  
   getFile(event: any): any {
     return this.file = event.target.files[0];
   }

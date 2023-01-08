@@ -43,8 +43,6 @@ export class MyShipmentsComponent implements OnInit {
         this.apiResponse = response;
         this.currentPageSubject.next(this.apiResponse.number);
         this.responseSubject.next(this.apiResponse);
-        console.log(this.apiResponse);
-
       }
     })
   }
