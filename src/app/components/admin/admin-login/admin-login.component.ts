@@ -37,8 +37,7 @@ export class AdminLoginComponent implements OnInit {
       this.authenticationService.adminLogin(this.user).subscribe({
         next: (response: any) => {
           const token = response.headers.get("Jwt-Token");
-          this.authenticationService.saveToken(token);
-          this.authenticationService.saveToken(token);
+          this.authenticationService.saveAdminToken(token);
           this.authenticationService.addAdminUserToLocalStorage(response.body);
           const role = response.body.role;
           if (RoleEnum.ROLE_SUPER_ADMIN === role) {

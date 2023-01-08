@@ -32,7 +32,6 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
-
     this.admin = this.authenticationService.getAdminUserFromLocalStorage();
     this.packageService.getApplicationData().subscribe({
       next: ((response: any) => {
@@ -48,7 +47,6 @@ export class AdminDashboardComponent implements OnInit {
       }
     })
   }
-
 
   gotoPage(name?: string, pageNumber?: number) {
     this.adminService.getAllPackagesDelivered(pageNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {

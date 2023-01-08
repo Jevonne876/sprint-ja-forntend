@@ -16,6 +16,7 @@ export class AuthenticationService {
   private token: string = '';
   private loggedInUsername: string = ''
   private jwtHelper = new JwtHelperService();
+  private adminToken: string;
 
   constructor(private http: HttpClient) { }
 
@@ -46,20 +47,25 @@ export class AuthenticationService {
     this.loggedInUsername = '';
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    localStorage.removeItem('users');
+
   }
 
   public adminLogout(): void {
     this.token = '';
     this.loggedInUsername = '';
     localStorage.removeItem('admin');
-    localStorage.removeItem('token');
-    localStorage.removeItem('users');
+    localStorage.removeItem('admin-token');
+
   }
 
   public saveToken(token: string): void {
     this.token = token;
     localStorage.setItem('token', token);
+  }
+
+  public saveAdminToken(token: string): void {
+    this.token = token;
+    localStorage.setItem('admin-token', token);
   }
 
   public addUserToLocalStorage(user: User): void {
@@ -82,8 +88,33 @@ export class AuthenticationService {
     this.token = localStorage.getItem('token') || '';
   }
 
+  public loadAdminToken(): void {
+    this.adminToken = localStorage.getItem('admin-token') || '';
+  }
+
   public getToken(): string {
     return this.token;
+  }
+
+  public getAdminToken(): string {
+    return this.adminToken;
+  }
+
+  public isAdminLoggedIn(): boolean {
+    this.loadAdminToken();
+    if (this.adminToken !== null && this.adminToken !== '') {
+      if (this.jwtHelper.decodeToken(this.adminToken).sub !== null || '') {
+        if (!this.jwtHelper.isTokenExpired(this.adminToken)) {
+          this.loggedInUsername = this.jwtHelper.decodeToken(this.adminToken).sub;
+          return true;
+        }
+      }
+    } else {
+      this.logout();
+      this.adminLogout();
+      return false;
+    }
+    return false;
   }
 
   public isUserLoggedIn(): boolean {
@@ -97,6 +128,7 @@ export class AuthenticationService {
       }
     } else {
       this.logout();
+      this.adminLogout();
       return false;
     }
     return false;

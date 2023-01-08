@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
   private jwtHelper = new JwtHelperService();
   private token = this.authenticationSerivce.getToken();
   constructor(private authenticationSerivce: AuthenticationService, private router: Router) {
   }
+
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -20,13 +22,11 @@ export class AuthGuard implements CanActivate {
   }
 
   private isUserLoggedIn(): boolean {
-    if (this.authenticationSerivce.isUserLoggedIn()) {
+    if (this.authenticationSerivce.isAdminLoggedIn()) {
       return true;
     }
     this.router.navigate(['/login']);
     return false;
   }
 
-
 }
-
