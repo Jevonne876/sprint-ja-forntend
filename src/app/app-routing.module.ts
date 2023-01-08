@@ -16,6 +16,9 @@ import { MyShipmentsComponent } from './components/my-shipments/my-shipments.com
 import { PreAlertsComponent } from './components/pre-alerts/pre-alerts.component';
 import { RatesComponent } from './components/rates/rates.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { NotShippedComponent } from './components/user/not-shipped/not-shipped.component';
+import { ReadyComponent } from './components/user/ready/ready.component';
+import { ShippedComponent } from './components/user/shipped/shipped.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -40,6 +43,9 @@ const routes: Routes = [
   { path: "all-packages-shipped", component: ShippedPackagesComponent },
   { path: "all-packages-ready", component: ReadyPackagesComponent },
   { path: "new-user", component: CreateNewUserComponent },
+  { path: "user-packages-not-shipped", component: NotShippedComponent, canActivate: [AuthGuard] },
+  { path: "user-packages-shipped", component: ShippedComponent, canActivate: [AuthGuard] },
+  { path: "user-packages-ready", component: ReadyComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

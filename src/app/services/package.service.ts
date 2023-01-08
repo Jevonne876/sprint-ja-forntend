@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { PreAlerts } from '../model/pre-alerts';
 import { environment } from 'src/environments/environment';
 import { ApplicationInfo } from '../model/application-info';
+import { ApiResponse } from '../model/api-response';
+import { PackagePage } from '../model/package-page';
 
 @Injectable({
   providedIn: 'root'
@@ -37,9 +39,25 @@ export class PackageService {
   }
 
   public getApplicationData(): Observable<ApplicationInfo | HttpErrorResponse> {
-
     return this.http.get<ApplicationInfo | HttpErrorResponse>(`${this.apiUrl}admin/get-application-data`)
 
+  }
+
+
+  public getAllPackagesNotShipped(userId: string, page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}get-all-user-packages-not-shipped/${userId}?page=${page}`)
+  }
+
+  public getAllPackagesShipped(userId: string, page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}get-all-user-packages-shipped/${userId}?page=${page}`)
+  }
+
+  public getAllPackagesReady(userId: string, page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}get-all-user-packages-ready/${userId}?page=${page}`)
+  }
+
+  public getAllPackagesDelivered(userId: string, page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}get-all-user-packages-delivered/${userId}?page=${page}`)
   }
 
 

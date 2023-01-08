@@ -35,6 +35,12 @@ export class DashboardComponent implements OnInit {
     this.packageService.getFinalCount(this.userInfor.userId!).subscribe((response: any) => {
       this.userPackageInfo = response;
     })
+    this.packageService.getAllPackagesDelivered(this.userInfor.userId!).subscribe(
+      (response: any) => {
+        this.apiResponse = response;
+      }
+
+    )
   }
 
   openSideBar() {
