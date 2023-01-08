@@ -19,7 +19,7 @@ export interface PreAlerts {
   totalPackagesShipped?: number;
 
   totalPackagesReadyForPickUp?: number;
-
-
   updatedAt?: Date
+
+  invoice?: any
 }

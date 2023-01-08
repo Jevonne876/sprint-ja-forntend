@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PreAlerts } from '../model/pre-alerts';
@@ -15,9 +15,14 @@ export class PackageService {
   constructor(private http: HttpClient) { }
 
 
-  public addNewPreAlert(preAlert: PreAlerts): Observable<PreAlerts | HttpErrorResponse> {
+  public addNewPreAlert(preAlert: PreAlerts, fromData: FormData): Observable<PreAlerts | HttpErrorResponse> {
 
-    return this.http.post<PreAlerts | HttpErrorResponse>(`${this.apiUrl}add-new-package`, preAlert);
+    return this.http.post<PreAlerts | HttpErrorResponse>
+      (`${this.apiUrl}add-new-package?trackingNumber=${preAlert.trackingNumber}&courier=${preAlert.courier}&description=${preAlert.description}&weight=${preAlert.weight}&cost=${preAlert.cost}&userId=${preAlert.userId}`, fromData);
+  }
+
+  upload(formData: FormData,): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}invoice-upload`, formData);
   }
 
 
