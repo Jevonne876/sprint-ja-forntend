@@ -8,12 +8,12 @@
         </p>
       </div>
       <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-        <button
-          type="button"
+        <a
+          routerLink="/admin-dashboard"
           class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
         >
-          Add user
-        </button>
+          Dashboard
+        </a>
       </div>
     </div>
     <div class="flex flex-col mt-8">
@@ -69,17 +69,18 @@
                   </th>
 
                   <th
+                    hidden
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
-                    <span class="sr-only">New Package</span>
+                    <span class="sr-only">Edit</span>
                   </th>
 
                   <th
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
-                    <span class="sr-only">New Package</span>
+                    <span class="sr-only">Delete</span>
                   </th>
                 </tr>
               </thead>
@@ -135,6 +136,7 @@
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
+                      hidden
                       href="#"
                       class="px-3 py-2 text-center text-white bg-yellow-400 rounded-full"
                       >Edit</a
@@ -142,6 +144,7 @@
                   </td>
 
                   <td
+                    hidden
                     class="text-sm text-center text-gray-500 border-b border-gray-200"
                   >
                     <a
