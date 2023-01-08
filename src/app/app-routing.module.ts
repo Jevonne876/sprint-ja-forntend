@@ -18,6 +18,7 @@ import { RatesComponent } from './components/rates/rates.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ReadyComponent } from './components/user/ready/ready.component';
 import { ShippedComponent } from './components/user/shipped/shipped.component';
+import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -33,15 +34,15 @@ const routes: Routes = [
   { path: "admin-login", component: AdminLoginComponent },
   { path: "sign-up", component: SignUpComponent },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: "admin-dashboard", component: AdminDashboardComponent },
   { path: "new-pre-alert", component: PreAlertsComponent, canActivate: [AuthGuard] },
   { path: "my-pre-alerts/:id", component: MyShipmentsComponent, canActivate: [AuthGuard], pathMatch: 'full' },
   { path: "users", component: UsersComponent },
-  { path: "all-packages", component: AllPackagesComponent },
-  { path: "all-packages-not-shipped", component: NotShippedPackagesComponent },
-  { path: "all-packages-shipped", component: ShippedPackagesComponent },
-  { path: "all-packages-ready", component: ReadyPackagesComponent },
-  { path: "new-user", component: CreateNewUserComponent },
+  { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [AdminGuard] },
+  { path: "all-packages", component: AllPackagesComponent, canActivate: [AdminGuard] },
+  { path: "all-packages-not-shipped", component: NotShippedPackagesComponent, canActivate: [AdminGuard] },
+  { path: "all-packages-shipped", component: ShippedPackagesComponent, canActivate: [AdminGuard] },
+  { path: "all-packages-ready", component: ReadyPackagesComponent, canActivate: [AdminGuard] },
+  { path: "new-user", component: CreateNewUserComponent, canActivate: [AdminGuard] },
   { path: "user-packages-shipped", component: ShippedComponent, canActivate: [AuthGuard] },
   { path: "user-packages-ready", component: ReadyComponent, canActivate: [AuthGuard] },
 ];

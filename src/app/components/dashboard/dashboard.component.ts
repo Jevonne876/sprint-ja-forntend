@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit {
     this.toggleSideBar = !this.toggleSideBar;
   }
 
-
   gotoPage(name?: string, pageNumber?: number) {
     this.adminService.getAllPackagesDelivered(pageNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {
       this.apiResponse = response;

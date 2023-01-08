@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Notify } from 'notiflix';
 import { Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -25,7 +26,8 @@ export class AdminGuard implements CanActivate {
     if (this.authenticationSerivce.isAdminLoggedIn()) {
       return true;
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/admin-login']);
+    Notify.failure("You to login as admin to access this route")
     return false;
   }
 
