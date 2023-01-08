@@ -35,7 +35,8 @@ import { ReadyPackagesComponent } from './components/admin/ready-packages/ready-
 import { CreateNewUserComponent } from './components/admin/create-new-user/create-new-user.component';
 import { ShippedComponent } from './components/user/shipped/shipped.component';
 import { ReadyComponent } from './components/user/ready/ready.component';
-import { AdminInterceptor } from './interceptor/admin.interceptor';
+import { EditPackageUserComponent } from './components/edit-package-user/edit-package-user.component';
+
 
 
 
@@ -69,7 +70,9 @@ import { AdminInterceptor } from './interceptor/admin.interceptor';
     ReadyPackagesComponent,
     CreateNewUserComponent,
     ShippedComponent,
-    ReadyComponent
+    ReadyComponent,
+    EditPackageUserComponent,
+
   ],
   imports: [
     BrowserModule,

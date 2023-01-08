@@ -60,6 +60,14 @@ export class PackageService {
     return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}get-all-user-packages-delivered/${userId}?page=${page}`)
   }
 
+  download(filename: string): Observable<HttpEvent<Blob>> {
+    return this.http.get(`${this.apiUrl}invoice-download/${filename}/`, {
+      reportProgress: true,
+      observe: 'events',
+      responseType: 'blob'
+    });
+  }
+
 
 
 

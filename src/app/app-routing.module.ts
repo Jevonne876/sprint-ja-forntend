@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
+import { AuthGuard } from './guards/auth.guard';
+
+
+
+
+
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AllPackagesComponent } from './components/admin/all-packages/all-packages.component';
@@ -18,8 +25,7 @@ import { RatesComponent } from './components/rates/rates.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ReadyComponent } from './components/user/ready/ready.component';
 import { ShippedComponent } from './components/user/shipped/shipped.component';
-import { AdminGuard } from './guards/admin.guard';
-import { AuthGuard } from './guards/auth.guard';
+import { EditPackageUserComponent } from './components/edit-package-user/edit-package-user.component';
 
 
 
@@ -45,6 +51,7 @@ const routes: Routes = [
   { path: "new-user", component: CreateNewUserComponent, canActivate: [AdminGuard] },
   { path: "user-packages-shipped", component: ShippedComponent, canActivate: [AuthGuard] },
   { path: "user-packages-ready", component: ReadyComponent, canActivate: [AuthGuard] },
+  { path: "edit-user-package", component: EditPackageUserComponent }
 ];
 
 @NgModule({
