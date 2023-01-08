@@ -22,7 +22,12 @@ export class DashboardComponent implements OnInit {
   toggleSideBar: boolean = false
   @Input() userInfor: User = {};
   preAlertsCount: PreAlerts = {};
-  userPackageInfo: UserPackageInfor = {};
+  userPackageInfo: UserPackageInfor = {
+    totalPackagesNotShipped: 0,
+    totalPackagesShipped: 0,
+    totalPackagesReadyForPickup: 0,
+    totalPackagesDelivered: 0
+  };
   adminService: any;
   apiResponse: any;
   currentPageSubject: any;
