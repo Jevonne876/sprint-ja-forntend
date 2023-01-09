@@ -100,7 +100,10 @@
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      href="#"
+                      [routerLink]="[
+                        '/admin-view-pre-alert',
+                        package.trackingNumber
+                      ]"
                       class="px-3 py-2 text-center text-white bg-gray-500 rounded-full"
                       >View</a
                     >
@@ -174,28 +177,28 @@
           class="inline-flex -space-x-px rounded-md shadow-sm isolate"
           aria-label="Pagination"
         >
-        <nav
-        class="inline-flex -space-x-px rounded-md shadow-sm isolate"
-        aria-label="Pagination"
-      >
-        <button
-          [disabled]="apiResponse?.first"
-          type="submit"
-          (click)="gotoNextOrPerviousPage('backwards', '')"
-          class="relative inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
-        >
-          Previous
-        </button>
+          <nav
+            class="inline-flex -space-x-px rounded-md shadow-sm isolate"
+            aria-label="Pagination"
+          >
+            <button
+              [disabled]="apiResponse?.first"
+              type="submit"
+              (click)="gotoNextOrPerviousPage('backwards', '')"
+              class="relative inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Previous
+            </button>
 
-        <button
-          [disabled]="apiResponse?.last"
-          type="submit"
-          (click)="gotoNextOrPerviousPage('forward', '')"
-          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
-        >
-          Next
-        </button>
-      </nav>
+            <button
+              [disabled]="apiResponse?.last"
+              type="submit"
+              (click)="gotoNextOrPerviousPage('forward', '')"
+              class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Next
+            </button>
+          </nav>
         </nav>
       </div>
     </div>

@@ -26,7 +26,7 @@ export class UserViewPreAlertsComponent implements OnInit {
     this.trackingNum = this.route.snapshot.paramMap.get('id')!;
 
     this.subscriptions.push(
-      this.packageService.vewPreAlert(this.trackingNum).subscribe({
+      this.packageService.vievPreAlert(this.trackingNum).subscribe({
         next: (response: any) => {
           this.preAlert = response;
         },
