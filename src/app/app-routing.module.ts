@@ -28,6 +28,7 @@ import { ShippedComponent } from './components/user/shipped/shipped.component';
 import { EditPackageUserComponent } from './components/edit-package-user/edit-package-user.component';
 import { UserViewPreAlertsComponent } from './components/user-view-pre-alerts/user-view-pre-alerts.component';
 import { AdminViewUserComponent } from './components/admin-view-user/admin-view-user.component';
+import { AdminCreateNewPreAlertsComponent } from './components/admin-create-new-pre-alerts/admin-create-new-pre-alerts.component';
 
 
 
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: "user-packages-ready", component: ReadyComponent, canActivate: [AuthGuard] },
   { path: "edit-user-package/:id", component: EditPackageUserComponent, canActivate: [AuthGuard] },
   { path: "user-view-pre-alerts/:id", component: UserViewPreAlertsComponent, canActivate: [AuthGuard] },
-  { path: "admin-view-users/:id", component: AdminViewUserComponent }
+  { path: "admin-view-users/:id", component: AdminViewUserComponent },
+  { path: "admin-add-new-user-package/:id", component: AdminCreateNewPreAlertsComponent }
 ];
 
 @NgModule({

@@ -21,5 +21,5 @@ export interface PreAlerts {
   totalPackagesReadyForPickUp?: number;
   updatedAt?: Date
 
-  invoice?: any
+  invoice?: any;
 }

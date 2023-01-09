@@ -1,4 +1,3 @@
-import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,19 +6,23 @@ import { saveAs } from 'file-saver'
 import { Subscription } from 'rxjs';
 import { PreAlerts } from 'src/app/model/pre-alerts';
 import { User } from 'src/app/model/user';
+import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PackageService } from 'src/app/services/package.service';
 
+
 @Component({
-  selector: 'app-pre-alerts',
-  templateUrl: './pre-alerts.component.html',
-  styleUrls: ['./pre-alerts.component.css']
+  selector: 'app-admin-create-new-pre-alerts',
+  templateUrl: './admin-create-new-pre-alerts.component.html',
+  styleUrls: ['./admin-create-new-pre-alerts.component.css']
 })
-export class PreAlertsComponent implements OnInit {
+export class AdminCreateNewPreAlertsComponent implements OnInit {
 
   newPreAlert: PreAlerts = {}
 
   user: User = {}
+
+  userId: string = "";
 
   showLoading: boolean = false;
 
@@ -32,38 +35,41 @@ export class PreAlertsComponent implements OnInit {
 
   fileStatus = { status: '', requestType: '', percent: 0 };
 
-
   newForm = new FormGroup({
     trackingNumber: new FormControl("", Validators.required),
     courier: new FormControl("", Validators.required),
     description: new FormControl("", Validators.required),
+    status: new FormControl("", Validators.required),
     weight: new FormControl("", Validators.required),
     cost: new FormControl("", Validators.required),
 
   })
 
-  constructor(private packageService: PackageService, private router: Router, private authentication: AuthenticationService, private route: ActivatedRoute) { }
+  constructor(private packageService: PackageService, private router: Router, private authentication: AuthenticationService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.userId = this.activatedRoute.snapshot.paramMap.get('id')!;
 
-    this.user = this.authentication.getUserFromLocalStorage()
   }
 
+  getFile(event: any): any {
+    return this.file = event.target.files[0];
+  }
 
   onSubmitNewPreAlert() {
     this.newPreAlert.trackingNumber = this.newForm.value.trackingNumber!;
     this.newPreAlert.courier = this.newForm.value.courier!;
     this.newPreAlert.description = this.newForm.value.description!;
+    this.newPreAlert.status = this.newForm.value.status!
     this.newPreAlert.weight = +this.newForm.value.weight!;
     this.newPreAlert.cost = +this.newForm.value.cost!;
-    this.newPreAlert.userId = this.user.userId!;
-    this.formData.append('file', this.file, this.file.name);
-
+    this.newPreAlert.userId = this.userId!;
+    this.formData.append('file', this.file || null, this.file.name || "");
     this.subscriptions.push(
-      this.packageService.addNewPreAlert(this.newPreAlert, this.formData).subscribe({
+      this.packageService.adminAddNewPreAlert(this.newPreAlert, this.formData).subscribe({
         next: (response: any) => {
           Notify.success("New Pre-Alert created successfully.");
-          this.router.navigateByUrl('dashboard');
+          this.router.navigateByUrl('admin-dashboard');
 
         },
         error: (httpErrorResponse: HttpErrorResponse) => {
@@ -77,10 +83,6 @@ export class PreAlertsComponent implements OnInit {
         }
       })
     )
-  }
-
-  getFile(event: any): any {
-    return this.file = event.target.files[0];
   }
 
   private resportProgress(httpEvent: HttpEvent<string[] | Blob>): void {
@@ -119,4 +121,6 @@ export class PreAlertsComponent implements OnInit {
     this.fileStatus.percent = Math.round(100 * loaded / total);
 
   }
+
+
 }

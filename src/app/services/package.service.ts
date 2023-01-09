@@ -23,6 +23,12 @@ export class PackageService {
       (`${this.apiUrl}add-new-package?trackingNumber=${preAlert.trackingNumber}&courier=${preAlert.courier}&description=${preAlert.description}&weight=${preAlert.weight}&cost=${preAlert.cost}&userId=${preAlert.userId}`, fromData);
   }
 
+  public adminAddNewPreAlert(preAlert: PreAlerts, fromData: FormData): Observable<PreAlerts | HttpErrorResponse> {
+
+    return this.http.post<PreAlerts | HttpErrorResponse>
+      (`${this.apiUrl}admin/create-new-pre-alert/?trackingNumber=${preAlert.trackingNumber}&courier=${preAlert.courier}&description=${preAlert.description}&status=${preAlert.status}&weight=${preAlert.weight}&cost=${preAlert.cost}&userId=${preAlert.userId}`, fromData);
+  }
+
   public updatePreAlert(preAlert: PreAlerts, trackingNum: string): Observable<PreAlerts | HttpErrorResponse> {
 
     return this.http.put<PreAlerts | HttpErrorResponse>(`${this.apiUrl}update-package/${trackingNum}`, preAlert)
