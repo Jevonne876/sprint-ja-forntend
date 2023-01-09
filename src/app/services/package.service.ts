@@ -34,6 +34,11 @@ export class PackageService {
     return this.http.put<PreAlerts | HttpErrorResponse>(`${this.apiUrl}update-package/${trackingNum}`, preAlert)
   }
 
+  public adminUpdatePreAlert(preAlert: PreAlerts, trackingNum: string): Observable<PreAlerts | HttpErrorResponse> {
+
+    return this.http.put<PreAlerts | HttpErrorResponse>(`${this.apiUrl}admin/update-package/${trackingNum}`,  preAlert )
+  }
+
   upload(formData: FormData,): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}invoice-upload`, formData);
   }

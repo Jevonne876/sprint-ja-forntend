@@ -1,28 +1,30 @@
+import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as saveAs from 'file-saver';
 import { Notify } from 'notiflix';
-import { saveAs } from 'file-saver'
 import { Subscription } from 'rxjs';
 import { PreAlerts } from 'src/app/model/pre-alerts';
 import { User } from 'src/app/model/user';
-import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { PackageService } from 'src/app/services/package.service';
 
-
 @Component({
-  selector: 'app-admin-create-new-pre-alerts',
-  templateUrl: './admin-create-new-pre-alerts.component.html',
-  styleUrls: ['./admin-create-new-pre-alerts.component.css']
+  selector: 'app-admin-edit-pre-alerts',
+  templateUrl: './admin-edit-pre-alerts.component.html',
+  styleUrls: ['./admin-edit-pre-alerts.component.css']
 })
-export class AdminCreateNewPreAlertsComponent implements OnInit {
+export class AdminEditPreAlertsComponent implements OnInit {
+  preAlert: PreAlerts = {}
 
   newPreAlert: PreAlerts = {}
 
   user: User = {}
 
   userId: string = "";
+
+  packageId: string = "";
 
   showLoading: boolean = false;
 
@@ -43,20 +45,31 @@ export class AdminCreateNewPreAlertsComponent implements OnInit {
     weight: new FormControl("", Validators.required),
     cost: new FormControl("", Validators.required),
 
+
   })
 
   constructor(private packageService: PackageService, private router: Router, private authentication: AuthenticationService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userId = this.activatedRoute.snapshot.paramMap.get('id')!;
-    
+    this.packageId = this.activatedRoute.snapshot.paramMap.get('id')!;
+    this.packageService.adminViewPreAlert(this.packageId).subscribe({
+      next: (response: any) => {
+        this.userId = response.userId
+        this.newForm = new FormGroup({
+          trackingNumber: new FormControl(response.trackingNumber, Validators.required),
+          courier: new FormControl(response.courier, Validators.required),
+          description: new FormControl(response.description, Validators.required),
+          status: new FormControl(response.status, Validators.required),
+          weight: new FormControl(response.weight, Validators.required),
+          cost: new FormControl(response.cost, Validators.required),
+        })
 
+      }
+    })
   }
-
   getFile(event: any): any {
     return this.file = event.target.files[0];
   }
-
   onSubmitNewPreAlert() {
     this.newPreAlert.trackingNumber = this.newForm.value.trackingNumber!;
     this.newPreAlert.courier = this.newForm.value.courier!;
@@ -65,11 +78,11 @@ export class AdminCreateNewPreAlertsComponent implements OnInit {
     this.newPreAlert.weight = +this.newForm.value.weight!;
     this.newPreAlert.cost = +this.newForm.value.cost!;
     this.newPreAlert.userId = this.userId!;
-    this.formData.append('file', this.file || null, this.file.name || "");
+    console.log(this.newPreAlert);
     this.subscriptions.push(
-      this.packageService.adminAddNewPreAlert(this.newPreAlert, this.formData).subscribe({
+      this.packageService.adminUpdatePreAlert(this.newPreAlert, this.packageId).subscribe({
         next: (response: any) => {
-          Notify.success("New Pre-Alert created successfully.");
+          Notify.success("Pre-Alert updated successfully.");
           this.router.navigateByUrl('admin-dashboard');
 
         },
@@ -104,8 +117,11 @@ export class AdminCreateNewPreAlertsComponent implements OnInit {
             this.filenames.unshift(filename);
           }
         } else {
-          saveAs(new File([httpEvent.body], httpEvent.headers.get('File-Name')!,
+          saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!,
             { type: `${httpEvent.headers.get('Content-Type')};charset=utf-8` }));
+          // saveAs(new Blob([httpEvent.body!],
+          //   { type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}),
+          //    httpEvent.headers.get('File-Name'));
         }
         this.fileStatus.status = 'done';
         break;
@@ -116,12 +132,10 @@ export class AdminCreateNewPreAlertsComponent implements OnInit {
     }
   }
 
-  private updateStatus(loaded: number, total: number, requestType: string) {
+  private updateStatus(loaded: number, total: number, requestType: string): void {
     this.fileStatus.status = 'progress';
     this.fileStatus.requestType = requestType;
     this.fileStatus.percent = Math.round(100 * loaded / total);
-
   }
-
 
 }

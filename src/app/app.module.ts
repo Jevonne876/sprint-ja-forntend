@@ -40,6 +40,7 @@ import { UserViewPreAlertsComponent } from './components/user-view-pre-alerts/us
 import { AdminViewPreAlertsComponent } from './components/admin-view-pre-alerts/admin-view-pre-alerts.component';
 import { AdminViewUserComponent } from './components/admin-view-user/admin-view-user.component';
 import { AdminCreateNewPreAlertsComponent } from './components/admin-create-new-pre-alerts/admin-create-new-pre-alerts.component';
+import { AdminEditPreAlertsComponent } from './components/admin-edit-pre-alerts/admin-edit-pre-alerts.component';
 
 
 
@@ -80,6 +81,7 @@ import { AdminCreateNewPreAlertsComponent } from './components/admin-create-new-
     AdminViewPreAlertsComponent,
     AdminViewUserComponent,
     AdminCreateNewPreAlertsComponent,
+    AdminEditPreAlertsComponent,
 
   ],
   imports: [

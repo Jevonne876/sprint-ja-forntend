@@ -30,6 +30,7 @@ import { UserViewPreAlertsComponent } from './components/user-view-pre-alerts/us
 import { AdminViewUserComponent } from './components/admin-view-user/admin-view-user.component';
 import { AdminCreateNewPreAlertsComponent } from './components/admin-create-new-pre-alerts/admin-create-new-pre-alerts.component';
 import { AdminViewPreAlertsComponent } from './components/admin-view-pre-alerts/admin-view-pre-alerts.component';
+import { AdminEditPreAlertsComponent } from './components/admin-edit-pre-alerts/admin-edit-pre-alerts.component';
 
 
 
@@ -59,7 +60,8 @@ const routes: Routes = [
   { path: "user-view-pre-alerts/:id", component: UserViewPreAlertsComponent, canActivate: [AuthGuard] },
   { path: "admin-view-users/:id", component: AdminViewUserComponent },
   { path: "admin-add-new-user-package/:id", component: AdminCreateNewPreAlertsComponent },
-  { path: "admin-view-pre-alert/:id", component: AdminViewPreAlertsComponent }
+  { path: "admin-view-pre-alert/:id", component: AdminViewPreAlertsComponent },
+  { path: "admin-edit-pre-alerts/:id", component: AdminEditPreAlertsComponent }
 ];
 
 @NgModule({
