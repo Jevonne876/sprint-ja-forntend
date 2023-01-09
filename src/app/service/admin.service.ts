@@ -6,11 +6,13 @@ import { ApiResponse } from '../model/api-response';
 import { PackagePage } from '../model/package-page';
 import { Page } from '../model/page';
 import { User } from '../model/user';
+import { CustomHttpResponse } from '../model/custom-http-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
+
 
   private apiUrl = environment.backEndApi;
 
@@ -24,6 +26,11 @@ export class AdminService {
   public getusers(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
     return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users?page=${page}`)
   }
+
+  getAdmins(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-admin-users?page=${page}`)
+  }
+
 
   public getAllPackages(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
     return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages?page=${page}`)
@@ -55,5 +62,8 @@ export class AdminService {
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}admin/view-user/${userId}`);
   }
 
+  public deleteUser(username: string): Observable<CustomHttpResponse> {
+    return this.http.delete<CustomHttpResponse>(`${this.apiUrl}admin/delete-user/${username}`);
+  }
 
 }
