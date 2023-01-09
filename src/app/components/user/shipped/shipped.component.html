@@ -88,7 +88,11 @@
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
-                    Invoice
+                  <a
+                  (click)="onDownloadFile(package.invoice)"
+                  class="cursor-pointer"
+                  >Download </a
+                >
                   </td>
 
                   <td
