@@ -2,14 +2,21 @@
   <div class="px-4 sm:px-6 lg:px-8 mt-50">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h1 class="text-5xl font-semibold text-gray-900 font-Inter">
-          Packages
+        <h1 class="text-4xl font-semibold text-gray-900 font-Inter">
+          Ready Packages
         </h1>
-        <p class="mt-2 font-semibold text-gray-700">
-          A list of all the Packages within the system.
-        </p>
+        <p class="mt-2 font-semibold text-gray-700"></p>
+      </div>
+      <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        <a
+          routerLink="/admin-dashboard"
+          class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:w-auto"
+        >
+          Dashboard
+        </a>
       </div>
     </div>
+
     <div class="flex flex-col mt-8">
       <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
@@ -21,7 +28,13 @@
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
                   >
-                    Tracking
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+                  >
+                    Tracking Number
                   </th>
                   <th
                     scope="col"
@@ -76,6 +89,11 @@
                   <td
                     class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
                   >
+                    {{ package.firstName }} {{ package.lastName }}
+                  </td>
+                  <td
+                    class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
+                  >
                     {{ package.trackingNumber }}
                   </td>
                   <td
@@ -96,14 +114,21 @@
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
-                    Invoice
+                    <a
+                      (click)="onDownloadFile(package.invoice)"
+                      class="cursor-pointer"
+                      >Download
+                    </a>
                   </td>
 
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      href="#"
+                      [routerLink]="[
+                        '/admin-view-pre-alert',
+                        package.trackingNumber
+                      ]"
                       class="px-3 py-2 text-center text-white bg-gray-500 rounded-full"
                       >View</a
                     >
@@ -113,7 +138,10 @@
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      href="#"
+                      [routerLink]="[
+                        '/admin-edit-pre-alerts',
+                        package.trackingNumber
+                      ]"
                       class="px-3 py-2 text-center text-white bg-yellow-400 rounded-full"
                       >Edit</a
                     >

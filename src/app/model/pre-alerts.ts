@@ -22,4 +22,7 @@ export interface PreAlerts {
   updatedAt?: Date
 
   invoice?: any;
+
+  firstName?: string;
+  lastName?: string;
 }

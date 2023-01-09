@@ -96,14 +96,21 @@
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
-                    Invoice
+                    <a
+                      (click)="onDownloadFile(package.invoice)"
+                      class="cursor-pointer"
+                      >Download
+                    </a>
                   </td>
 
                   <td
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      href="#"
+                      [routerLink]="[
+                        '/admin-view-pre-alert',
+                        package.trackingNumber
+                      ]"
                       class="px-3 py-2 text-center text-white bg-gray-500 rounded-full"
                       >View</a
                     >
@@ -113,19 +120,12 @@
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      href="#"
+                      [routerLink]="[
+                        '/admin-edit-pre-alerts',
+                        package.trackingNumber
+                      ]"
                       class="px-3 py-2 text-center text-white bg-yellow-400 rounded-full"
                       >Edit</a
-                    >
-                  </td>
-
-                  <td
-                    class="text-sm text-center text-gray-500 border-b border-gray-200"
-                  >
-                    <a
-                      href="#"
-                      class="px-3 py-2 mr-5 text-center text-white bg-red-600 rounded-full"
-                      >Delete</a
                     >
                   </td>
                 </tr>
