@@ -66,4 +66,14 @@ export class AdminService {
     return this.http.delete<CustomHttpResponse>(`${this.apiUrl}admin/delete-user/${username}`);
   }
 
+  public sendEmail(recipient: string, subject: string, message: string) {
+
+    return this.http.post<CustomHttpResponse>(`${this.apiUrl}admin/send-email`, { recipient: recipient, subject: subject, message: message });
+  }
+
+  public sendBroadcastEmail(subject: string, message: string) {
+
+    return this.http.post<CustomHttpResponse>(`${this.apiUrl}admin/send-broadcast-email?subject=${subject}&message=${message}`, {});
+  }
+
 }

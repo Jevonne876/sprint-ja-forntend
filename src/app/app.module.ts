@@ -43,6 +43,8 @@ import { AdminCreateNewPreAlertsComponent } from './components/admin-create-new-
 import { AdminEditPreAlertsComponent } from './components/admin-edit-pre-alerts/admin-edit-pre-alerts.component';
 import { NewAdminComponent } from './components/admin/new-admin/new-admin.component';
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { SendEmailComponent } from './components/admin/send-email/send-email.component';
+import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
 
 
 
@@ -86,6 +88,8 @@ import { AdminUsersComponent } from './components/admin/admin-users/admin-users.
     AdminEditPreAlertsComponent,
     NewAdminComponent,
     AdminUsersComponent,
+    SendEmailComponent,
+    SendBroadcastEmailComponent,
 
   ],
   imports: [

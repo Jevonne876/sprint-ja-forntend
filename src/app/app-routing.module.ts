@@ -33,6 +33,8 @@ import { AdminViewPreAlertsComponent } from './components/admin-view-pre-alerts/
 import { AdminEditPreAlertsComponent } from './components/admin-edit-pre-alerts/admin-edit-pre-alerts.component';
 import { NewAdminComponent } from './components/admin/new-admin/new-admin.component';
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { SendEmailComponent } from './components/admin/send-email/send-email.component';
+import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
 
 
 
@@ -65,7 +67,9 @@ const routes: Routes = [
   { path: "admin-view-pre-alert/:id", component: AdminViewPreAlertsComponent },
   { path: "admin-edit-pre-alerts/:id", component: AdminEditPreAlertsComponent },
   { path: "new-admin", component: NewAdminComponent, canActivate: [AdminGuard] },
-  { path: "admin-users", component: AdminUsersComponent, canActivate: [AdminGuard] }
+  { path: "admin-users", component: AdminUsersComponent, canActivate: [AdminGuard] },
+  { path: "send-email", component: SendEmailComponent, canActivate: [AdminGuard] },
+  { path: "send-broadcast-email", component: SendBroadcastEmailComponent, canActivate: [AdminGuard] }
 ];
 
 @NgModule({
