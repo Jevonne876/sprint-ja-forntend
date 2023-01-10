@@ -24,5 +24,6 @@ export interface PreAlerts {
   invoice?: any;
 
   firstName?: string;
+
   lastName?: string;
 }
