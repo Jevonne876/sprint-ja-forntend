@@ -489,7 +489,7 @@
                 <div>
                   <div class="flex items-center">
                     <h1
-                      class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:leading-9"
+                      class="ml-3 text-2xl font-bold leading-7 text-gray-900 sm: sm:leading-9"
                     >
                       Admin, {{ admin.firstName }} - {{ admin.lastName }}
                     </h1>
@@ -592,9 +592,7 @@
                   </div>
                   <div class="flex-1 w-0 ml-5">
                     <dl>
-                      <dt class="text-sm font-medium text-gray-500 truncate">
-                        Users
-                      </dt>
+                      <dt class="text-sm font-medium text-gray-500">Users</dt>
                       <dd>
                         <div class="text-lg font-medium text-gray-900">
                           {{ data.totalUsers }}
@@ -634,9 +632,7 @@
                   </div>
                   <div class="flex-1 w-0 ml-5">
                     <dl>
-                      <dt class="text-sm font-medium text-gray-500 truncate">
-                        Admins
-                      </dt>
+                      <dt class="text-sm font-medium text-gray-500">Admins</dt>
                       <dd>
                         <div class="text-lg font-medium text-gray-900">
                           {{ data.totalAdmins }}
@@ -678,7 +674,7 @@
                   </div>
                   <div class="flex-1 w-0 ml-5">
                     <dl>
-                      <dt class="text-sm font-medium text-gray-500 truncate">
+                      <dt class="text-sm font-medium text-gray-500">
                         Packages
                       </dt>
                       <dd>
@@ -732,9 +728,7 @@
                   </div>
                   <div class="flex-1 w-0 ml-5">
                     <dl>
-                      <dt
-                        class="text-sm font-medium text-white uppercase truncate"
-                      >
+                      <dt class="text-sm font-medium text-white uppercase">
                         Not Shipped
                       </dt>
                       <dd>
@@ -780,9 +774,7 @@
                   </div>
                   <div class="flex-1 w-0 ml-5">
                     <dl>
-                      <dt
-                        class="text-sm font-medium text-white uppercase truncate"
-                      >
+                      <dt class="text-sm font-medium text-white uppercase">
                         Shipped
                       </dt>
                       <dd>
@@ -828,9 +820,7 @@
                   </div>
                   <div class="flex-1 w-0 ml-5">
                     <dl>
-                      <dt
-                        class="text-sm font-medium text-white uppercase truncate"
-                      >
+                      <dt class="text-sm font-medium text-white uppercase">
                         ready for pick up
                       </dt>
                       <dd>
@@ -872,11 +862,11 @@
             <li *ngFor="let package of apiResponse?.content">
               <a class="block px-4 py-4 bg-white hover:bg-gray-50">
                 <span class="flex items-center space-x-4">
-                  <span class="flex flex-1 space-x-2 truncate">
+                  <span class="flex flex-1 space-x-2">
                     <!-- Heroicon name: mini/banknotes -->
 
-                    <span class="flex flex-col text-sm text-gray-500 truncate">
-                      <span class="truncate">{{ package.description }}</span>
+                    <span class="flex flex-col text-sm text-gray-500">
+                      <span class="">{{ package.description }}</span>
                       <span
                         ><span class="font-medium text-gray-900">{{
                           package.cost | currency
@@ -964,9 +954,7 @@
                         class="w-full px-6 py-4 text-sm text-gray-900 max-w-0 whitespace-nowrap"
                       >
                         <div class="flex">
-                          <p
-                            class="text-gray-900 truncate group-hover:text-gray-900"
-                          >
+                          <p class="text-gray-900 group-hover:text-gray-900">
                             {{ package.description }}
                           </p>
                         </div>
