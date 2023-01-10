@@ -76,4 +76,14 @@ export class AdminService {
     return this.http.post<CustomHttpResponse>(`${this.apiUrl}admin/send-broadcast-email?subject=${subject}&message=${message}`, {});
   }
 
+  public deletePackage(trackingNumber: string) {
+
+    return this.http.delete(`${this.apiUrl}admin/delete-package/${trackingNumber}`)
+  }
+
+  public uploadInvoice(trackingNumber: string, formData: FormData) {
+
+    return this.http.put(`${this.apiUrl}admin/file-upload/${trackingNumber}`, formData);
+  }
+
 }

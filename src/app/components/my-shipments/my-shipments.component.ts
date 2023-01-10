@@ -1,7 +1,8 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as saveAs from 'file-saver';
+import { Notify } from 'notiflix';
 import { BehaviorSubject, map } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
@@ -18,7 +19,7 @@ import { UserService } from 'src/app/services/user.service';
 export class MyShipmentsComponent implements OnInit {
 
   userId: string = "";
-
+  trackingNumber: string = "";
   userPackages: PreAlerts[] = [];
   apiResponse: any;
   responseSubject = new BehaviorSubject<ApiResponse<PackagePage>>(null);
@@ -28,8 +29,11 @@ export class MyShipmentsComponent implements OnInit {
   fileService: any;
   fileStatus: any;
   filenames: any;
+  file: any;
+  formData: FormData = new FormData();
+  show: boolean = false;
 
-  constructor(private route: ActivatedRoute, private packageService: PackageService, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private packageService: PackageService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.packageService.getUserPreAlerts(this.userId).subscribe((resposne: any) => {
@@ -106,6 +110,38 @@ export class MyShipmentsComponent implements OnInit {
         break;
 
     }
+  }
+
+  getFile(event: any): any {
+    return this.file = event.target.files[0];
+  }
+  toggleShow() {
+    this.show = !this.show;
+
+  }
+  passTrackingNumber(trackingNumber: string): string {
+    this.trackingNumber = trackingNumber;
+    return trackingNumber;
+  }
+
+  onInvoiceUpload() {
+    this.formData.append('file', this.file || null, this.file.name || "");
+    this.packageService.uploadUserInvoice(this.trackingNumber, this.formData).subscribe({
+      next: (response: any) => {
+        Notify.success("Invoice uploaded successfully.");
+        this.router.navigateByUrl('dashboard');
+
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+        if (httpErrorResponse.error.message) {
+          Notify.failure(httpErrorResponse.error.message);
+
+        } else {
+          Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+        }
+      }
+    });
   }
 
   private updateStatus(loaded: number, total: number, requestType: string): void {

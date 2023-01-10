@@ -1,6 +1,8 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as saveAs from 'file-saver';
+import { Notify } from 'notiflix';
 import { BehaviorSubject, catchError, map, Observable, of, startWith } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
@@ -23,7 +25,13 @@ export class ShippedComponent implements OnInit {
   fileService: any;
   fileStatus: any;
   filenames: any;
-  constructor(private packageService: PackageService, private userService: UserService) { }
+
+  trackingNumber: string = "";
+  file: any;
+  formData: FormData = new FormData();
+  show: boolean = false;
+
+  constructor(private packageService: PackageService, private userService: UserService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -95,6 +103,38 @@ export class ShippedComponent implements OnInit {
         break;
 
     }
+  }
+
+  getFile(event: any): any {
+    return this.file = event.target.files[0];
+  }
+  toggleShow() {
+    this.show = !this.show;
+
+  }
+  passTrackingNumber(trackingNumber: string): string {
+    this.trackingNumber = trackingNumber;
+    return trackingNumber;
+  }
+
+  onInvoiceUpload() {
+    this.formData.append('file', this.file || null, this.file.name || "");
+    this.packageService.uploadUserInvoice(this.trackingNumber, this.formData).subscribe({
+      next: (response: any) => {
+        Notify.success("Invoice uploaded successfully.");
+        this.router.navigateByUrl('dashboard');
+
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+        if (httpErrorResponse.error.message) {
+          Notify.failure(httpErrorResponse.error.message);
+
+        } else {
+          Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+        }
+      }
+    });
   }
 
   private updateStatus(loaded: number, total: number, requestType: string): void {

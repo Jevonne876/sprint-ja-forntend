@@ -1,6 +1,8 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as saveAs from 'file-saver';
+import { Notify } from 'notiflix';
 import { BehaviorSubject, catchError, map, Observable, of, startWith } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
@@ -13,17 +15,19 @@ import { PackageService } from 'src/app/services/package.service';
   styleUrls: ['./shipped-packages.component.css']
 })
 export class ShippedPackagesComponent implements OnInit {
-
+  trackingNumber: string = "";
   apiResponse: any;
   responseSubject = new BehaviorSubject<ApiResponse<PackagePage>>(null);
   private currentPageSubject = new BehaviorSubject<number>(0);
   currentPage$ = this.currentPageSubject.asObservable()
-
   fileService: any;
   fileStatus: any;
   filenames: any;
+  file: any;
+  formData: FormData = new FormData();
+  show: boolean = false;
 
-  constructor(private adminService: AdminService, private packageService: PackageService) { }
+  constructor(private adminService: AdminService, private packageService: PackageService, private router: Router) { }
 
   ngOnInit(): void {
     this.adminService.getAllPackagesShipped().subscribe({
@@ -101,6 +105,38 @@ export class ShippedPackagesComponent implements OnInit {
     this.fileStatus.status = 'progress';
     this.fileStatus.requestType = requestType;
     this.fileStatus.percent = Math.round(100 * loaded / total);
+  }
+
+  getFile(event: any): any {
+    return this.file = event.target.files[0];
+  }
+  toggleShow() {
+    this.show = !this.show;
+
+  }
+  passTrackingNumber(trackingNumber: string): string {
+    this.trackingNumber = trackingNumber;
+    return trackingNumber;
+  }
+
+  onInvoiceUpload() {
+    this.formData.append('file', this.file || null, this.file.name || "");
+    this.adminService.uploadInvoice(this.trackingNumber, this.formData).subscribe({
+      next: (response: any) => {
+        Notify.success("Invoice uploaded successfully.");
+        this.router.navigateByUrl('admin-dashboard');
+
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+        if (httpErrorResponse.error.message) {
+          Notify.failure(httpErrorResponse.error.message);
+
+        } else {
+          Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+        }
+      }
+    });
   }
 
 }

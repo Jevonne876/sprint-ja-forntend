@@ -1,6 +1,8 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as saveAs from 'file-saver';
+import { Notify } from 'notiflix';
 import { BehaviorSubject, catchError, map, Observable, of, startWith } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
@@ -23,8 +25,13 @@ export class ReadyPackagesComponent implements OnInit {
   fileService: any;
   fileStatus: any;
   filenames: any;
+  file: any;
 
-  constructor(private adminService: AdminService, private packageService: PackageService) { }
+  formData: FormData = new FormData();
+  show: boolean = false;
+  trackingNumber: string = "";
+
+  constructor(private adminService: AdminService, private packageService: PackageService, private router: Router) { }
 
   ngOnInit(): void {
     this.adminService.getAllPackagesReady().subscribe({
@@ -36,6 +43,11 @@ export class ReadyPackagesComponent implements OnInit {
       }
     })
   }
+
+  getFile(event: any): any {
+    return this.file = event.target.files[0];
+  }
+
 
   gotoPage(name?: string, pageNumber?: number) {
     this.adminService.getAllPackagesReady(pageNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {
@@ -61,6 +73,27 @@ export class ReadyPackagesComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  onPackageDelete(trackingNumber: string) {
+    this.adminService.deletePackage(trackingNumber).subscribe({
+      next: (response: any) => {
+        this.router.navigateByUrl('admin-dashboard');
+        Notify.success(response.message);
+
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+
+        if (httpErrorResponse.error.message) {
+          Notify.failure(httpErrorResponse.error.message);
+
+        } else {
+          Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+        }
+      }
+    })
+
   }
 
   private resportProgress(httpEvent: HttpEvent<string[] | Blob>): void {
@@ -102,5 +135,33 @@ export class ReadyPackagesComponent implements OnInit {
     this.fileStatus.percent = Math.round(100 * loaded / total);
   }
 
+  toggleShow() {
+    this.show = !this.show;
+
+  }
+  passTrackingNumber(trackingNumber: string): string {
+    this.trackingNumber = trackingNumber;
+    return trackingNumber;
+  }
+
+  onInvoiceUpload() {
+    this.formData.append('file', this.file || null, this.file.name || "");
+    this.adminService.uploadInvoice(this.trackingNumber, this.formData).subscribe({
+      next: (response: any) => {
+        Notify.success("Invoice uploaded successfully.");
+        this.router.navigateByUrl('admin-dashboard');
+
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+        if (httpErrorResponse.error.message) {
+          Notify.failure(httpErrorResponse.error.message);
+
+        } else {
+          Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+        }
+      }
+    });
+  }
 
 }

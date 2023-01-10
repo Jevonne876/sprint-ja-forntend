@@ -36,7 +36,7 @@ export class PackageService {
 
   public adminUpdatePreAlert(preAlert: PreAlerts, trackingNum: string): Observable<PreAlerts | HttpErrorResponse> {
 
-    return this.http.put<PreAlerts | HttpErrorResponse>(`${this.apiUrl}admin/update-package/${trackingNum}`,  preAlert )
+    return this.http.put<PreAlerts | HttpErrorResponse>(`${this.apiUrl}admin/update-package/${trackingNum}`, preAlert)
   }
 
   upload(formData: FormData,): Observable<string> {
@@ -102,6 +102,11 @@ export class PackageService {
       observe: 'events',
       responseType: 'blob'
     });
+  }
+
+  public uploadUserInvoice(trackingNumber: string, formData: FormData) {
+
+    return this.http.put(`${this.apiUrl}invoice-upload/${trackingNumber}`, formData);
   }
 
 

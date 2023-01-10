@@ -1,6 +1,8 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as saveAs from 'file-saver';
+import { Notify } from 'notiflix';
 import { BehaviorSubject, catchError, map, Observable, of, startWith } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
@@ -24,7 +26,7 @@ export class AllPackagesComponent implements OnInit {
   fileStatus: any;
   filenames: any;
 
-  constructor(private adminService: AdminService, private packageService: PackageService) { }
+  constructor(private adminService: AdminService, private packageService: PackageService, private router: Router) { }
 
   ngOnInit(): void {
     this.adminService.getAllPackages().subscribe({
@@ -101,6 +103,27 @@ export class AllPackagesComponent implements OnInit {
     this.fileStatus.status = 'progress';
     this.fileStatus.requestType = requestType;
     this.fileStatus.percent = Math.round(100 * loaded / total);
+  }
+
+  onPackageDelete(trackingNumber: string) {
+    this.adminService.deletePackage(trackingNumber).subscribe({
+      next: (response: any) => {
+        this.router.navigateByUrl('admin-dashboard');
+        Notify.success(response.message);
+
+      },
+      error: (httpErrorResponse: HttpErrorResponse) => {
+
+        if (httpErrorResponse.error.message) {
+          Notify.failure(httpErrorResponse.error.message);
+
+        } else {
+          Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+        }
+      }
+    })
+
   }
 
 
