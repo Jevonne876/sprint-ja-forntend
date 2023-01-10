@@ -19,6 +19,7 @@ export class UserService {
   private loggedInUsername: string = ''
   private token: string = '';
   private jwtHelper = new JwtHelperService();
+  private adminToken: string;
 
   constructor(private http: HttpClient) { }
 
@@ -39,22 +40,27 @@ export class UserService {
     this.token = localStorage.getItem('token') || '';
   }
 
+  public loadAdminToken(): void {
+    this.adminToken = localStorage.getItem('admin-token') || '';
+  }
+
   public resetPassword(email: string): Observable<CustomHttpResponse> {
     return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
 
   }
 
   public isUserLoggedIn(): boolean {
-    this.loadToken();
-    if (this.token !== null && this.token !== '') {
-      if (this.jwtHelper.decodeToken(this.token).sub !== null || '') {
-        if (!this.jwtHelper.isTokenExpired(this.token)) {
+    this.loadAdminToken();
+    if (this.adminToken !== null && this.adminToken !== '') {
+      if (this.jwtHelper.decodeToken(this.adminToken).sub !== null || '') {
+        if (!this.jwtHelper.isTokenExpired(this.adminToken)) {
           this.loggedInUsername = this.jwtHelper.decodeToken(this.token).sub;
           return true;
         }
       }
     } else {
       this.logout();
+      this.adminLogout();
       return false;
     }
     return false;
@@ -65,6 +71,13 @@ export class UserService {
     this.loggedInUsername = '';
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    localStorage.removeItem('users');
+  }
+
+
+  public adminLogout(): void {
+    this.token = '';
+    this.loggedInUsername = '';
+    localStorage.removeItem('admin');
+    localStorage.removeItem('admin-token');
   }
 }

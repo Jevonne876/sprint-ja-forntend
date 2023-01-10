@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   backEndApi: `http://localhost:8080/api/v1/`
+  // backEndApi: `https://sprint-ja-backend.herokuapp.com/api/v1/`
 };
 
 /*

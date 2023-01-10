@@ -23,6 +23,29 @@ import { MyShipmentsComponent } from './components/my-shipments/my-shipments.com
 import { RatesComponent } from './components/rates/rates.component';
 import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
+import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
+import { UsersComponent } from './components/admin/users/users.component';
+import { AdminsComponent } from './components/admin/admins/admins.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AllPackagesComponent } from './components/admin/all-packages/all-packages.component';
+import { NotShippedPackagesComponent } from './components/admin/not-shipped-packages/not-shipped-packages.component';
+import { ShippedPackagesComponent } from './components/admin/shipped-packages/shipped-packages.component';
+import { ReadyPackagesComponent } from './components/admin/ready-packages/ready-packages.component';
+import { CreateNewUserComponent } from './components/admin/create-new-user/create-new-user.component';
+import { ShippedComponent } from './components/user/shipped/shipped.component';
+import { ReadyComponent } from './components/user/ready/ready.component';
+import { EditPackageUserComponent } from './components/edit-package-user/edit-package-user.component';
+import { UserViewPreAlertsComponent } from './components/user-view-pre-alerts/user-view-pre-alerts.component';
+import { AdminViewPreAlertsComponent } from './components/admin-view-pre-alerts/admin-view-pre-alerts.component';
+import { AdminViewUserComponent } from './components/admin-view-user/admin-view-user.component';
+import { AdminCreateNewPreAlertsComponent } from './components/admin-create-new-pre-alerts/admin-create-new-pre-alerts.component';
+import { AdminEditPreAlertsComponent } from './components/admin-edit-pre-alerts/admin-edit-pre-alerts.component';
+import { NewAdminComponent } from './components/admin/new-admin/new-admin.component';
+import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
+import { SendEmailComponent } from './components/admin/send-email/send-email.component';
+import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
+
 
 
 
@@ -45,13 +68,36 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     MyShipmentsComponent,
     RatesComponent,
     WhatWeDoComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    UsersComponent,
+    AdminsComponent,
+    AllPackagesComponent,
+    NotShippedPackagesComponent,
+    ShippedPackagesComponent,
+    ReadyPackagesComponent,
+    CreateNewUserComponent,
+    ShippedComponent,
+    ReadyComponent,
+    EditPackageUserComponent,
+    UserViewPreAlertsComponent,
+    AdminViewPreAlertsComponent,
+    AdminViewUserComponent,
+    AdminCreateNewPreAlertsComponent,
+    AdminEditPreAlertsComponent,
+    NewAdminComponent,
+    AdminUsersComponent,
+    SendEmailComponent,
+    SendBroadcastEmailComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule
 
 
   ],

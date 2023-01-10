@@ -1,0 +1,185 @@
+<app-navbar></app-navbar>
+<div class="flex flex-col justify-center py-6 sm:px-6 lg:px-8">
+  <div class="px-4 sm:px-6 lg:px-8 mt-50">
+    <div class="sm:flex sm:items-center">
+      <div class="sm:flex-auto">
+        <h1 class="text-5xl font-semibold text-gray-900 font-Inter">
+          Packages Ready For Pickup
+        </h1>
+      </div>
+    </div>
+    <div class="flex flex-col mt-8">
+      <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle">
+          <div class="shadow-sm ring-1 ring-black ring-opacity-5">
+            <table class="min-w-full border-separate" style="border-spacing: 0">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+                  >
+                    Tracking
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
+                  >
+                    Description
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
+                  >
+                    Weight
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                  >
+                    Cost
+                  </th>
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                  >
+                    Invoice
+                  </th>
+
+                  <th
+                    scope="col"
+                    class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
+                  >
+                    <span class="sr-only">View</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white">
+                <tr *ngFor="let package of apiResponse?.content">
+                  <td
+                    class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 border-b border-gray-200 whitespace-nowrap sm:pl-6 lg:pl-8"
+                  >
+                    {{ package.trackingNumber }}
+                  </td>
+                  <td
+                    class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap sm:table-cell"
+                  >
+                    {{ package.description }}
+                  </td>
+                  <td
+                    class="hidden px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap lg:table-cell"
+                  >
+                    {{ package.weight }} IBS
+                  </td>
+                  <td
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    {{ package.cost }}
+                  </td>
+                  <td
+                    *ngIf="package.invoice !== null || ''"
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <a
+                      (click)="onDownloadFile(package.invoice)"
+                      class="cursor-pointer"
+                      >Download
+                    </a>
+                  </td>
+
+                  <td
+                    *ngIf="package.invoice === null || ''"
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    No Invoice
+                  </td>
+
+                  <td
+                    class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <a
+                      [routerLink]="[
+                        '/user-view-pre-alerts',
+                        package.trackingNumber
+                      ]"
+                      class="px-3 py-2 text-center text-white bg-gray-500 rounded-full"
+                      >View</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6"
+  >
+    <div class="flex justify-between flex-1 sm:hidden">
+      <button
+        [disabled]="apiResponse?.first"
+        type="submit"
+        (click)="gotoNextOrPerviousPage('backwards', '')"
+        class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+      >
+        Previous
+      </button>
+
+      <button
+        [disabled]="apiResponse?.last"
+        type="submit"
+        (click)="gotoNextOrPerviousPage('forward', '')"
+        class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+      >
+        Next
+      </button>
+    </div>
+    <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+      <div>
+        <p class="text-sm text-gray-700">
+          Page
+          <span class="font-medium">{{
+            apiResponse?.pageable?.pageNumber + 1
+          }}</span>
+          of
+          <span class="font-medium">{{ apiResponse?.totalPages }}</span>
+          of
+          <span class="font-medium">{{ apiResponse?.totalElements }}</span>
+          results
+        </p>
+      </div>
+      <div>
+        <nav
+          class="inline-flex -space-x-px rounded-md shadow-sm isolate"
+          aria-label="Pagination"
+        >
+          <nav
+            class="inline-flex -space-x-px rounded-md shadow-sm isolate"
+            aria-label="Pagination"
+          >
+            <button
+              [disabled]="apiResponse?.first"
+              type="submit"
+              (click)="gotoNextOrPerviousPage('backwards', '')"
+              class="relative inline-flex items-center px-4 py-2 mr-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Previous
+            </button>
+
+            <button
+              [disabled]="apiResponse?.last"
+              type="submit"
+              (click)="gotoNextOrPerviousPage('forward', '')"
+              class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Next
+            </button>
+          </nav>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
