@@ -96,12 +96,8 @@ export class PackageService {
     });
   }
 
-  adminDownload(filename: string): Observable<HttpEvent<Blob>> {
-    return this.http.get(`${this.apiUrl}admin/invoice-download/${filename}/`, {
-      reportProgress: true,
-      observe: 'events',
-      responseType: 'blob'
-    });
+  adminDownload(filename: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}admin/invoice-download/${filename}`);
   }
 
   public uploadUserInvoice(trackingNumber: string, formData: FormData) {

@@ -8,6 +8,7 @@ import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
 import { AdminService } from 'src/app/service/admin.service';
 import { PackageService } from 'src/app/services/package.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shipped-packages',
@@ -26,6 +27,8 @@ export class ShippedPackagesComponent implements OnInit {
   file: any;
   formData: FormData = new FormData();
   show: boolean = false;
+
+  adminFileDownloadUrl = environment.adminFileDownLoadApi;
 
   constructor(private adminService: AdminService, private packageService: PackageService, private router: Router) { }
 

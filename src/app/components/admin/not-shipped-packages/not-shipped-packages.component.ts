@@ -8,6 +8,7 @@ import { ApiResponse } from 'src/app/model/api-response';
 import { PackagePage } from 'src/app/model/package-page';
 import { AdminService } from 'src/app/service/admin.service';
 import { PackageService } from 'src/app/services/package.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -27,6 +28,8 @@ export class NotShippedPackagesComponent implements OnInit {
   file: any;
   formData: FormData = new FormData();
   show: boolean = false;
+
+  adminFileDownloadUrl = environment.adminFileDownLoadApi;
 
 
   constructor(private adminService: AdminService, private packageService: PackageService, private router: Router) { }
@@ -121,7 +124,7 @@ export class NotShippedPackagesComponent implements OnInit {
             this.filenames.unshift(filename);
           }
         } else {
-          saveAs(new File([httpEvent.body!], httpEvent.headers.get('File-Name')!,
+          saveAs(new File([httpEvent.body!], httpEvent.headers.get('filename')!,
             { type: `${httpEvent.headers.get('Content-Type')};charset=utf-8` }));
           // saveAs(new Blob([httpEvent.body!],
           //   { type: `${httpEvent.headers.get('Content-Type')};charset=utf-8`}),
