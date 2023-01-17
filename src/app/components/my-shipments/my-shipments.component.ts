@@ -10,6 +10,7 @@ import { PreAlerts } from 'src/app/model/pre-alerts';
 import { User } from 'src/app/model/user';
 import { PackageService } from 'src/app/services/package.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-my-shipments',
@@ -32,6 +33,8 @@ export class MyShipmentsComponent implements OnInit {
   file: any;
   formData: FormData = new FormData();
   show: boolean = false;
+
+  userFileDownLaodApi = environment.userFileDownLaodApi;
 
   constructor(private route: ActivatedRoute, private packageService: PackageService, private userService: UserService, private router: Router) { }
 

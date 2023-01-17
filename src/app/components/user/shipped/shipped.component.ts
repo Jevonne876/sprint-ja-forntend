@@ -9,6 +9,7 @@ import { PackagePage } from 'src/app/model/package-page';
 import { User } from 'src/app/model/user';
 import { PackageService } from 'src/app/services/package.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shipped',
@@ -30,6 +31,8 @@ export class ShippedComponent implements OnInit {
   file: any;
   formData: FormData = new FormData();
   show: boolean = false;
+
+  userFileDownLaodApi = environment.userFileDownLaodApi;
 
   constructor(private packageService: PackageService, private userService: UserService, private router: Router) { }
 

@@ -7,6 +7,7 @@ import { PackagePage } from 'src/app/model/package-page';
 import { User } from 'src/app/model/user';
 import { PackageService } from 'src/app/services/package.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-ready',
@@ -23,6 +24,7 @@ export class ReadyComponent implements OnInit {
   fileService: any;
   fileStatus: any;
   filenames: any;
+  userFileDownLaodApi = environment.userFileDownLaodApi;
 
   constructor(private packageService: PackageService, private userService: UserService) { }
 
