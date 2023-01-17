@@ -51,6 +51,7 @@ export class PreAlertsComponent implements OnInit {
 
 
   onSubmitNewPreAlert() {
+    this.showLoading = true
     this.newPreAlert.trackingNumber = this.newForm.value.trackingNumber!;
     this.newPreAlert.courier = this.newForm.value.courier!;
     this.newPreAlert.description = this.newForm.value.description!;
@@ -63,15 +64,18 @@ export class PreAlertsComponent implements OnInit {
       this.packageService.addNewPreAlert(this.newPreAlert, this.formData).subscribe({
         next: (response: any) => {
           Notify.success("New Pre-Alert created successfully.");
+          this.showLoading = false;
           this.router.navigateByUrl('dashboard');
 
         },
         error: (httpErrorResponse: HttpErrorResponse) => {
           if (httpErrorResponse.error.message) {
             Notify.failure(httpErrorResponse.error.message);
+            this.showLoading = false;
 
           } else {
             Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+            this.showLoading = false;
 
           }
         }
