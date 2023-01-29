@@ -1,0 +1,291 @@
+<div
+  class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8 bg-gray-50"
+>
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <h2
+      class="mt-6 text-3xl font-bold tracking-normal text-center text-gray-900"
+    >
+      Create New User Account
+    </h2>
+  </div>
+  <div class="mt-8 sm:mx-auto sm:w-6/12">
+    <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
+      <form class="space-y-8" [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+        <div class="space-y-8">
+          <div class="pt-1">
+            <div class="grid grid-cols-1 mt-6 gap-y-6 gap-x-4 sm:grid-cols-6">
+              <div class="sm:col-span-3">
+                <label for="trn" class="block text-sm font-medium text-gray-700"
+                  >Tax Registration Number (TRN)</label
+                >
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    name="trn"
+                    id="trn"
+                    formControlName="trn"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div class="sm:col-span-3">
+                <label for="dob" class="block text-sm font-medium text-gray-700"
+                  >Date of Birth</label
+                >
+                <div class="mt-1">
+                  <input
+                    type="date"
+                    name="dob"
+                    id="dob"
+                    formControlName="dob"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+              <div class="sm:col-span-3">
+                <label
+                  for="firstName"
+                  class="block text-sm font-medium text-gray-700"
+                  >First name</label
+                >
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    formControlName="firstName"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+                <div
+                  class="mt-1 mb-1"
+                  *ngIf="
+                    (!newUserForm.get('firstName')?.valid &&
+                      newUserForm.get('firstName')?.touched) ||
+                    newUserForm.get('firstName')?.hasError('minlength')
+                  "
+                >
+                  <span class="help-block" style="color: red">
+                    Please enter your first name
+                  </span>
+                </div>
+              </div>
+
+              <div class="sm:col-span-3">
+                <label
+                  for="lastName"
+                  class="block text-sm font-medium text-gray-700"
+                  >Last name</label
+                >
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    formControlName="lastName"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+                <div
+                  class="mt-1 mb-1"
+                  *ngIf="
+                    (!newUserForm.get('lastName')?.valid &&
+                      newUserForm.get('lastName')?.touched) ||
+                    newUserForm.get('lastName')?.hasError('minlength')
+                  "
+                >
+                  <span class="help-block" style="color: red">
+                    Please enter your last name
+                  </span>
+                </div>
+              </div>
+
+              <div class="sm:col-span-3">
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-700"
+                  >Email address</label
+                >
+                <div class="mt-1">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    formControlName="email"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+                <div
+                  class="mt-1 mb-1"
+                  *ngIf="
+                    !newUserForm.get('email')?.valid &&
+                    newUserForm.get('email')?.touched
+                  "
+                >
+                  <span class="help-block" style="color: red">
+                    Please enter your email
+                  </span>
+                </div>
+              </div>
+              <div class="sm:col-span-3">
+                <label
+                  for="phoneNumber"
+                  class="block text-sm font-medium text-gray-700"
+                  >Phone number</label
+                >
+                <div class="mt-1">
+                  <input
+                    type="number"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    formControlName="phoneNumber"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+                <div
+                  class="mt-1 mb-1"
+                  *ngIf="
+                    !newUserForm.get('phoneNumber')?.valid &&
+                    newUserForm.get('phoneNumber')?.touched
+                  "
+                >
+                  <span class="help-block" style="color: red">
+                    Please enter your phone number
+                  </span>
+                </div>
+              </div>
+
+              <div class="sm:col-span-6">
+                <label
+                  for="country"
+                  class="block text-sm font-medium text-gray-700"
+                  >Parish</label
+                >
+                <div class="mt-1">
+                  <select
+                    id="parish"
+                    name="parish"
+                    formControlName="parish"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  >
+                    <option value="" selected>Please Select</option>
+                    <option value="Kingston">Kingston</option>
+                    <option value="St.Andrew">St.Andrew</option>
+                    <option value="St.Thomas">St.Thomas</option>
+                    <option value="St.Catherine">St.Catherine</option>
+                    <option value="St.Mary">St.Mary</option>
+                    <option value="St.Ann">St.Ann</option>
+                    <option value="St.James">St.James</option>
+                    <option value="St.Elizabeth">St.Elizabeth</option>
+                    <option value="Manchester">Manchester</option>
+                    <option value="Clarendon">Clarendon</option>
+                    <option value="Hanover">Hanover</option>
+                    <option value="Westmoreland">Westmoreland</option>
+                    <option value="Trelawny">Trelawny</option>
+                    <option value="Portland">Portland</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="sm:col-span-6">
+                <label
+                  for="streetAddress"
+                  class="block text-sm font-medium text-gray-700"
+                  >Street address</label
+                >
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    name="streetAddress"
+                    id="streetAddress"
+                    formControlName="streetAddress"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+
+              <div class="sm:col-span-6">
+                <label
+                  for="pickUpBranch"
+                  class="block text-sm font-medium text-gray-700"
+                  >Pick up Location
+                </label>
+                <div class="mt-1">
+                  <select
+                    id="pickUpBranch"
+                    name="pickUpBranch"
+                    formControlName="pickUpBranch"
+                    class="block w-full border-gray-300 rounded-md shadow-sm focus:border-gray-500 focus:ring-gray-500 sm:text-sm"
+                  >
+                    <option value="" selected>Please Select</option>
+                    <option
+                      value="Shop #20 Royes Plaza - Junction St.Elizabeth"
+                    >
+                      Shop #20 Royes Plaza - Junction St.Elizabeth
+                    </option>
+                    <option value="Shop #2B Coke Drive - ">
+                      Shop #2B Coke Drive - Santa Cruz St.Elizabeth
+                    </option>
+                    <option
+                      value="Shop #13 Juici Beef Plaza - Mandeville Manchester "
+                    >
+                      Shop #13 Juici Beef Plaza - Mandeville Manchester
+                    </option>
+
+                    <option value="Lover’s Lane Santa Cruz - St. Elizabeth ">
+                      Lover’s Lane Santa Cruz - St. Elizabeth
+                    </option>
+                  </select>
+                </div>
+
+                <div
+                  class="mb-1"
+                  *ngIf="
+                    !newUserForm.get('pickUpBranch')?.valid &&
+                    newUserForm.get('pickUpBranch')?.touched
+                  "
+                >
+                  <span class="help-block" style="color: red">
+                    Please select your pickup location
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <div class="flex justify-center">
+            <button
+              [disabled]="newUserForm.invalid"
+              type="submit"
+              class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            >
+              <svg
+                *ngIf="showLoading"
+                aria-hidden="true"
+                class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-400 fill-white"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"
+                />
+              </svg>
+              <span *ngIf="showLoading">Creating Account</span>
+              <span *ngIf="!showLoading">Create Account</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
