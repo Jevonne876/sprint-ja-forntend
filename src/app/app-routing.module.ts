@@ -35,6 +35,7 @@ import { NewAdminComponent } from './components/admin/new-admin/new-admin.compon
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { SendEmailComponent } from './components/admin/send-email/send-email.component';
 import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
+import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-disclaimer.component';
 
 
 
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: "contact-us", component: HomeComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "rates", component: RatesComponent },
+  { path: "legal-disclaimer", component: LegalDisclaimerComponent },
   { path: "login", component: LoginComponent },
   { path: "admin-login", component: AdminLoginComponent },
   { path: "sign-up", component: SignUpComponent },
