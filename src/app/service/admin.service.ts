@@ -32,8 +32,8 @@ export class AdminService {
   }
 
 
-  public getAllPackages(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
-    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages?page=${page}`)
+  public getAllPackages(page: number = 0, trackingNumber: string = ""): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages?page=${page}&trackingNumber=${trackingNumber}`)
   }
 
   public getAllPackagesNotShipped(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
