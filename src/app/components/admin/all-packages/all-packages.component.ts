@@ -39,8 +39,8 @@ export class AllPackagesComponent implements OnInit {
     })
   }
 
-  gotoPage(name?: string, pageNumber?: number) {
-    this.adminService.getAllPackages(pageNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {
+  gotoPage(trackingNumber?: string, pageNumber?: number) {
+    this.adminService.getAllPackages(pageNumber, trackingNumber).pipe(map((response: ApiResponse<PackagePage> | HttpErrorResponse) => {
       this.apiResponse = response;
       this.currentPageSubject.next(pageNumber);
       this.responseSubject.next(this.apiResponse);

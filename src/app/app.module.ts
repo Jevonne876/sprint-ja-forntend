@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +46,7 @@ import { NewAdminComponent } from './components/admin/new-admin/new-admin.compon
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { SendEmailComponent } from './components/admin/send-email/send-email.component';
 import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
+import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-disclaimer.component';
 
 
 
@@ -90,6 +92,7 @@ import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-e
     AdminUsersComponent,
     SendEmailComponent,
     SendBroadcastEmailComponent,
+    LegalDisclaimerComponent,
 
   ],
   imports: [
@@ -97,7 +100,8 @@ import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-e
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
 
 
   ],

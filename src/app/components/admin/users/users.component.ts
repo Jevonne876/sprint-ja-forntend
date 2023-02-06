@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit {
 
 
   gotoPage(name?: string, pageNumber?: number) {
-    this.adminService.getusers(pageNumber).pipe(map((response: ApiResponse<Page> | HttpErrorResponse) => {
+    this.adminService.getusers(pageNumber, name).pipe(map((response: ApiResponse<Page> | HttpErrorResponse) => {
       this.apiResponse = response;
       this.currentPageSubject.next(pageNumber);
       this.responseSubject.next(this.apiResponse);
