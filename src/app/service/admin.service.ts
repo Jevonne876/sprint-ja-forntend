@@ -23,8 +23,8 @@ export class AdminService {
   users$ = (): Observable<ApiResponse<Page> | HttpErrorResponse> => this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users`);
 
 
-  public getusers(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
-    return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users?page=${page}`)
+  public getusers(page: number = 0, firstName: string = ""): Observable<ApiResponse<Page> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users?page=${page}&firstName=${firstName}`)
   }
 
   getAdmins(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
