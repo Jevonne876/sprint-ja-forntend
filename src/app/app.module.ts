@@ -47,6 +47,7 @@ import { AdminUsersComponent } from './components/admin/admin-users/admin-users.
 import { SendEmailComponent } from './components/admin/send-email/send-email.component';
 import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
 import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-disclaimer.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
 
 
 
@@ -93,6 +94,7 @@ import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-di
     SendEmailComponent,
     SendBroadcastEmailComponent,
     LegalDisclaimerComponent,
+    UserUpdateComponent,
 
   ],
   imports: [
