@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: "new-pre-alert", component: PreAlertsComponent, canActivate: [AuthGuard] },
   { path: "my-pre-alerts", component: MyShipmentsComponent, canActivate: [AuthGuard], pathMatch: 'full' },
-  { path: "users", component: UsersComponent },
+  { path: "users", component: UsersComponent, canActivate: [AdminGuard] },
   { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [AdminGuard] },
   { path: "all-packages", component: AllPackagesComponent, canActivate: [AdminGuard] },
   { path: "all-packages-not-shipped", component: NotShippedPackagesComponent, canActivate: [AdminGuard] },
