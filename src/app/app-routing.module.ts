@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -37,6 +37,7 @@ import { SendEmailComponent } from './components/admin/send-email/send-email.com
 import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
 import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-disclaimer.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { AdminUserUpdateComponent } from './components/admin-user-update/admin-user-update.component';
 
 
 
@@ -73,7 +74,8 @@ const routes: Routes = [
   { path: "admin-users", component: AdminUsersComponent, canActivate: [AdminGuard] },
   { path: "send-email", component: SendEmailComponent, canActivate: [AdminGuard] },
   { path: "send-broadcast-email", component: SendBroadcastEmailComponent, canActivate: [AdminGuard] },
-  { path: "user-update", component: UserUpdateComponent }
+  { path: "user-update", component: UserUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'admin-user-update/:id', component: AdminUserUpdateComponent, canActivate: [AdminGuard] }
 ];
 
 @NgModule({
