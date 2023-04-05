@@ -28,7 +28,7 @@ export class UserService {
   }
 
   public getUserByUserId(userId: string): Observable<User | HttpErrorResponse> {
-    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}findById/${userId}`);
+    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}admin/view-user/${userId}`);
   }
 
   public updateUser(user: User): Observable<User | HttpErrorResponse> {
@@ -51,7 +51,10 @@ export class UserService {
 
   public resetPassword(email: string): Observable<CustomHttpResponse> {
     return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
+  }
 
+  public adminGetUser(userId: string): Observable<User | HttpErrorResponse> {
+    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}/admin/view-user/${userId}`);
   }
 
   public isUserLoggedIn(): boolean {

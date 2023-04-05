@@ -62,6 +62,11 @@ export class AdminService {
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}admin/view-user/${userId}`);
   }
 
+  public updateUserAccountDetails(user:User): Observable<User | HttpErrorResponse> {
+    return this.http.put<User | HttpErrorResponse>
+      (`${this.apiUrl}admin/update-user?userId=${user.userId}&trn=${user.trn}&newFirstName=${user.firstName}&newLastName=${user.lastName}&newEmail=${user.email}&newPhoneNumber=${user.phoneNumber}&newAddress1=${user.streetAddress}&newAddress2=${user.parish}&newPickUpBranch=${user.pickUpBranch}`, user)
+  }
+
   public deleteUser(username: string): Observable<CustomHttpResponse> {
     return this.http.delete<CustomHttpResponse>(`${this.apiUrl}admin/delete-user/${username}`);
   }
