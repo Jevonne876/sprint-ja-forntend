@@ -18,8 +18,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./my-shipments.component.css']
 })
 export class MyShipmentsComponent implements OnInit {
-
-  userId: string = "";
   trackingNumber: string = "";
   userPackages: PreAlerts[] = [];
   apiResponse: any;
@@ -39,11 +37,10 @@ export class MyShipmentsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private packageService: PackageService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.packageService.getUserPreAlerts(this.userId).subscribe((resposne: any) => {
+    this.user = this.userService.getUserFromLocalStorage();
+    this.packageService.getUserPreAlerts(this.user.userId!).subscribe((resposne: any) => {
       this.userPackages = resposne;
     })
-
-    this.user = this.userService.getUserFromLocalStorage();
 
     this.packageService.getAllPackagesNotShipped(this.user.userId!).subscribe({
       next: (response: ApiResponse<PackagePage> | HttpErrorResponse) => {

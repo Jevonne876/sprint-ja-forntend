@@ -27,14 +27,19 @@ export class UserService {
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}find-user/${username}`);
   }
 
+  public getUserByUserId(userId: string): Observable<User | HttpErrorResponse> {
+    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}admin/view-user/${userId}`);
+  }
+
+  public updateUser(user: User): Observable<User | HttpErrorResponse> {
+    return this.http.put<User | HttpErrorResponse>
+      (`${this.apiUrl}update-user?userId=${user.userId}&trn=${user.trn}&newFirstName=${user.firstName}&newLastName=${user.lastName}&newEmail=${user.email}&newPhoneNumber=${user.phoneNumber}&newAddress1=${user.streetAddress}&newAddress2=${user.parish}&newPickUpBranch=${user.pickUpBranch}`, user)
+  }
+
   public getUserFromLocalStorage() {
     return JSON.parse(localStorage.getItem('user') || '');
   }
 
-  public updateUser(loggedInUsername: string, formData: FormData): Observable<User | HttpErrorResponse> {
-    return this.http.put<User | HttpErrorResponse>
-      (`${this.apiUrl}update-user/${loggedInUsername}`, formData)
-  }
 
   public loadToken(): void {
     this.token = localStorage.getItem('token') || '';
@@ -46,7 +51,10 @@ export class UserService {
 
   public resetPassword(email: string): Observable<CustomHttpResponse> {
     return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
+  }
 
+  public adminGetUser(userId: string): Observable<User | HttpErrorResponse> {
+    return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}/admin/view-user/${userId}`);
   }
 
   public isUserLoggedIn(): boolean {
