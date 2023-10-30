@@ -10,10 +10,10 @@ export class AppComponent {
   title = 'sprint-ja-app';
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,) { }
 
   ngOnInit() {
-    if (location.protocol !== 'https:') {
+    if (location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
       window.location.href = location.href.replace('http:', 'https:')
     }
   }
