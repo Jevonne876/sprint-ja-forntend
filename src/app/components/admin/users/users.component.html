@@ -133,17 +133,16 @@
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
-                    <span class="sr-only">Edit</span>
+                    <span class="sr-only">New Package</span>
                   </th>
                   <th
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
-                    <span class="sr-only">New Package</span>
+                    <span class="sr-only">View</span>
                   </th>
 
                   <th
-                    hidden
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
@@ -220,12 +219,11 @@
                   </td>
 
                   <td
-                    hidden
                     class="text-sm text-center text-gray-500 border-b border-gray-200"
                   >
                     <a
-                      href="#"
-                      class="px-3 py-2 mr-5 text-center text-white bg-red-600 rounded-full"
+                      (click)="onUserDelete(user.username)"
+                      class="px-3 py-2 mr-5 text-center text-white bg-red-600 rounded-full cursor-pointer"
                       >Delete</a
                     >
                   </td>
