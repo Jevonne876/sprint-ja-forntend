@@ -1,37 +1,28 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Notify } from 'notiflix';
-
-import { UserService } from 'src/app/services/user.service';
-
-
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.css']
+  selector: 'app-password-reset',
+  templateUrl: './password-reset.component.html',
+  styleUrls: ['./password-reset.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class PasswordResetComponent implements OnInit {
+
+  constructor(private route: Router) { }
 
   isLoading: boolean = false;
 
-  userEmail: string = "";
-
   updatePassword = new FormGroup({
-    email: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
 
   });
-
-
-  constructor(private userService: UserService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
   onPasswordReset() {
-    this.route.navigateByUrl('/password-reset')
+    this.route.navigateByUrl('/login')
     // this.userEmail = this.updatePassword.value.email!;
     // this.isLoading = true;
     // this.userService.resetPassword(this.userEmail).subscribe({
@@ -47,4 +38,5 @@ export class ForgotPasswordComponent implements OnInit {
     // })
 
   }
+
 }
