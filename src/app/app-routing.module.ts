@@ -3,10 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
 
-
-
-
-
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
 import { AllPackagesComponent } from './components/admin/all-packages/all-packages.component';

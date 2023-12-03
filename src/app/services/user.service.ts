@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
 import { JwtHelperService } from "@auth0/angular-jwt";
-import { FormGroup } from '@angular/forms';
+import { Token } from '../model/token.';
+import { BehaviorSubject } from 'rxjs';
 import { CustomHttpResponse } from '../model/custom-http-response';
 
 
@@ -16,10 +17,13 @@ export class UserService {
   /*gets backend api fron environemnt file.*/
   public apiUrl = environment.backEndApi;
   public userEmail: string = ''
+
   private loggedInUsername: string = ''
   private token: string = '';
   private jwtHelper = new JwtHelperService();
   private adminToken: string;
+
+  private emailSubject = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) { }
 
@@ -49,9 +53,14 @@ export class UserService {
     this.adminToken = localStorage.getItem('admin-token') || '';
   }
 
-  public resetPassword(email: string): Observable<CustomHttpResponse> {
-    return this.http.get<CustomHttpResponse>(`${this.apiUrl}reset-password/${email}`)
+  public forgotPassword(email: string): Observable<Token | HttpErrorResponse> {
+    return this.http.post<Token | HttpErrorResponse>(`${this.apiUrl}forgot-password?email=${email}`, {})
   }
+
+  public resetPassword(email: string, password: string): Observable<Boolean> {
+    return this.http.put<Boolean>(`${this.apiUrl}reset-password?email=${email}&password=${password}`, {})
+  }
+
 
   public adminGetUser(userId: string): Observable<User | HttpErrorResponse> {
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}/admin/view-user/${userId}`);
@@ -80,12 +89,16 @@ export class UserService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
   }
-
-
   public adminLogout(): void {
     this.token = '';
     this.loggedInUsername = '';
     localStorage.removeItem('admin');
     localStorage.removeItem('admin-token');
+  }
+
+  data$ = this.emailSubject.asObservable();
+
+  setEmail(email: string) {
+    this.emailSubject.next(email);
   }
 }
