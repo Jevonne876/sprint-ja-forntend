@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Notify } from 'notiflix';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { UserService } from 'src/app/services/user.service';
 
@@ -17,26 +18,37 @@ export class ForgotPasswordComponent implements OnInit {
 
   isLoading: boolean = false;
 
-  userEmail: string = "";
+  userEmail: any = "";
 
   updatePassword = new FormGroup({
     email: new FormControl('', [Validators.required]),
 
   });
 
+  private jwtHelper = new JwtHelperService();
+
 
   constructor(private userService: UserService, private route: Router) { }
 
+
   ngOnInit(): void {
+    const token = localStorage.getItem('token');
+
+    if (this.jwtHelper.isTokenExpired(token)) {
+      localStorage.clear()
+    }
   }
 
-  onPasswordReset() {
+
+  onForgotPassword() {
+    // this.route.navigateByUrl('/password-reset')
     this.userEmail = this.updatePassword.value.email!;
-    this.isLoading = true;
-    this.userService.resetPassword(this.userEmail).subscribe({
-      next: (resposne: any) => {
-        Notify.success("Youre new password was sent to your email.");
-        this.route.navigateByUrl('/login')
+    // this.isLoading = true;
+    this.userService.forgotPassword(this.userEmail).subscribe({
+      next: (response: any) => {
+        localStorage.setItem('token', response.token)
+        this.userService.setEmail(this.userEmail);
+        this.route.navigateByUrl('/password-reset')
 
       },
       error: (errorResponse: HttpErrorResponse) => {

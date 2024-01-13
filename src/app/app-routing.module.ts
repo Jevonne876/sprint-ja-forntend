@@ -1,11 +1,7 @@
-import {  NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
-
-
-
-
 
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './components/admin/admin-login/admin-login.component';
@@ -38,6 +34,7 @@ import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-e
 import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-disclaimer.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
 import { AdminUserUpdateComponent } from './components/admin-user-update/admin-user-update.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 
 
@@ -47,6 +44,8 @@ const routes: Routes = [
   { path: "about-us", component: HomeComponent },
   { path: "contact-us", component: HomeComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
+  { path: "password-reset", component: PasswordResetComponent }
+  ,
   { path: "rates", component: RatesComponent },
   { path: "legal-disclaimer", component: LegalDisclaimerComponent },
   { path: "login", component: LoginComponent },
