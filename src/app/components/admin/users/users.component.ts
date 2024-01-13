@@ -1,5 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Notify } from 'notiflix';
 
 import { BehaviorSubject, catchError, map, Observable, of, startWith } from 'rxjs';
 import { ApiResponse } from 'src/app/model/api-response';
@@ -21,7 +23,7 @@ export class UsersComponent implements OnInit {
   usersState$: Observable<{ appState: string, appData?: ApiResponse<Page>, error?: HttpErrorResponse }> | undefined = undefined;
 
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
     this.adminService.getusers().subscribe({
@@ -36,7 +38,7 @@ export class UsersComponent implements OnInit {
 
 
   gotoPage(name?: string, pageNumber?: number) {
-    this.adminService.getusers(pageNumber).pipe(map((response: ApiResponse<Page> | HttpErrorResponse) => {
+    this.adminService.getusers(pageNumber, name).pipe(map((response: ApiResponse<Page> | HttpErrorResponse) => {
       this.apiResponse = response;
       this.currentPageSubject.next(pageNumber);
       this.responseSubject.next(this.apiResponse);
@@ -48,7 +50,26 @@ export class UsersComponent implements OnInit {
 
   gotoNextOrPerviousPage(directory?: string, name?: string,): void {
     this.gotoPage('', directory === 'forward' ? this.currentPageSubject.value + 1 : this.currentPageSubject.value - 1);
+  }
 
+  onUserDelete(username: string) {
+    this.adminService.deleteUser(username)
+      .subscribe({
+        next: (response: any) => {
+          this.router.navigateByUrl('admin-dashboard');
+          Notify.success(response.message)
+        },
+        error: (httpErrorResponse: HttpErrorResponse) => {
+
+          if (httpErrorResponse.error.message) {
+            Notify.failure(httpErrorResponse.error.message);
+
+          } else {
+            Notify.failure("AN ERROR OCCURED PLEASE TRY AGAIN..");
+
+          }
+        }
+      })
   }
 
 

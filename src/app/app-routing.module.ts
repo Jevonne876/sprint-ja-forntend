@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -35,6 +35,9 @@ import { NewAdminComponent } from './components/admin/new-admin/new-admin.compon
 import { AdminUsersComponent } from './components/admin/admin-users/admin-users.component';
 import { SendEmailComponent } from './components/admin/send-email/send-email.component';
 import { SendBroadcastEmailComponent } from './components/admin/send-broadcast-email/send-broadcast-email.component';
+import { LegalDisclaimerComponent } from './components/legal-disclaimer/legal-disclaimer.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { AdminUserUpdateComponent } from './components/admin-user-update/admin-user-update.component';
 
 
 
@@ -45,13 +48,14 @@ const routes: Routes = [
   { path: "contact-us", component: HomeComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "rates", component: RatesComponent },
+  { path: "legal-disclaimer", component: LegalDisclaimerComponent },
   { path: "login", component: LoginComponent },
   { path: "admin-login", component: AdminLoginComponent },
   { path: "sign-up", component: SignUpComponent },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: "new-pre-alert", component: PreAlertsComponent, canActivate: [AuthGuard] },
   { path: "my-pre-alerts", component: MyShipmentsComponent, canActivate: [AuthGuard], pathMatch: 'full' },
-  { path: "users", component: UsersComponent },
+  { path: "users", component: UsersComponent, canActivate: [AdminGuard] },
   { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [AdminGuard] },
   { path: "all-packages", component: AllPackagesComponent, canActivate: [AdminGuard] },
   { path: "all-packages-not-shipped", component: NotShippedPackagesComponent, canActivate: [AdminGuard] },
@@ -69,7 +73,9 @@ const routes: Routes = [
   { path: "new-admin", component: NewAdminComponent, canActivate: [AdminGuard] },
   { path: "admin-users", component: AdminUsersComponent, canActivate: [AdminGuard] },
   { path: "send-email", component: SendEmailComponent, canActivate: [AdminGuard] },
-  { path: "send-broadcast-email", component: SendBroadcastEmailComponent, canActivate: [AdminGuard] }
+  { path: "send-broadcast-email", component: SendBroadcastEmailComponent, canActivate: [AdminGuard] },
+  { path: "user-update", component: UserUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'admin-user-update/:id', component: AdminUserUpdateComponent, canActivate: [AdminGuard] }
 ];
 
 @NgModule({

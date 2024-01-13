@@ -27,7 +27,8 @@ export class AdminGuard implements CanActivate {
       return true;
     }
     this.router.navigate(['/admin-login']);
-    Notify.failure("You to login as admin to access this route")
+    localStorage.clear();
+    Notify.failure("You need to login as a admin to access this route")
     return false;
   }
 

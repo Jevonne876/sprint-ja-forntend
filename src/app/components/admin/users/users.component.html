@@ -19,6 +19,80 @@
     <div class="flex flex-col mt-8">
       <div class="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle">
+          <div class="flex items-center justify-between w-full">
+            <div>
+              <form
+                #searchForm="ngForm"
+                (ngSubmit)="gotoPage(searchForm.value.name)"
+              >
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-gray-600"
+                  >Search users</label
+                >
+                <div class="flex mt-1 mb-4 rounded-md shadow-sm">
+                  <div
+                    class="relative flex items-stretch flex-grow focus-within:z-10"
+                  >
+                    <div
+                      class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                    >
+                      <!-- Heroicon name: mini/users -->
+                      <svg
+                        class="w-5 h-5 text-gray-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M7 8a3 3 0 100-6 3 3 0 000 6zM14.5 9a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM1.615 16.428a1.224 1.224 0 01-.569-1.175 6.002 6.002 0 0111.908 0c.058.467-.172.92-.57 1.174A9.953 9.953 0 017 18a9.953 9.953 0 01-5.385-1.572zM14.5 16h-.106c.07-.297.088-.611.048-.933a7.47 7.47 0 00-1.588-3.755 4.502 4.502 0 015.874 2.636.818.818 0 01-.36.98A7.465 7.465 0 0114.5 16z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      type="search"
+                      name="name"
+                      id="firstName"
+                      ngModel
+                      class="block w-full pl-10 border-gray-300 rounded-none rounded-l-md sm:text-sm focus:border-red-500 focus:ring-red-500"
+                      placeholder="search by last name"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class="relative inline-flex items-center px-4 py-2 -ml-px space-x-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-r-md bg-gray-50 hover:bg-gray-100 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500"
+                  >
+                    <!-- Heroicon name: mini/bars-arrow-up -->
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                      />
+                    </svg>
+
+                    <span>Search</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <a
+                href="https://sprint-ja-backend.herokuapp.com/api/v1/admin/export-users"
+                class="inline-flex items-center justify-center px-4 py-2 mr-8 text-sm font-medium text-white transition-all duration-300 bg-blue-400 border border-transparent rounded-md shadow-sm hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 sm:w-auto"
+              >
+                Export Users
+              </a>
+            </div>
+          </div>
           <div class="shadow-sm ring-1 ring-black ring-opacity-5">
             <table class="min-w-full border-separate" style="border-spacing: 0">
               <thead class="bg-gray-50">
@@ -59,17 +133,16 @@
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
-                    <span class="sr-only">Edit</span>
+                    <span class="sr-only">New Package</span>
                   </th>
                   <th
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
-                    <span class="sr-only">New Package</span>
+                    <span class="sr-only">View</span>
                   </th>
 
                   <th
-                    hidden
                     scope="col"
                     class="sticky top-0 z-10 border-b border-gray-300 bg-gray-50"
                   >
@@ -139,20 +212,18 @@
                     class="px-3 py-4 text-sm text-gray-500 border-b border-gray-200 whitespace-nowrap"
                   >
                     <a
-                      hidden
-                      href="#"
+                      [routerLink]="['/admin-user-update', user.userId]"
                       class="px-3 py-2 text-center text-white bg-yellow-400 rounded-full"
                       >Edit</a
                     >
                   </td>
 
                   <td
-                    hidden
                     class="text-sm text-center text-gray-500 border-b border-gray-200"
                   >
                     <a
-                      href="#"
-                      class="px-3 py-2 mr-5 text-center text-white bg-red-600 rounded-full"
+                      (click)="onUserDelete(user.username)"
+                      class="px-3 py-2 mr-5 text-center text-white bg-red-600 rounded-full cursor-pointer"
                       >Delete</a
                     >
                   </td>

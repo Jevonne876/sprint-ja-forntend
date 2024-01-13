@@ -10,6 +10,7 @@ import { AdminService } from 'src/app/service/admin.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Notify } from 'notiflix';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -22,6 +23,7 @@ export class AdminDashboardComponent implements OnInit {
   toggleSideBar: boolean = false
   data: ApplicationInfo = {};
   admin: User = {};
+  private jwtHelper = new JwtHelperService();
 
   apiResponse: any;
   responseSubject = new BehaviorSubject<ApiResponse<PackagePage>>(null);
@@ -32,6 +34,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private packageService: PackageService, private authenticationService: AuthenticationService, private adminService: AdminService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.admin = this.authenticationService.getAdminUserFromLocalStorage();
     this.packageService.getApplicationData().subscribe({
       next: ((response: any) => {
@@ -46,6 +49,7 @@ export class AdminDashboardComponent implements OnInit {
 
       }
     })
+
   }
 
   gotoPage(name?: string, pageNumber?: number) {

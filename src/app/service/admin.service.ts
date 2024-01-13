@@ -23,8 +23,8 @@ export class AdminService {
   users$ = (): Observable<ApiResponse<Page> | HttpErrorResponse> => this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users`);
 
 
-  public getusers(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
-    return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users?page=${page}`)
+  public getusers(page: number = 0, firstName: string = ""): Observable<ApiResponse<Page> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<Page> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-users?page=${page}&firstName=${firstName}`)
   }
 
   getAdmins(page: number = 0): Observable<ApiResponse<Page> | HttpErrorResponse> {
@@ -32,8 +32,8 @@ export class AdminService {
   }
 
 
-  public getAllPackages(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
-    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages?page=${page}`)
+  public getAllPackages(page: number = 0, trackingNumber: string = ""): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
+    return this.http.get<ApiResponse<PackagePage> | HttpErrorResponse>(`${this.apiUrl}admin/get-all-user-packages?page=${page}&trackingNumber=${trackingNumber}`)
   }
 
   public getAllPackagesNotShipped(page: number = 0): Observable<ApiResponse<PackagePage> | HttpErrorResponse> {
@@ -60,6 +60,11 @@ export class AdminService {
   public viewUserProfileDetails(userId: string): Observable<User | HttpErrorResponse> {
 
     return this.http.get<User | HttpErrorResponse>(`${this.apiUrl}admin/view-user/${userId}`);
+  }
+
+  public updateUserAccountDetails(user:User): Observable<User | HttpErrorResponse> {
+    return this.http.put<User | HttpErrorResponse>
+      (`${this.apiUrl}admin/update-user?userId=${user.userId}&trn=${user.trn}&newFirstName=${user.firstName}&newLastName=${user.lastName}&newEmail=${user.email}&newPhoneNumber=${user.phoneNumber}&newAddress1=${user.streetAddress}&newAddress2=${user.parish}&newPickUpBranch=${user.pickUpBranch}`, user)
   }
 
   public deleteUser(username: string): Observable<CustomHttpResponse> {
